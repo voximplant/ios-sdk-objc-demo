@@ -5,7 +5,7 @@
 #import "QIAppDelegate.h"
 #import "QICallViewController.h"
 #import "QIIssueCollectionViewCell.h"
-#import "VIBranding.h"
+#import "VoxBranding.h"
 
 @import VoxImplant;
 
@@ -37,14 +37,14 @@ static NSString *reuseIdentifier = @"QIIssueCollectionViewCell";
 - (UIColor *)colorForLevel:(VIQualityIssueLevel)level {
     switch (level) {
         case VIQualityIssueLevelCritical:
-            return VIBranding.criticalColor;
+            return VoxBranding.criticalColor;
         case VIQualityIssueLevelMajor:
-            return VIBranding.errorColor;
+            return VoxBranding.errorColor;
         case VIQualityIssueLevelMinor:
-            return VIBranding.warningColor;
+            return VoxBranding.warningColor;
         case VIQualityIssueLevelNone:
         default:
-            return VIBranding.infoColor;
+            return VoxBranding.infoColor;
     }
 }
 

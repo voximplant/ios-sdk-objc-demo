@@ -2,12 +2,12 @@
  *  Copyright (c) 2011-2019, Zingaya, Inc. All rights reserved.
  */
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VIBranding : NSObject
+@interface VoxBranding : NSObject
 
 + (UIColor *)headerColor;
 
@@ -19,12 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (CGFloat)minimumWidth;
 
-+ (UIFont *)defaultFont;
-
-+ (UIFont *)titleFont;
-
-+ (NSDictionary *)titleTextAttributes;
-
 + (UIColor *)criticalColor;
 
 + (UIColor *)errorColor;
@@ -33,21 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)infoColor;
 
-@end
-
-@interface UIImage (ImageWithColor)
-
-+ (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImageView *)logoView;
 
 @end
+
 
 @interface VIButton : UIButton
 
 @property (assign, nonatomic, getter=isFilled) IBInspectable BOOL filled;
-
-@end
-
-@interface VIInputField : UITextField
 
 @end
 
