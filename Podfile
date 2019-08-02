@@ -7,7 +7,7 @@ def common_pods
   pod 'MBProgressHUD', '~> 1.1.0'
 end
 
-sdk_version = '2.21.1'
+sdk_version = '2.21.2'
 
 target 'Quick Start' do
   pod 'VoxImplantSDK', sdk_version
