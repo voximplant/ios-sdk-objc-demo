@@ -18,9 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userDisplayNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
 @property (weak, nonatomic) IBOutlet UITextField *contactUsernameField;
-@property (strong, nonatomic) NSString *endpointUsername;
 @property (strong, atomic) ACUser *loggedInUser;
-
 
 @end
 
@@ -93,7 +91,6 @@
             } else {
                 __strong ACMainViewController *strongSelf = weakSelf;
                 [strongSelf prepareUIToCall];
-                strongSelf.endpointUsername = strongSelf.contactUsernameField.text;
                 [strongSelf performSegueWithIdentifier:NSStringFromClass([ACCallViewController class]) sender:strongSelf];
             }
         }];
@@ -106,13 +103,6 @@
     [self.view endEditing:YES];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[ACCallViewController class]]) {
-        ACCallViewController *callViewController = segue.destinationViewController;
-        callViewController.endpointUsername = self.endpointUsername;
-    }
-}
-
 - (IBAction)unwindToMain:(UIStoryboardSegue *)unwindSegue {
 }
 
@@ -121,7 +111,7 @@
 
     [UIHelper showProgressWithTitle:@"Reconnecting" details:@"Please wait..." controller:self];
 
-    NSString *username = [self.loggedInUser.username stringByAppendingString:@".voximplant.com"];
+    NSString *username = self.loggedInUser.username;
     __weak ACMainViewController *weakSelf = self;
 
     [AppDelegateMacros.sharedAuthService loginUsingTokenWithUser:username

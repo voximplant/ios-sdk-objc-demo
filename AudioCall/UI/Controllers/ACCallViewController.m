@@ -12,6 +12,7 @@
 #import "UIHelper.h"
 #import "ACAppDelegate.h"
 #import "UIExtensions.h"
+#import "ACUser.h"
 
 
 @interface UIViewController (ConvertTimeToString)
@@ -19,7 +20,6 @@
 + (NSString *)convertTimeToString:(NSTimeInterval)time;
 
 @end
-
 
 @interface ACCallViewController ()
 
@@ -33,30 +33,25 @@
 @property (nonatomic) BOOL isMuted;
 @property (strong, nonatomic) VICall *call;
 @property (strong, nonatomic) NSSet<VIAudioDevice *> *audioDevices;
-@property (strong, nonatomic) NSString *endpointDisplayName;
 @property (strong, nonatomic) NSString *reasonToFail;
+@property (strong, nonatomic) ACUser *endpoint;
+@property (strong, nonatomic) ACCallManager *callManager;
 
 @end
 
 
-
 @implementation ACCallViewController
 
+- (ACCallManager *)callManager {
+    return AppDelegateMacros.sharedCallManager;
+}
+
 - (VICall *)call {
-    return AppDelegateMacros.sharedCallManager.managedCall;
+    return self.callManager.managedCall;
 }
 
 - (NSSet<VIAudioDevice *> *)audioDevices {
     return [VIAudioManager.sharedAudioManager availableAudioDevices];
-}
-
-- (NSString *)endpointDisplayName {
-    NSString *name = AppDelegateMacros.sharedCallManager.managedCall.endpoints.firstObject.userDisplayName;
-    if (name) {
-        return name;
-    } else {
-        return self.endpointUsername;
-    }
 }
 
 - (void)setMuted:(BOOL)isMuted {
@@ -67,10 +62,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self setupDelegates];
-    self.endpointDisplayNameLabel.text = self.endpointDisplayName;
+    
+    self.endpoint = [ACUser userWithUsername:@"" displayName:@""];
+    self.endpoint.username = self.callManager.managedCall.endpoints.firstObject.user;
+    self.endpointDisplayNameLabel.text = self.endpoint.username;
     self.isMuted = NO;
+    [self setupDelegates];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -100,7 +97,7 @@
 
 - (IBAction)holdTouch:(ACButtonWithLabel *)sender {
     __weak ACCallViewController *weakSelf = self;
-
+    
     [sender setEnabled:NO];
     [self.call setHold:!sender.isSelected completion:^(NSError * _Nullable error) {
         if (error) {
@@ -129,8 +126,8 @@
 }
 
 - (IBAction)unwindToCall:(UIStoryboardSegue *)unwindSegue {
-    NSLog(@"Calling %@ from CallViewController", self.endpointUsername);
-    [AppDelegateMacros.sharedCallManager startOutgoingCallWithContact:self.endpointUsername completion:^(NSError * _Nullable error) {
+    NSLog(@"Calling %@ from CallViewController", self.endpoint.username);
+    [self.callManager startOutgoingCallWithContact:self.endpoint.username completion:^(NSError * _Nullable error) {
         if (error) {
             [self dismissViewControllerAnimated:NO completion:^{
                 [UIHelper showError:error.localizedDescription action:nil controller:AppDelegateMacros.window.rootViewController];
@@ -144,7 +141,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.destinationViewController isKindOfClass:[ACCallFailedViewController class]]) {
         ACCallFailedViewController *callFailedController = segue.destinationViewController;
-        callFailedController.endpointDisplayName = self.endpointDisplayName;
+        if (![self.endpoint.displayName isEqual: @""]) {
+            callFailedController.endpointDisplayName = self.endpoint.displayName;
+        } else {
+            callFailedController.endpointDisplayName = self.endpoint.username;
+        }
         callFailedController.failingReason = self.reasonToFail;
     }
 }
@@ -156,24 +157,31 @@
 }
 
 - (void)call:(VICall *)call didConnectWithHeaders:(NSDictionary *)headers {
-     NSLog(@"didConnectWithHeaders called on CallViewController");
-    self.endpointUsername = AppDelegateMacros.sharedCallManager.managedCall.endpoints.firstObject.user;
-    self.endpointDisplayNameLabel.text = call.endpoints.firstObject.userDisplayName;
-
+    NSLog(@"didConnectWithHeaders called on CallViewController");
+    
+    NSString *username = call.endpoints.firstObject.user;
+    NSString *displayName = call.endpoints.firstObject.userDisplayName;
+    
+    if (username && displayName) {
+        self.endpoint.username = username;
+        self.endpoint.displayName = displayName;
+    }
+    self.endpointDisplayNameLabel.text = self.endpoint.displayName;
+    
     [self.dtmfButton setEnabled:YES]; // show call duration and unblock buttons
     [self.holdButton setEnabled:YES];
-
+    
     [self.callStateLabel runTimer];
 }
 
 - (void)call:(VICall *)call didDisconnectWithHeaders:(NSDictionary *)headers answeredElsewhere:(NSNumber *)answeredElsewhere {
-     NSLog(@"didDisconnectWithHeaders called on CallViewController");
+    NSLog(@"didDisconnectWithHeaders called on CallViewController");
     [self.call removeDelegate:self];
     [self performSegueWithIdentifier:NSStringFromClass([ACMainViewController class]) sender:self];
 }
 
 - (void)call:(VICall *)call didFailWithError:(NSError *)error headers:(NSDictionary *)headers {
-     NSLog(@"didFailWithError called on CallViewController");
+    NSLog(@"didFailWithError called on CallViewController");
     [self.call removeDelegate:self];
     if (error.code == VICallFailErrorCodeInvalidNumber) {
         [self dismissViewControllerAnimated:NO completion:^{
@@ -252,7 +260,7 @@
 }
 
 - (void)keypadDidHide {
-    self.endpointDisplayNameLabel.text = self.endpointDisplayName;
+    self.endpointDisplayNameLabel.text = self.endpoint.displayName;
 }
 
 #pragma mark - Timer Delegate

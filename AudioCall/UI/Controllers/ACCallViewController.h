@@ -6,12 +6,7 @@
 #import "ACKeyPadView.h"
 #import <VoxImplant/VoxImplant.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface ACCallViewController : UIViewController<VICallDelegate, VIAudioManagerDelegate, KeyPadDelegate>
 
-@property (strong, nonatomic) NSString *endpointUsername;
-
 @end
-
-NS_ASSUME_NONNULL_END

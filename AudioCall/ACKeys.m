@@ -7,7 +7,7 @@
 
 @interface ACToken ()
 
-@property (strong, nonatomic, readwrite) NSString *key;
+@property (strong, nonatomic, readwrite) NSString *token;
 @property (strong, nonatomic, readwrite) NSDate *expireDate;
 
 @end
@@ -19,9 +19,9 @@
     return YES;
 }
 
-+ (instancetype)tokenWithKey:(NSString *)key expireDate:(NSDate *)date {
++ (instancetype)createToken:(NSString *)key expireDate:(NSDate *)date {
     ACToken *token = [[ACToken alloc] init];
-    token.key = key;
+    token.token = key;
     token.expireDate = date;
     return token;
 }
@@ -32,14 +32,14 @@
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
     if (self = [super init]) {
-        self.key = [aDecoder decodeObjectForKey:@"key"];
+        self.token = [aDecoder decodeObjectForKey:@"key"];
         self.expireDate = [aDecoder decodeObjectForKey:@"expireDate"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-    [aCoder encodeObject:self.key forKey:@"key"];
+    [aCoder encodeObject:self.token forKey:@"key"];
     [aCoder encodeObject:self.expireDate forKey:@"expireDate"];
 }
 
@@ -53,24 +53,24 @@
     return YES;
 }
 
-+ (instancetype)keyholderWithAccessToken:(ACToken *)accessKey refreshKey:(ACToken *)refreshKey {
++ (instancetype)keyholderWithAccess:(ACToken *)accessKey refresh:(ACToken *)refreshKey {
     ACKeys *keys = [[ACKeys alloc] init];
-    keys.accessToken = accessKey;
-    keys.refreshToken = refreshKey;
+    keys.access = accessKey;
+    keys.refresh = refreshKey;
     return keys;
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
     if (self = [super init]) {
-        self.accessToken = [aDecoder decodeObjectForKey:@"accessToken"];
-        self.refreshToken = [aDecoder decodeObjectForKey:@"refreshToken"];
+        self.access = [aDecoder decodeObjectForKey:@"accessToken"];
+        self.refresh = [aDecoder decodeObjectForKey:@"refreshToken"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
-    [aCoder encodeObject:self.accessToken forKey:@"accessToken"];
-    [aCoder encodeObject:self.refreshToken forKey:@"refreshToken"];
+    [aCoder encodeObject:self.access forKey:@"accessToken"];
+    [aCoder encodeObject:self.refresh forKey:@"refreshToken"];
 }
 
 @end

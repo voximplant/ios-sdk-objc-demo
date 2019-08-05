@@ -10,10 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ACToken : NSObject <NSSecureCoding>
 
-@property (strong, nonatomic, readonly) NSString *key;
+@property (strong, nonatomic, readonly) NSString *token;
 @property (strong, nonatomic, readonly) NSDate *expireDate;
 
-+ (instancetype)tokenWithKey:(NSString *)key expireDate:(NSDate *)date;
++ (instancetype)createToken:(NSString *)token expireDate:(NSDate *)date;
 
 - (BOOL)isExpired;
 
@@ -22,10 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ACKeys : NSObject <NSSecureCoding>
 
-@property (strong, nonatomic, nullable)ACToken *accessToken;
-@property (strong, nonatomic, nullable)ACToken *refreshToken;
+@property (strong, nonatomic, nullable)ACToken *access;
+@property (strong, nonatomic, nullable)ACToken *refresh;
 
-+ (instancetype)keyholderWithAccessToken:(ACToken *)accessKey refreshKey:(ACToken *)refreshKey;
++ (instancetype)keyholderWithAccess:(ACToken *)access refresh:(ACToken *)refresh;
 
 @end
 

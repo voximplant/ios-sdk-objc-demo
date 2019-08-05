@@ -33,11 +33,11 @@
         ACKeys *keys = [NSKeyedUnarchiver unarchivedObjectOfClasses:set
                                                            fromData:[[NSUserDefaults standardUserDefaults] objectForKey: [NSUserDefaults keyholderKey]]
                                                               error:&error];
-        if ([[keys refreshToken] isExpired]) { return nil; }
+        if ([[keys refresh] isExpired]) { return nil; }
         return keys;
     } else {
         ACKeys *keys = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:[NSUserDefaults keyholderKey]]];
-        if ([[keys refreshToken] isExpired]) { return nil; }
+        if ([[keys refresh] isExpired]) { return nil; }
         return keys;
     }
 }

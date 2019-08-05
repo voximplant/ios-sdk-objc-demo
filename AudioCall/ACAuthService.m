@@ -71,7 +71,7 @@
 #pragma mark - Login methods
 - (NSDate *)possibleToLogin {
     ACKeys *keys = [self.tokenManager getKeys];
-    return keys.refreshToken.expireDate;
+    return keys.refresh.expireDate;
 }
 
 - (void)loginWithUser:(NSString *)user
@@ -92,21 +92,21 @@
             __strong ACAuthService *strongSelf = weakSelf;
             [strongSelf.client loginWithUser:user
                                     password:password
-                                     success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull tokens) {
-                                         NSNumber *refreshExpire = tokens[@"refreshExpire"];
-                                         NSString *refreshKey = tokens[@"refreshToken"];
-                                         NSNumber *accessExpire = tokens[@"accessExpire"];
-                                         NSString *accessKey = tokens[@"accessToken"];
+                                     success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull authParams) {
+                                         NSNumber *refreshExpire = authParams[@"refreshExpire"];
+                                         NSString *refreshToken = authParams[@"refreshToken"];
+                                         NSNumber *accessExpire = authParams[@"accessExpire"];
+                                         NSString *accessToken = authParams[@"accessToken"];
                                          
-                                         if (refreshExpire && refreshKey && accessExpire && accessKey) {
+                                         if (refreshExpire && refreshToken && accessExpire && accessToken) {
                                              __strong ACAuthService *strongSelf = weakSelf;
                                              
-                                             ACToken *accessToken = [ACToken tokenWithKey:accessKey
-                                                                             expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
+                                             ACToken *validAccessToken = [ACToken createToken:accessToken
+                                                                                   expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
                                              
-                                             ACToken *refreshToken = [ACToken tokenWithKey:refreshKey
-                                                                              expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                             ACKeys *keys = [ACKeys keyholderWithAccessToken:accessToken refreshKey:refreshToken];
+                                             ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
+                                             ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                              [strongSelf.tokenManager setKeys:keys];
                                              strongSelf.lastLoggedInUser = [ACUser userWithUsername:user displayName:userDisplayName];
                                          }
@@ -150,19 +150,19 @@
                 }
                 __strong ACAuthService *strongSelf = weakSelf;
                 [strongSelf.client loginWithUser:user
-                                           token:accessToken.key
-                                         success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull tokens) {
-                                             NSNumber *refreshExpire = tokens[@"refreshExpire"];
-                                             NSString *refreshKey = [self extracted:tokens];
-                                             NSNumber *accessExpire = tokens[@"accessExpire"];
-                                             NSString *accessKey = tokens[@"accessToken"];
+                                           token:accessToken.token
+                                         success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull authParams) {
+                                             NSNumber *refreshExpire = authParams[@"refreshExpire"];
+                                             NSString *refreshToken = authParams[@"refreshToken"];
+                                             NSNumber *accessExpire = authParams[@"accessExpire"];
+                                             NSString *accessToken = authParams[@"accessToken"];
                                              
-                                             if (refreshExpire && refreshKey && accessExpire && accessKey) {
-                                                 ACToken *accessToken = [ACToken tokenWithKey:accessKey
-                                                                                   expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                                 ACToken *refreshToken = [ACToken tokenWithKey:refreshKey
-                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                                 ACKeys *keys = [ACKeys keyholderWithAccessToken:accessToken refreshKey:refreshToken];
+                                             if (refreshExpire && refreshToken && accessExpire && accessToken) {
+                                                 ACToken *validAccessToken = [ACToken createToken:accessToken
+                                                                                       expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
+                                                 ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                                                                        expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
+                                                 ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                                  [strongSelf.tokenManager setKeys:keys];
                                                  strongSelf.lastLoggedInUser = [ACUser userWithUsername:user displayName:userDisplayName];
                                              }
@@ -179,41 +179,40 @@
 - (void)updateAccessTokenIfNeeded:(NSString *)user
                        completion:(void(^)(ACToken *_Nullable accessToken, NSError *_Nullable error))completion {
     
-    ACToken *accessKey = [self.tokenManager getKeys].accessToken;
-    ACToken *refreshKey = [self.tokenManager getKeys].refreshToken;
+    ACKeys *tokens = self.tokenManager.getKeys;
     
-    if (accessKey) {
-        completion(accessKey, nil);
-        return;
-    }
-    
-    if (refreshKey) {
+    if (tokens) {
         __weak ACAuthService *weakSelf = self;
-        [self.client refreshTokenWithUser:user
-                                    token:refreshKey.key
-                                   result:^(NSDictionary * _Nullable tokens, NSError * _Nullable error) {
-                                       NSNumber *refreshExpire = tokens[@"refreshExpire"];
-                                       NSString *refreshKey = tokens[@"refreshToken"];
-                                       NSNumber *accessExpire = tokens[@"accessExpire"];
-                                       NSString *accessKey = tokens[@"accessToken"];
-                                       
-                                       if (error) {
-                                           completion(nil, error);
-                                           return;
-                                       }
-                                       
-                                       if (refreshExpire && refreshKey && accessExpire && accessKey) {
-                                           __strong ACAuthService *strongSelf = weakSelf;
-                                           ACToken *accessToken = [ACToken tokenWithKey:accessKey
-                                                                             expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                           ACToken *refreshToken = [ACToken tokenWithKey:refreshKey
-                                                                              expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                           ACKeys *keys = [ACKeys keyholderWithAccessToken:accessToken refreshKey:refreshToken];
+        if (tokens.access.isExpired) {
+            [self.client refreshTokenWithUser:user
+                                        token:tokens.refresh.token
+                                       result:^(NSDictionary * _Nullable authParams, NSError * _Nullable error) {
+                                           NSNumber *refreshExpire = authParams[@"refreshExpire"];
+                                           NSString *refreshToken = authParams[@"refreshToken"];
+                                           NSNumber *accessExpire = authParams[@"accessExpire"];
+                                           NSString *accessToken = authParams[@"accessToken"];
                                            
-                                           [strongSelf.tokenManager setKeys:keys];
-                                           completion(accessToken, nil);
-                                       }
-                                   }];
+                                           if (error) {
+                                               completion(nil, error);
+                                               return;
+                                           }
+                                           
+                                           if (refreshExpire && refreshToken && accessExpire && accessToken) {
+                                               __strong ACAuthService *strongSelf = weakSelf;
+                                               ACToken *validAccessToken = [ACToken createToken:accessToken
+                                                                                     expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
+                                               ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                                                                      expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
+                                               ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                               
+                                               [strongSelf.tokenManager setKeys:keys];
+                                               completion(validAccessToken, nil);
+                                               return;
+                                           }
+                                       }];
+        } else {
+            completion(tokens.access, nil);
+        }
     } else {
         completion(nil, [NSError errorRequiredPassword]);
     }
