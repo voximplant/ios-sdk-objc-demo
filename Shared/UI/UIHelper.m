@@ -4,6 +4,7 @@
 
 #import "UIHelper.h"
 #import <MBProgressHUD.h>
+#import "UIExtensions.h"
 
 @implementation UIHelper
 
@@ -40,17 +41,10 @@
         if (controller) {
             [controller presentViewController:alert animated:true completion:nil];
         } else {
-            UIViewController *controllerToUse = [UIHelper topPresentedController:rootViewController];
+            UIViewController *controllerToUse = rootViewController.toppestViewController;
             [controllerToUse presentViewController:alert animated:true completion:nil];
         }
     });
-};
-
-+ (UIViewController *)topPresentedController:(UIViewController *)controller {
-    if (controller.presentedViewController) {
-        return [UIHelper topPresentedController:controller.presentedViewController];
-    }
-    return controller;
 };
 
 @end

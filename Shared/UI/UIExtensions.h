@@ -19,5 +19,12 @@
 
 @end
 
+@interface UIViewController (ToppestViewController)
+
+@property (strong, nonatomic, readonly) UIViewController *topPresentedController;
+@property (strong, nonatomic, readonly) UIViewController *toppestViewController;
+
+@end
+
 
 

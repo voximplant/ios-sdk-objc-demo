@@ -3,7 +3,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <VoxImplant/VoxImplant.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

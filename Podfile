@@ -24,6 +24,11 @@ target 'AudioCall' do
   pod 'VoxImplantSDK', sdk_version
 end
 
+target 'AudioCallKit' do
+  common_pods
+  pod 'VoxImplantSDK', sdk_version
+end
+
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|

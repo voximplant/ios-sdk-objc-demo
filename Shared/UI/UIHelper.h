@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)showProgressWithTitle:(NSString *)title details:(NSString *)details controller:(UIViewController *)viewController;
 + (void)hideProgressOnViewController:(UIViewController *)viewController;
 + (void)showError:(NSString *)error action:(UIAlertAction *_Nullable)action controller:(UIViewController *_Nullable)controller;
-+ (UIViewController *)topPresentedController:(UIViewController *)controller;
 
 @end
 

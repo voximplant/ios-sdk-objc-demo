@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iyc-Xk-uRH">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="rWz-1A-qd4">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qaT-yJ-RiN" customClass="ACKLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BEh-NJ-QFP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qM-eo-Q0Z" customClass="VIButton">
+                                <rect key="frame" x="36" y="197.5" width="248" height="44"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gVF-9d-x2N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="LOGIN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginTouch:" destination="qaT-yJ-RiN" eventType="touchUpInside" id="uJb-Dj-gMg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VoximplantSDK ios - 2.20.6 WebRTC 66.0.3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBq-x4-HQ5">
+                                <rect key="frame" x="32" y="475" width="256" height="33"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio call demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-UC-GBx">
+                                <rect key="frame" x="36" y="40" width="248" height="23.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjh-Th-AAy">
+                                <rect key="frame" x="34" y="466.5" width="252" height="0.5"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="z9w-oO-zcX"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USER@APP.ACCOUNT" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WB6-kg-hpT" customClass="VoxTextField">
+                                <rect key="frame" x="18" y="79.5" width="284" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.10980392160000001" green="0.043137254899999998" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="b7G-mQ-Sb3"/>
+                                </constraints>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                <connections>
+                                    <action selector="nextField:" destination="xjf-le-q4S" eventType="editingDidEndOnExit" id="Ebe-6p-oKc"/>
+                                    <outlet property="rightSideView" destination="mqA-21-uSB" id="FLm-XX-oen"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xjf-le-q4S" customClass="VoxTextField">
+                                <rect key="frame" x="18" y="133.5" width="284" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.10980392160000001" green="0.043137254899999998" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="7r1-t0-c5w"/>
+                                </constraints>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                <connections>
+                                    <action selector="loginTouch:" destination="qaT-yJ-RiN" eventType="editingDidEndOnExit" id="Eg0-mH-d5l"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" fixedFrame="YES" text=".voximplant.com " lineBreakMode="clip" baselineAdjustment="none" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="mqA-21-uSB">
+                                <rect key="frame" x="201" y="81" width="101" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj6-ZH-bgp">
+                                <rect key="frame" x="36" y="241.5" width="248" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvW-LO-ld2">
+                                        <rect key="frame" x="64" y="16" width="120" height="0.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="82L-1r-COi">
+                                                <rect key="frame" x="45" y="-6.5" width="30" height="13"/>
+                                                <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="bQR-rX-2ar"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="82L-1r-COi" firstAttribute="centerX" secondItem="NvW-LO-ld2" secondAttribute="centerX" id="1nc-aF-3Ph"/>
+                                            <constraint firstAttribute="height" constant="0.5" id="A3n-XR-r8P"/>
+                                            <constraint firstAttribute="bottom" secondItem="82L-1r-COi" secondAttribute="bottom" constant="-6" id="Z2v-l5-yfc"/>
+                                            <constraint firstItem="82L-1r-COi" firstAttribute="top" secondItem="NvW-LO-ld2" secondAttribute="top" constant="-6.5" id="bEe-J4-wqj"/>
+                                        </constraints>
+                                    </view>
+                                    <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5P-FJ-ebe" customClass="VIButton">
+                                        <rect key="frame" x="0.0" y="32" width="248" height="44"/>
+                                        <color key="backgroundColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="obg-0q-Cvf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                        <state key="normal" title="LOGIN WITH ACCESS TOKEN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginWithTokenTouch:" destination="qaT-yJ-RiN" eventType="touchUpInside" id="lYz-3Q-Inr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Token will expire in 2d" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOQ-3x-AZT">
+                                        <rect key="frame" x="16" y="84" width="216" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NvW-LO-ld2" firstAttribute="leading" secondItem="cj6-ZH-bgp" secondAttribute="leading" constant="64" id="12E-rI-eAq"/>
+                                    <constraint firstItem="NvW-LO-ld2" firstAttribute="top" secondItem="cj6-ZH-bgp" secondAttribute="top" constant="16" id="27Q-ns-t76"/>
+                                    <constraint firstItem="VOQ-3x-AZT" firstAttribute="top" secondItem="f5P-FJ-ebe" secondAttribute="bottom" constant="8" id="KHu-Rp-TtB"/>
+                                    <constraint firstItem="f5P-FJ-ebe" firstAttribute="leading" secondItem="cj6-ZH-bgp" secondAttribute="leading" id="LrB-9v-SP0"/>
+                                    <constraint firstAttribute="trailing" secondItem="f5P-FJ-ebe" secondAttribute="trailing" id="U5r-pf-nwJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VOQ-3x-AZT" secondAttribute="trailing" constant="16" id="aNn-kM-YUo"/>
+                                    <constraint firstItem="VOQ-3x-AZT" firstAttribute="leading" secondItem="cj6-ZH-bgp" secondAttribute="leading" constant="16" id="cYw-E7-3ac"/>
+                                    <constraint firstAttribute="trailing" secondItem="NvW-LO-ld2" secondAttribute="trailing" constant="64" id="jZ1-vg-sZQ"/>
+                                    <constraint firstAttribute="height" constant="100" id="kV9-9i-WgH"/>
+                                    <constraint firstItem="f5P-FJ-ebe" firstAttribute="top" secondItem="NvW-LO-ld2" secondAttribute="top" constant="16" id="mue-yW-hqU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L5e-RW-D2V" firstAttribute="bottom" secondItem="MBq-x4-HQ5" secondAttribute="bottom" constant="16" id="18m-87-j7u"/>
+                            <constraint firstItem="WB6-kg-hpT" firstAttribute="leading" secondItem="L5e-RW-D2V" secondAttribute="leading" constant="18" id="1ke-Ii-cjl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zjh-Th-AAy" secondAttribute="trailing" constant="18" id="3yK-gR-zfN"/>
+                            <constraint firstItem="Zjh-Th-AAy" firstAttribute="leading" secondItem="BEh-NJ-QFP" secondAttribute="leadingMargin" constant="18" id="7hb-Ki-k49"/>
+                            <constraint firstItem="WB6-kg-hpT" firstAttribute="top" secondItem="Jag-UC-GBx" secondAttribute="bottom" constant="16" id="AHS-dj-QrR"/>
+                            <constraint firstItem="6qM-eo-Q0Z" firstAttribute="leading" secondItem="L5e-RW-D2V" secondAttribute="leading" constant="36" id="Fzd-d4-jOZ"/>
+                            <constraint firstItem="6qM-eo-Q0Z" firstAttribute="top" secondItem="xjf-le-q4S" secondAttribute="bottom" constant="20" id="HdY-KB-eHH"/>
+                            <constraint firstItem="Jag-UC-GBx" firstAttribute="top" secondItem="L5e-RW-D2V" secondAttribute="top" constant="40" id="LXP-lX-96W"/>
+                            <constraint firstItem="Jag-UC-GBx" firstAttribute="leading" secondItem="BEh-NJ-QFP" secondAttribute="leadingMargin" constant="20" id="N4t-VZ-GKJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jag-UC-GBx" secondAttribute="trailing" constant="20" id="PjY-vs-zW2"/>
+                            <constraint firstItem="MBq-x4-HQ5" firstAttribute="top" secondItem="Zjh-Th-AAy" secondAttribute="bottom" constant="8" id="R2i-3d-a75"/>
+                            <constraint firstItem="L5e-RW-D2V" firstAttribute="trailing" secondItem="WB6-kg-hpT" secondAttribute="trailing" constant="18" id="TL3-cV-An5"/>
+                            <constraint firstItem="L5e-RW-D2V" firstAttribute="trailing" secondItem="xjf-le-q4S" secondAttribute="trailing" constant="18" id="UO5-pg-CIv"/>
+                            <constraint firstItem="L5e-RW-D2V" firstAttribute="trailing" secondItem="6qM-eo-Q0Z" secondAttribute="trailing" constant="36" id="W7w-9G-66G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MBq-x4-HQ5" secondAttribute="trailing" constant="16" id="X0k-cq-tLP"/>
+                            <constraint firstItem="L5e-RW-D2V" firstAttribute="trailing" secondItem="cj6-ZH-bgp" secondAttribute="trailing" constant="36" id="XVg-bB-KhU"/>
+                            <constraint firstItem="xjf-le-q4S" firstAttribute="leading" secondItem="L5e-RW-D2V" secondAttribute="leading" constant="18" id="aEJ-Lo-yOI"/>
+                            <constraint firstItem="cj6-ZH-bgp" firstAttribute="leading" secondItem="L5e-RW-D2V" secondAttribute="leading" constant="36" id="aHJ-iE-9Pe"/>
+                            <constraint firstItem="xjf-le-q4S" firstAttribute="top" secondItem="WB6-kg-hpT" secondAttribute="bottom" constant="10" id="qRM-mk-gTH"/>
+                            <constraint firstItem="MBq-x4-HQ5" firstAttribute="leading" secondItem="BEh-NJ-QFP" secondAttribute="leadingMargin" constant="16" id="r6c-TB-kIj"/>
+                            <constraint firstItem="cj6-ZH-bgp" firstAttribute="top" secondItem="6qM-eo-Q0Z" secondAttribute="bottom" id="zWs-vl-VFE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L5e-RW-D2V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="h14-aT-ibh"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="loginPasswordField" destination="xjf-le-q4S" id="1Nd-3I-IRt"/>
+                        <outlet property="loginUserField" destination="WB6-kg-hpT" id="ae2-RK-iLp"/>
+                        <outlet property="tokenContainerView" destination="cj6-ZH-bgp" id="AHn-uR-rd9"/>
+                        <outlet property="tokenLabel" destination="VOQ-3x-AZT" id="AJD-7J-V0o"/>
+                        <outlet property="versionLabel" destination="MBq-x4-HQ5" id="3eh-Vl-kda"/>
+                        <segue destination="zkg-cD-rMl" kind="show" identifier="ACKMainViewController" id="4Ig-cX-SO6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kSD-oY-jEc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="367.5" y="-657.04225352112678"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="59p-yC-7FZ">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zkg-cD-rMl" customClass="ACKMainViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K5P-yp-gg8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CALL TO" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Qsy-WK-3Lv" customClass="VoxTextFieldWithButton">
+                                <rect key="frame" x="18" y="240" width="284" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1NM-yq-oa0"/>
+                                </constraints>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="callTouch:" destination="zkg-cD-rMl" eventType="editingDidEndOnExit" id="1DO-p1-BWT"/>
+                                    <outlet property="rightSideView" destination="FUC-2J-Qrr" id="W8A-7w-9j9"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlR-5t-mA5">
+                                <rect key="frame" x="32" y="201.5" width="256" height="22.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUC-2J-Qrr" customClass="VIButton">
+                                <rect key="frame" x="226" y="246" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="CALL">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="callTouch:" destination="zkg-cD-rMl" eventType="touchUpInside" id="qWa-rw-3PG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qsy-WK-3Lv" firstAttribute="top" secondItem="RlR-5t-mA5" secondAttribute="bottom" constant="16" id="3vi-io-Hn3"/>
+                            <constraint firstItem="Qsy-WK-3Lv" firstAttribute="leading" secondItem="x8m-as-S7C" secondAttribute="leading" constant="18" id="F27-19-HK6"/>
+                            <constraint firstItem="RlR-5t-mA5" firstAttribute="leading" secondItem="K5P-yp-gg8" secondAttribute="leadingMargin" constant="16" id="RTA-Nt-Se2"/>
+                            <constraint firstItem="x8m-as-S7C" firstAttribute="trailing" secondItem="Qsy-WK-3Lv" secondAttribute="trailing" constant="18" id="j3Z-aN-7dV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RlR-5t-mA5" secondAttribute="trailing" constant="16" id="m1I-hi-cSr"/>
+                            <constraint firstItem="Qsy-WK-3Lv" firstAttribute="centerY" secondItem="K5P-yp-gg8" secondAttribute="centerY" id="tsd-1I-2jj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x8m-as-S7C"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9hM-1n-Mxq">
+                        <barButtonItem key="leftBarButtonItem" image="logout" id="2q9-Zt-DsU">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logoutTouch:" destination="zkg-cD-rMl" id="cvO-tO-HhX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="add" id="imB-2f-pYY">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="hidesBackButton" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="callButton" destination="FUC-2J-Qrr" id="CGB-6H-sZq"/>
+                        <outlet property="contactUsernameField" destination="Qsy-WK-3Lv" id="3rd-WZ-SE0"/>
+                        <outlet property="userDisplayNameLabel" destination="RlR-5t-mA5" id="0Ng-e0-gIi"/>
+                        <segue destination="TIL-oq-ISA" kind="presentation" identifier="ACKCallViewController" animates="NO" modalPresentationStyle="fullScreen" id="46d-47-8rr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GoS-98-qBQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1140" y="-657"/>
+        </scene>
+        <!--Delegate-->
+        <scene sceneID="g6x-wp-0ws">
+            <objects>
+                <viewController storyboardIdentifier="CallViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TIL-oq-ISA" customClass="ACKCallViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yqi-ua-QrT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outgoing Сall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lbc-jo-HJQ" customClass="VoxEndpointLabel">
+                                <rect key="frame" x="26" y="40" width="268" height="40"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4t-J6-yZS" customClass="VoxLabelWithTimer">
+                                <rect key="frame" x="21" y="88" width="278" height="20"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TIL-oq-ISA" id="avu-hT-fbA"/>
+                                </connections>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54X-VM-P4s">
+                                <rect key="frame" x="122.5" y="312" width="75" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-xD-DY5" customClass="VoxButtonWithLabel">
+                                        <rect key="frame" x="5" y="12" width="65" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                                        <state key="normal" title="Button" image="hold"/>
+                                        <state key="selected" image="resume"/>
+                                        <state key="highlighted" image="holdP"/>
+                                        <connections>
+                                            <action selector="holdTouch:" destination="TIL-oq-ISA" eventType="touchUpInside" id="JNv-yD-7V9"/>
+                                            <outlet property="label" destination="F7t-ov-fp3" id="esZ-c2-d53"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hold" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7t-ov-fp3">
+                                        <rect key="frame" x="0.0" y="82" width="75" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="G9z-b9-nDa"/>
+                                    <constraint firstAttribute="height" constant="100" id="raj-fT-RGH"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00r-gQ-3dp">
+                                <rect key="frame" x="127.5" y="478" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="5Pv-zS-UA5"/>
+                                    <constraint firstAttribute="height" constant="65" id="aiB-Ef-W8c"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="declineCall"/>
+                                <state key="highlighted" image="declineCallP"/>
+                                <connections>
+                                    <action selector="hangupTouch:" destination="TIL-oq-ISA" eventType="touchUpInside" id="KSG-ZD-Ll6"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hN-lt-2gA">
+                                <rect key="frame" x="28.5" y="209" width="263" height="100"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XM-CW-zZA">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mute" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMp-KH-sTZ">
+                                                <rect key="frame" x="0.0" y="82" width="75" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smD-dw-hs8" customClass="VoxButtonWithLabel">
+                                                <rect key="frame" x="5" y="12" width="65" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="mic"/>
+                                                <state key="selected" image="micP"/>
+                                                <state key="highlighted" image="micP"/>
+                                                <connections>
+                                                    <action selector="muteTouch:" destination="TIL-oq-ISA" eventType="touchUpInside" id="Hip-n2-jli"/>
+                                                    <outlet property="label" destination="CMp-KH-sTZ" id="i0U-ic-Y5u"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tjc-CQ-7dN">
+                                        <rect key="frame" x="188" y="0.0" width="75" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAs-y5-AQU" customClass="VoxButtonWithLabel">
+                                                <rect key="frame" x="5" y="12" width="65" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="speaker"/>
+                                                <state key="selected" image="speakerP"/>
+                                                <state key="highlighted" image="speakerP"/>
+                                                <connections>
+                                                    <action selector="audioDeviceTouch:" destination="TIL-oq-ISA" eventType="touchUpInside" id="9Lp-OP-qjD"/>
+                                                    <outlet property="label" destination="woF-s7-gNW" id="3zC-lt-yfX"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="audio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woF-s7-gNW">
+                                                <rect key="frame" x="0.0" y="82" width="75" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="im1-KW-VMM">
+                                        <rect key="frame" x="94" y="0.0" width="75" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQy-dw-aZl" customClass="VoxButtonWithLabel">
+                                                <rect key="frame" x="5" y="12" width="65" height="65"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button" image="pinpad"/>
+                                                <state key="selected" image="pinpadP"/>
+                                                <state key="highlighted" image="pinpadP"/>
+                                                <connections>
+                                                    <action selector="dtmfTouch:" destination="TIL-oq-ISA" eventType="touchUpInside" id="zxo-mt-g5P"/>
+                                                    <outlet property="label" destination="7m0-qA-6iR" id="5fZ-2i-mtq"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="keypad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7m0-qA-6iR">
+                                                <rect key="frame" x="0.0" y="82" width="75" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="gi9-0h-Byv"/>
+                                    <constraint firstAttribute="width" constant="263" id="tFR-xw-ehf"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXz-J4-B9v" customClass="VoxKeyPadView">
+                                <rect key="frame" x="0.0" y="140.5" width="320" height="327.5"/>
+                                <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="327.5" id="2b8-Mk-dMK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="TIL-oq-ISA" id="gAj-RC-gHI"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZqJ-GV-eFB" firstAttribute="trailing" secondItem="JXz-J4-B9v" secondAttribute="trailing" id="5Pf-tK-Jf1"/>
+                            <constraint firstItem="00r-gQ-3dp" firstAttribute="centerX" secondItem="ZqJ-GV-eFB" secondAttribute="centerX" id="BpS-VJ-Ko6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="V4t-J6-yZS" secondAttribute="trailing" constant="5" id="QZl-AO-e2B"/>
+                            <constraint firstItem="9hN-lt-2gA" firstAttribute="centerX" secondItem="ZqJ-GV-eFB" secondAttribute="centerX" id="Slc-JC-gjW"/>
+                            <constraint firstItem="54X-VM-P4s" firstAttribute="centerX" secondItem="ZqJ-GV-eFB" secondAttribute="centerX" id="Vtw-N9-nxz"/>
+                            <constraint firstItem="Lbc-jo-HJQ" firstAttribute="top" secondItem="ZqJ-GV-eFB" secondAttribute="top" constant="40" id="Xcm-TU-Epw"/>
+                            <constraint firstItem="V4t-J6-yZS" firstAttribute="leading" secondItem="yqi-ua-QrT" secondAttribute="leadingMargin" constant="5" id="YIh-Ro-dSf"/>
+                            <constraint firstItem="00r-gQ-3dp" firstAttribute="top" secondItem="54X-VM-P4s" secondAttribute="bottom" constant="66" id="Z8q-QE-wlv"/>
+                            <constraint firstItem="ZqJ-GV-eFB" firstAttribute="trailing" secondItem="Lbc-jo-HJQ" secondAttribute="trailing" constant="26" id="bBH-af-aIN"/>
+                            <constraint firstItem="Lbc-jo-HJQ" firstAttribute="leading" secondItem="ZqJ-GV-eFB" secondAttribute="leading" constant="26" id="dQb-8X-kyU"/>
+                            <constraint firstItem="00r-gQ-3dp" firstAttribute="top" secondItem="JXz-J4-B9v" secondAttribute="bottom" constant="10" id="h2X-mB-alI"/>
+                            <constraint firstItem="54X-VM-P4s" firstAttribute="top" secondItem="9hN-lt-2gA" secondAttribute="bottom" constant="3" id="hws-U8-N2V"/>
+                            <constraint firstItem="V4t-J6-yZS" firstAttribute="top" secondItem="Lbc-jo-HJQ" secondAttribute="bottom" constant="8" id="jDS-3u-YCN"/>
+                            <constraint firstItem="JXz-J4-B9v" firstAttribute="leading" secondItem="ZqJ-GV-eFB" secondAttribute="leading" id="kyD-0z-7sx"/>
+                            <constraint firstItem="ZqJ-GV-eFB" firstAttribute="bottom" secondItem="00r-gQ-3dp" secondAttribute="bottom" constant="25" id="qdx-Nx-NV8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZqJ-GV-eFB"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="callStateLabel" destination="V4t-J6-yZS" id="6Tc-O2-r8P"/>
+                        <outlet property="dtmfButton" destination="gQy-dw-aZl" id="ibe-0N-kYv"/>
+                        <outlet property="endpointDisplayNameLabel" destination="Lbc-jo-HJQ" id="SRn-dG-H7q"/>
+                        <outlet property="holdButton" destination="cCS-xD-DY5" id="xS3-9L-8R3"/>
+                        <outlet property="keyPadView" destination="JXz-J4-B9v" id="uSx-FO-b2S"/>
+                        <outlet property="muteButton" destination="smD-dw-hs8" id="u2l-EH-hys"/>
+                        <outlet property="speakerButton" destination="bAs-y5-AQU" id="2l9-rk-K4d"/>
+                        <segue destination="K9M-KA-S0n" kind="unwind" identifier="ACKMainViewController" animates="NO" unwindAction="unwindToMain:" id="hnT-l5-tpU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9Z-qc-yk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="K9M-KA-S0n" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="-657"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qzT-7B-kbe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iyc-Xk-uRH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="fJX-6m-atg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.10980392160000001" green="0.043137254899999998" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qaT-yJ-RiN" kind="relationship" relationship="rootViewController" id="2pS-gC-zKK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VuD-94-OdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="368" y="-1413"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="declineCall" width="145" height="145"/>
+        <image name="declineCallP" width="145" height="145"/>
+        <image name="hold" width="145" height="145"/>
+        <image name="holdP" width="145" height="145"/>
+        <image name="logout" width="25" height="25"/>
+        <image name="mic" width="145" height="145"/>
+        <image name="micP" width="145" height="145"/>
+        <image name="pinpad" width="145" height="145"/>
+        <image name="pinpadP" width="145" height="145"/>
+        <image name="resume" width="145" height="145"/>
+        <image name="speaker" width="145" height="145"/>
+        <image name="speakerP" width="145" height="145"/>
+    </resources>
+</document>
