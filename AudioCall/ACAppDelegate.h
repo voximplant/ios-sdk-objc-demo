@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ACAppDelegate : UIResponder<UIApplicationDelegate>
+@interface ACAppDelegate : UIResponder<UIApplicationDelegate, ACCallManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, atomic) ACAuthService *sharedAuthService;

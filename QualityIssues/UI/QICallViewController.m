@@ -177,4 +177,9 @@ static NSString *reuseIdentifier = @"QIIssueCollectionViewCell";
     return CGSizeMake(floorf(collectionView.frame.size.width / 2.f) - 2, 18);
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (@available(iOS 13.0, *)) { return UIStatusBarStyleDarkContent; }
+    else { return UIStatusBarStyleDefault; }
+}
+
 @end

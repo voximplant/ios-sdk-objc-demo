@@ -3,10 +3,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ACCallManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ACCallFailedViewController : UIViewController
+@interface ACCallFailedViewController : UIViewController<ACCallManagerDelegate>
 
 @property (strong, nonatomic) NSString *failingReason;
 @property (strong, nonatomic) NSString *endpointDisplayName;

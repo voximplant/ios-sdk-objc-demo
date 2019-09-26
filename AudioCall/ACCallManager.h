@@ -8,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CallManagerDelegate <NSObject>
+@protocol ACCallManagerDelegate <NSObject>
 
 -(void)notifyIncomingCall:(VICall *)descriptor;
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ACCallManager : NSObject<VIClientCallManagerDelegate, VICallDelegate>
 
-@property (weak, atomic) id<CallManagerDelegate> delegate;
+@property (weak, atomic) id<ACCallManagerDelegate> delegate;
 @property (nonatomic, strong, nullable) VICall *managedCall;
 
 - (instancetype)initWithClient:(VIClient *)client authService:(ACAuthService *)authService;

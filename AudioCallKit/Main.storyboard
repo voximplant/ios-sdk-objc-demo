@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iyc-Xk-uRH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iyc-Xk-uRH">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,14 +36,6 @@
                                     <color key="titleColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <real key="value" value="1.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginTouch:" destination="qaT-yJ-RiN" eventType="touchUpInside" id="uJb-Dj-gMg"/>
                                 </connections>
@@ -249,14 +241,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <real key="value" value="1.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="callTouch:" destination="zkg-cD-rMl" eventType="touchUpInside" id="qWa-rw-3PG"/>
                                 </connections>
@@ -381,7 +365,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smD-dw-hs8" customClass="VoxButtonWithLabel">
                                                 <rect key="frame" x="5" y="12" width="65" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button" image="mic"/>
+                                                <state key="normal" title="Button" image="vmic"/>
                                                 <state key="selected" image="micP"/>
                                                 <state key="highlighted" image="micP"/>
                                                 <connections>
@@ -399,7 +383,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAs-y5-AQU" customClass="VoxButtonWithLabel">
                                                 <rect key="frame" x="5" y="12" width="65" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button" image="speaker"/>
+                                                <state key="normal" title="Button" image="vspeaker"/>
                                                 <state key="selected" image="speakerP"/>
                                                 <state key="highlighted" image="speakerP"/>
                                                 <connections>
@@ -524,12 +508,12 @@
         <image name="hold" width="145" height="145"/>
         <image name="holdP" width="145" height="145"/>
         <image name="logout" width="25" height="25"/>
-        <image name="mic" width="145" height="145"/>
         <image name="micP" width="145" height="145"/>
         <image name="pinpad" width="145" height="145"/>
         <image name="pinpadP" width="145" height="145"/>
         <image name="resume" width="145" height="145"/>
-        <image name="speaker" width="145" height="145"/>
         <image name="speakerP" width="145" height="145"/>
+        <image name="vmic" width="145" height="145"/>
+        <image name="vspeaker" width="145" height="145"/>
     </resources>
 </document>

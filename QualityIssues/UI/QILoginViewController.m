@@ -50,3 +50,15 @@
 }
 
 @end
+
+@implementation UINavigationController (StatusBarStyle)
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return false;
+}
+
+@end

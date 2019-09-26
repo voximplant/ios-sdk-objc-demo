@@ -3,12 +3,12 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "ACUser.h"
+#import "VoxUser.h"
 #import "ACCallManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ACMainViewController : UIViewController<CallManagerDelegate>
+@interface ACMainViewController : UIViewController<ACCallManagerDelegate>
 
 - (void)reconnect;
 

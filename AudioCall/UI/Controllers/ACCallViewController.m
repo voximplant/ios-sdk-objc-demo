@@ -3,38 +3,38 @@
  */
 
 #import "ACCallViewController.h"
-#import "ACLabelWithTimer.h"
-#import "ACButtonWithLabel.h"
-#import "ACKeyPadView.h"
+#import "VoxLabelWithTimer.h"
+#import "VoxButtonWithLabel.h"
+#import "VoxKeyPadView.h"
 #import "ACCallFailedViewController.h"
 #import "ACMainViewController.h"
 #import "ACCallManager.h"
 #import "UIHelper.h"
 #import "ACAppDelegate.h"
 #import "UIExtensions.h"
-#import "ACUser.h"
+#import "VoxUser.h"
 
+@interface VoxLabelWithTimer (UpdateCallStatus)
 
-@interface UIViewController (ConvertTimeToString)
-
-+ (NSString *)convertTimeToString:(NSTimeInterval)time;
+- (void)updateCallStatusWithTime:(NSTimeInterval)time;
 
 @end
+
 
 @interface ACCallViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *endpointDisplayNameLabel;
-@property (weak, nonatomic) IBOutlet ACLabelWithTimer *callStateLabel;
-@property (weak, nonatomic) IBOutlet ACButtonWithLabel *holdButton;
-@property (weak, nonatomic) IBOutlet ACButtonWithLabel *muteButton;
-@property (weak, nonatomic) IBOutlet ACButtonWithLabel *speakerButton;
-@property (weak, nonatomic) IBOutlet ACButtonWithLabel *dtmfButton;
-@property (weak, nonatomic) IBOutlet ACKeyPadView *keyPadView;
+@property (weak, nonatomic) IBOutlet VoxLabelWithTimer *callStateLabel;
+@property (weak, nonatomic) IBOutlet VoxButtonWithLabel *holdButton;
+@property (weak, nonatomic) IBOutlet VoxButtonWithLabel *muteButton;
+@property (weak, nonatomic) IBOutlet VoxButtonWithLabel *speakerButton;
+@property (weak, nonatomic) IBOutlet VoxButtonWithLabel *dtmfButton;
+@property (weak, nonatomic) IBOutlet VoxKeyPadView *keyPadView;
 @property (nonatomic) BOOL isMuted;
 @property (strong, nonatomic) VICall *call;
 @property (strong, nonatomic) NSSet<VIAudioDevice *> *audioDevices;
 @property (strong, nonatomic) NSString *reasonToFail;
-@property (strong, nonatomic) ACUser *endpoint;
+@property (strong, nonatomic) VoxUser *endpoint;
 @property (strong, nonatomic) ACCallManager *callManager;
 
 @end
@@ -46,7 +46,7 @@
     return AppDelegateMacros.sharedCallManager;
 }
 
-- (VICall *)call {
+- (VICall *)call { //returns current call
     return self.callManager.managedCall;
 }
 
@@ -54,16 +54,17 @@
     return [VIAudioManager.sharedAudioManager availableAudioDevices];
 }
 
-- (void)setMuted:(BOOL)isMuted {
+- (void)setIsMuted:(BOOL)isMuted {
     [self.muteButton setSelected:isMuted];
     self.muteButton.label.text = isMuted ? @"unmute": @"mute";
     [self.call setSendAudio:!isMuted];
+    _isMuted = isMuted;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.endpoint = [ACUser userWithUsername:@"" displayName:@""];
+    self.endpoint = [VoxUser userWithUsername:@"" displayName:@""];
     self.endpoint.username = self.callManager.managedCall.endpoints.firstObject.user;
     self.endpointDisplayNameLabel.text = self.endpoint.username;
     self.isMuted = NO;
@@ -71,7 +72,8 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) { return UIStatusBarStyleDarkContent; }
+    else { return UIStatusBarStyleDefault; }
 }
 
 - (void)setupDelegates {
@@ -80,24 +82,23 @@
 }
 
 #pragma mark - Actions
-- (IBAction)muteTouch:(ACButtonWithLabel *)sender {
+- (IBAction)muteTouch:(VoxButtonWithLabel *)sender {
     NSLog(@"MuteTouch called on CallViewController");
-    self.isMuted = !self.isMuted;
-    [self setMuted:self.isMuted];
+    [self setIsMuted:!self.isMuted];
 }
 
-- (IBAction)dtmfTouch:(ACButtonWithLabel *)sender {
+- (IBAction)dtmfTouch:(VoxButtonWithLabel *)sender {
     self.endpointDisplayNameLabel.text = @" "; //clear label to show numbers
     [self.keyPadView setHidden:NO];
 }
 
-- (IBAction)audioDeviceTouch:(ACButtonWithLabel *)sender {
+- (IBAction)audioDeviceTouch:(VoxButtonWithLabel *)sender {
     [self showAudioDevices];
 }
 
-- (IBAction)holdTouch:(ACButtonWithLabel *)sender {
+- (IBAction)holdTouch:(VoxButtonWithLabel *)sender {
     __weak ACCallViewController *weakSelf = self;
-    
+
     [sender setEnabled:NO];
     [self.call setHold:!sender.isSelected completion:^(NSError * _Nullable error) {
         if (error) {
@@ -157,7 +158,7 @@
 }
 
 - (void)call:(VICall *)call didConnectWithHeaders:(NSDictionary *)headers {
-    NSLog(@"didConnectWithHeaders called on CallViewController");
+     NSLog(@"didConnectWithHeaders called on CallViewController");
     
     NSString *username = call.endpoints.firstObject.user;
     NSString *displayName = call.endpoints.firstObject.userDisplayName;
@@ -167,21 +168,21 @@
         self.endpoint.displayName = displayName;
     }
     self.endpointDisplayNameLabel.text = self.endpoint.displayName;
-    
+
     [self.dtmfButton setEnabled:YES]; // show call duration and unblock buttons
     [self.holdButton setEnabled:YES];
-    
+
     [self.callStateLabel runTimer];
 }
 
 - (void)call:(VICall *)call didDisconnectWithHeaders:(NSDictionary *)headers answeredElsewhere:(NSNumber *)answeredElsewhere {
-    NSLog(@"didDisconnectWithHeaders called on CallViewController");
+     NSLog(@"didDisconnectWithHeaders called on CallViewController");
     [self.call removeDelegate:self];
     [self performSegueWithIdentifier:NSStringFromClass([ACMainViewController class]) sender:self];
 }
 
 - (void)call:(VICall *)call didFailWithError:(NSError *)error headers:(NSDictionary *)headers {
-    NSLog(@"didFailWithError called on CallViewController");
+     NSLog(@"didFailWithError called on CallViewController");
     [self.call removeDelegate:self];
     if (error.code == VICallFailErrorCodeInvalidNumber) {
         [self dismissViewControllerAnimated:NO completion:^{
@@ -223,7 +224,7 @@
     NSLog(@"audioDevicesListChanged: %@", availableAudioDevices);
 }
 
--(void)showAudioDevices {
+- (void)showAudioDevices {
     UIAlertController *alertSheet = [UIAlertController alertControllerWithTitle:nil
                                                                         message:nil
                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
@@ -264,26 +265,19 @@
 }
 
 #pragma mark - Timer Delegate
-- (void)updateTime {
-    NSString *time;
-    NSString *timeString = [UIViewController convertTimeToString:self.call.duration];
-    if (self.call.duration) {
-        time = [timeString stringByAppendingString:@" - "];
-    } else {
-        time = @"";
-    }
-    self.callStateLabel.text = [time stringByAppendingString:@"Call in progress"];
-}
+- (void)updateTime { [self.callStateLabel updateCallStatusWithTime:self.call.duration]; }
 
 @end
 
+@implementation VoxLabelWithTimer (UpdateCallStatus)
 
-@implementation UIViewController (ConvertTimeToString)
-
-+ (NSString *)convertTimeToString:(NSTimeInterval)time {
-    int minutes = (int)time / 60 % 60;
-    int seconds = (int)time % 60;
-    return [NSString stringWithFormat:@"%02i:%02i",minutes,seconds];
+- (void)updateCallStatusWithTime:(NSTimeInterval)time {
+    if (time) {
+        NSString *text = [self buildStringTimeToDisplayWithTime:time];
+        self.text = [NSString stringWithFormat:@"%@ - Call in progress", text];
+    } else {
+        self.text = @"Call in progress";
+    }
 }
 
 @end

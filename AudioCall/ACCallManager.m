@@ -4,12 +4,13 @@
 
 #import "ACCallManager.h"
 #import "VoxErrors.h"
+#import "VoxUser.h"
 
 
 @interface ACCallManager ()
 
-@property (nonatomic, strong) VIClient *client;
-@property (nonatomic, strong) ACAuthService *authService;
+@property (strong, nonatomic) VIClient *client;
+@property (strong, nonatomic) ACAuthService *authService;
 
 @end
 
@@ -28,34 +29,33 @@
 
 - (void)startOutgoingCallWithContact:(NSString *)contact completion:(void (^)(NSError *_Nullable error))completion {
     
-    ACUser *lastLoggedInUser = self.authService.lastLoggedInUser;
+    NSString *lastLoggedInUser = self.authService.loggedInUser;
     
     if (!lastLoggedInUser) { return; }
     __weak ACCallManager *weakSelf = self;
-    [self.authService loginUsingTokenWithUser:lastLoggedInUser.username
-                                   completion:^(NSString *_Nullable userDisplayName, NSError *_Nullable error) {
-                                       if (error) {
-                                           completion(error);
-                                           return;
-                                       }
-                                       __strong ACCallManager *strongSelf = weakSelf;
-                                       if (!strongSelf.client || strongSelf.managedCall) {
-                                           completion([NSError errorAlreadyHasCall]);
-                                           return;
-                                       }
-                                       VICallSettings *settings = [[VICallSettings alloc] init];
-                                       settings.videoFlags = [VIVideoFlags videoFlagsWithReceiveVideo:NO sendVideo: NO];
-                                       // could be nil only if client is not logged in:
-                                       VICall *call = [strongSelf.client call:contact settings:settings];
-                                       if (!call) {
-                                           completion([NSError errorCouldntCreateCall]);
-                                           return;
-                                       }
-                                       [call addDelegate:strongSelf];
-                                       strongSelf.managedCall = call;
-                                       [call start];
-                                       completion(nil);
-                                   }];
+    [self.authService loginUsingTokenWithCompletion:^(NSString *_Nullable userDisplayName, NSError *_Nullable error) {
+        if (error) {
+            completion(error);
+            return;
+        }
+        __strong ACCallManager *strongSelf = weakSelf;
+        if (!strongSelf.client || strongSelf.managedCall) {
+            completion([NSError errorAlreadyHasCall]);
+            return;
+        }
+        VICallSettings *settings = [[VICallSettings alloc] init];
+        settings.videoFlags = [VIVideoFlags videoFlagsWithReceiveVideo:NO sendVideo: NO];
+        // could be nil only if client is not logged in:
+        VICall *call = [strongSelf.client call:contact settings:settings];
+        if (!call) {
+            completion([NSError errorCouldntCreateCall]);
+            return;
+        }
+        [call addDelegate:strongSelf];
+        strongSelf.managedCall = call;
+        [call start];
+        completion(nil);
+    }];
 }
 
 - (void)makeIncomingCallActive {

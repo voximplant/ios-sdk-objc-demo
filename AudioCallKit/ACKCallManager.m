@@ -5,25 +5,13 @@
 #import "ACKCallManager.h"
 #import "VoxErrors.h"
 #import "ACKPushCallNotifier.h"
-
-@implementation ACKCallWrapper
-
-+ (instancetype)createCall:(VICall *)call uuid:(NSUUID *)uuid isOutgoing:(BOOL)isOutgoing hasConnected:(BOOL)hasConnected {
-    ACKCallWrapper *ackCall = [[ACKCallWrapper alloc] init];
-    ackCall.call = call;
-    ackCall.uuid = uuid;
-    ackCall.isOutgoing = isOutgoing;
-    ackCall.hasConnected = hasConnected;
-    return ackCall;
-}
-
-@end
+#import "CXExtensions.h"
 
 @interface ACKCallManager ()
 
-@property (strong, nonatomic) VIClient *client;
-@property (strong, nonatomic) ACKAuthService *authService;
-@property (strong, nonatomic) ACKPushCallNotifier *pushCallNotifier;
+@property (strong, nonatomic, nonnull) VIClient *client;
+@property (strong, nonatomic, nonnull) ACKAuthService *authService;
+@property (strong, nonatomic, nonnull) ACKPushCallNotifier *pushCallNotifier;
 @property (strong, nonatomic, nonnull) CXProvider *callProvider;
 
 @end
@@ -34,11 +22,6 @@
 // Voximplant SDK supports multiple calls at the same time, however
 // this demo app demonstrates only one managed call at the moment,
 // so it rejects new incoming call, if there is already a call.
-- (void)setManagedCall:(ACKCallWrapper *)managedCall {
-    [managedCall.call addDelegate:self];
-    _managedCall = managedCall;
-}
-
 - (CXProviderConfiguration *)providerConfiguration {
     CXProviderConfiguration *providerConfiguration = [[CXProviderConfiguration alloc] initWithLocalizedName:@"AudioCallKit"];
     providerConfiguration.supportsVideo = NO;
@@ -55,6 +38,7 @@
         self.client = client;
         self.authService = authService;
         self.pushCallNotifier = [[ACKPushCallNotifier alloc] initPushNotifierWithClient:client authService:authService];
+        self.pushCallNotifier.delegate = self;
         self.client.callManagerDelegate = self;
         self.callProvider = [[CXProvider alloc] initWithConfiguration:self.providerConfiguration];
         [self.callProvider setDelegate:self queue:nil];
@@ -62,59 +46,133 @@
     return self;
 }
 
-- (void)dealloc {
-    // The CXProvider documentation said: "The provider must be invalidated before it is deallocated."
-    [self.callProvider invalidate];
-}
-
-- (void)startOutgoingCallWithContact:(NSString *)contact
-                          completion:(void (^)(VICall *_Nullable call, NSError *_Nullable error))completion {
-    
-    VoxUser *lastLoggedInUser = self.authService.lastLoggedInUser;
-    
-    if (!lastLoggedInUser) { return; }
-    __weak ACKCallManager *weakSelf = self;
-    [self.authService loginUsingTokenWithUser:lastLoggedInUser.username
-                                   completion:^(NSString *_Nullable userDisplayName, NSError *_Nullable error) {
-                                       if (error) {
-                                           completion(nil, error);
-                                           return;
-                                       }
-                                       __strong ACKCallManager *strongSelf = weakSelf;
-                                       if (!strongSelf.client || strongSelf.managedCall) {
-                                           completion(nil, [NSError errorAlreadyHasCall]);
-                                           return;
-                                       }
-                                       VICallSettings *settings = [[VICallSettings alloc] init];
-                                       settings.videoFlags = [VIVideoFlags videoFlagsWithReceiveVideo:NO sendVideo: NO];
-                                       // could be nil only if client is not logged in:
-                                       VICall *call = [strongSelf.client call:contact settings:settings];
-                                       if (!call) {
-                                           completion(nil, [NSError errorCouldntCreateCall]);
-                                           return;
-                                       }
-                                       [call start];
-                                       completion(call, nil);
-                                   }];
-}
+// The CXProvider documentation said: "The provider must be invalidated before it is deallocated."
+- (void)dealloc { [self.callProvider invalidate]; }
 
 #pragma mark - CXProviderDelegate
-- (void)provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action { // for outgoing call only
-    [provider reportOutgoingCallWithUUID:action.callUUID startedConnectingAtDate:nil];
+- (void)endCallWithUUID:(NSUUID *)uuid {
+    ACKCallWrapper *call = self.managedCall;
+    if (call && [call.uuid isEqual:uuid]) {
+        if (!call.hasConnected && !call.isOutgoing) {
+            [call.call rejectWithMode:VIRejectModeDecline headers:nil];
+        } else {
+            [call.call hangupWithHeaders:nil];
+        }
+        
+        [VIAudioManager.sharedAudioManager callKitStopAudio];
+        [VIAudioManager.sharedAudioManager callKitReleaseAudioSession];
+    }
+    // SDK will invoke VICallDelegate methods (didDisconnectWithHeaders or didFailWithError)
+}
+
+
+- (void)reportCallEndedWithUUID:(NSUUID *)uuid endReason:(CXCallEndedReason)endReason {
+    if (self.managedCall && [self.managedCall.uuid isEqual:uuid]) {
+        NSArray<CXAction *> *pendingActions = [self.callProvider pendingCallActionsOfClass:[CXAction class] withCallUUID:uuid];
+        if (pendingActions.count > 0) {
+            // no matter what the endReason is
+            for (CXAction *action in pendingActions) {
+                [action fail];
+            }
+        } else {
+            [self.callProvider reportCallWithUUID:self.managedCall.uuid endedAtDate:[NSDate date] reason:endReason];
+        }
+        // Ensure the push processing is completed in cases:
+        // 1. login issues
+        // 2. call is rejected before the user is logged in
+        // in all other cases completePushProcessing should be called in VICallDelegate methods
+        [self.managedCall completePushProcessing];
+        
+        self.managedCall = nil;
+    }
+}
+
+- (void)updateOutgoingCall:(VICall *)vicall {
+    if (self.managedCall && !self.managedCall.call && [self.managedCall.uuid isEqual:vicall.callKitUUID]) {
+        [self.managedCall setCall:vicall delegate:self];
+        [vicall start];
+        [self.callProvider reportOutgoingCallWithUUID:self.managedCall.uuid startedConnectingAtDate:nil];
+    }
+}
+
+- (void)updateIncomingCall:(VICall *)vicall {
+    if (self.managedCall && !self.managedCall.call && [self.managedCall.uuid isEqual:vicall.callKitUUID]) {
+        [self.managedCall setCall:vicall delegate:self];
+    }
+}
+
+- (void)createOutgoingCallWithUUID:(NSUUID *)callUUID {
+    if (self.managedCall) { return; }
+    self.managedCall = [[ACKCallWrapper alloc] initWithUUID:callUUID isOutgoing:YES];
+}
+
+- (void)createIncomingCallWithUUID:(NSUUID *)newUUID fullUsername:(NSString *)fullUsername displayName:(NSString *)displayName pushCompletion:(nullable dispatch_block_t)pushCompletion {
+    if (self.managedCall) { return; }
+    
+    self.managedCall = [[ACKCallWrapper alloc] initWitUUID:newUUID isOutgoing:NO pushProcessingCompletion:pushCompletion];
+    
+    CXCallUpdate *callInfo = [[CXCallUpdate alloc] init];
+    callInfo.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypeGeneric value:fullUsername];
+    callInfo.supportsHolding = YES;
+    callInfo.supportsGrouping = NO;
+    callInfo.supportsUngrouping = NO;
+    callInfo.supportsDTMF = YES;
+    callInfo.hasVideo = NO;
+    callInfo.localizedCallerName = displayName;
+    
     __weak ACKCallManager *weakSelf = self;
-    [self startOutgoingCallWithContact:action.handle.value
-                            completion:^(VICall *_Nullable call, NSError *_Nullable error) {
-        if (call) {
-            __strong ACKCallManager *strongSelf = weakSelf;
-            [strongSelf.managedCall.call removeDelegate:strongSelf];
-            [strongSelf setManagedCall:[ACKCallWrapper createCall:call uuid:action.callUUID isOutgoing:YES hasConnected: NO]];
-            [action fulfill];
-        } else if (error) {
-            NSLog(@"%@", error.localizedDescription);
-            [action fail];
+    [self.callProvider reportNewIncomingCallWithUUID:newUUID update:callInfo completion:^(NSError * _Nullable error) {
+        __strong ACKCallManager *strongSelf = weakSelf;
+        if (error) {
+            // CallKit can reject new incoming call in the following cases (CXErrorCodeIncomingCallError):
+            // - "Do Not Disturb" mode is on
+            // - the caller is in the system black list
+            // - ...
+            [strongSelf endCallWithUUID:newUUID];
         }
     }];
-    [[VIAudioManager sharedAudioManager] callKitConfigureAudioSession:nil];
+}
+
+- (BOOL)provider:(CXProvider *)provider executeTransaction:(nonnull CXTransaction *)transaction {
+    if (self.authService.state == VIClientStateLoggedIn) { return NO; }
+    
+    if (self.authService.state == VIClientStateDisconnected) {
+        __weak ACKCallManager *weakSelf = self;
+        [self.authService loginUsingAccessTokenWithCompletion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
+            __strong ACKCallManager *strongSelf = weakSelf;
+            if (userDisplayName) {
+                [strongSelf.callProvider commitTransactionsWithDelegate:strongSelf];
+            } else if (strongSelf.managedCall.uuid) {
+                [strongSelf reportCallEndedWithUUID:strongSelf.managedCall.uuid endReason:CXCallEndedReasonFailed];
+            }
+        }];
+    }
+    return YES;
+}
+
+- (void)provider:(CXProvider *)provider performStartCallAction:(CXStartCallAction *)action {
+    if (self.managedCall) {
+        [action fail];
+        NSLog(@"CallManager performStartCallAction: tried to start the call %@ while already managed the call %@", action.callUUID, self.managedCall.uuid);
+        return;
+    }
+    
+    [self createOutgoingCallWithUUID:action.callUUID];
+    NSLog(@"CallManager performStartCallAction: created new outgoing call %@", action.callUUID);
+    
+    VICallSettings *settings = [[VICallSettings alloc] init];
+    settings.videoFlags = [VIVideoFlags videoFlagsWithReceiveVideo:NO sendVideo:NO];
+    
+    VICall *call = [self.client call:action.handle.value settings:settings];
+    if (call) {
+        call.callKitUUID = action.callUUID;
+        [VIAudioManager.sharedAudioManager callKitConfigureAudioSession:nil];
+        [self updateOutgoingCall:call];
+        NSLog(@"CallManager performStartCallAction: updated outgoing call %@", call.callKitUUID);
+        [action fulfill];
+    } else {
+        [action fail];
+    }
 }
 
 - (void)provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession {
@@ -125,9 +183,16 @@
     [[VIAudioManager sharedAudioManager] callKitStopAudio];
 }
 
+// method caused by the CXProvider.invalidate()
+- (void)providerDidReset:(CXProvider *)provider {
+    if (self.managedCall.uuid) { [self endCallWithUUID: self.managedCall.uuid]; }
+}
+
 - (void)provider:(CXProvider *)provider performAnswerCallAction:(CXAnswerCallAction *)action {
-    // In this sample we don't need to check the client state in this method - here we are sure we are already logged in to the Voximplant Cloud.
     [[VIAudioManager sharedAudioManager] callKitConfigureAudioSession:nil];
+    
+    if (!self.managedCall.call) { return; }
+    
     VICallSettings *settings = [[VICallSettings alloc] init];
     settings.videoFlags = [VIVideoFlags videoFlagsWithReceiveVideo:NO sendVideo:NO];
     [self.managedCall.call answerWithSettings:settings];
@@ -135,32 +200,25 @@
 }
 
 - (void)provider:(CXProvider *)provider performSetHeldCallAction:(CXSetHeldCallAction *)action {
+    if (!self.managedCall.call) { return; }
+    
     [self.managedCall.call setHold:action.isOnHold completion:^(NSError * _Nullable error) {
         if (error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(@"CallManager performSetHeldCallAction - %@", error.localizedDescription);
             [action fail];
-        } else
+        } else {
             [action fulfill];
-    }];
+        }}];
 }
 
 // the method is called, if the user rejects an incoming call or ends an outgoing call
 - (void)provider:(CXProvider *)provider performEndCallAction:(CXEndCallAction *)action {
-    ACKCallWrapper *call = self.managedCall;
-    if (call) {
-        if (!call.hasConnected && !call.isOutgoing) {
-            [call.call rejectWithMode:VIRejectModeDecline headers:nil];
-        } else {
-            [call.call hangupWithHeaders:nil];
-        }
-    }
-    // If the call has been reported to CallKit and the user rejects or ends the call, callKitReleaseAudioSession method should be invoked.
-    [[VIAudioManager sharedAudioManager] callKitReleaseAudioSession];
+    [self endCallWithUUID:action.callUUID];
     [action fulfillWithDateEnded:[NSDate date]];
 }
 
 - (void)provider:(CXProvider *)provider performPlayDTMFCallAction:(CXPlayDTMFCallAction *)action {
-    [self.managedCall.call sendDTMF:action.digits];  // sending dtmf to sdk
+    [self.managedCall.call sendDTMF:action.digits];
     [action fulfill];
 }
 
@@ -169,43 +227,29 @@
     [action fulfill];
 }
 
-- (void)providerDidReset:(nonnull CXProvider *)provider {
-}
-
 #pragma mark - VICallDelegate
 - (void)call:(VICall *)call didFailWithError:(NSError *)error headers:(NSDictionary *)headers {
-    ACKCallWrapper *managedCall = self.managedCall;
-    if (managedCall && [managedCall.call.callId isEqualToString:call.callId]) {
-        [self.callProvider reportCallWithUUID:managedCall.uuid endedAtDate:nil reason:CXCallEndedReasonFailed];
-        self.managedCall = nil;
-    }
-    if (pushNotificationCompletion) {
-        pushNotificationCompletion();
-    }
-    pushNotificationCompletion = nil;
+    [self reportCallEndedWithUUID:call.callKitUUID endReason:CXCallEndedReasonFailed];
+    
+    if (!self.managedCall) { return; }
+    [self.managedCall completePushProcessing];
 }
 
 
 - (void)call:(VICall *)call didDisconnectWithHeaders:(NSDictionary *)headers answeredElsewhere:(NSNumber *)answeredElsewhere {
-    ACKCallWrapper *managedCall = self.managedCall;
-     if (managedCall && [managedCall.call.callId isEqualToString:call.callId]) {
-         CXCallEndedReason endReason = answeredElsewhere.boolValue ? CXCallEndedReasonAnsweredElsewhere : CXCallEndedReasonRemoteEnded;
-         [self.callProvider reportCallWithUUID:managedCall.uuid endedAtDate:[NSDate date] reason:endReason];
-         [self.managedCall.call removeDelegate:self];
-         [self setManagedCall:nil];
-     }
-    if (pushNotificationCompletion) {
-        pushNotificationCompletion();
-    }
-    pushNotificationCompletion = nil;
+    CXCallEndedReason endReason = answeredElsewhere.boolValue ? CXCallEndedReasonAnsweredElsewhere : CXCallEndedReasonRemoteEnded;
+    [self reportCallEndedWithUUID:call.callKitUUID endReason:endReason];
+    
+    if (!self.managedCall) { return; }
+    [self.managedCall completePushProcessing];
 }
 
 - (void)call:(VICall *)call didConnectWithHeaders:(NSDictionary *)headers {
-    ACKCallWrapper *managedCall = self.managedCall;
-    if (managedCall) {
-        if (managedCall.isOutgoing) {
+    if (self.managedCall) {
+        if (self.managedCall.isOutgoing) {
             // notify CallKit that the outgoing call is connected
-            [self.callProvider reportOutgoingCallWithUUID:managedCall.uuid connectedAtDate:nil];
+            [self.callProvider reportOutgoingCallWithUUID:self.managedCall.uuid connectedAtDate:nil];
+            
             // apply the configuration to the CallKit call screen
             // for incoming calls this configuration is set when the incoming call is reported to CallKit
             CXCallUpdate *callInfo = [[CXCallUpdate alloc] init];
@@ -221,49 +265,51 @@
         }
         [self.managedCall setHasConnected:YES];
     }
-    if (pushNotificationCompletion) {
-        pushNotificationCompletion();
-    }
-    pushNotificationCompletion = nil;
+    [self.managedCall completePushProcessing];
 }
-
 
 #pragma mark - VIClientCallManagerDelegate
+
 - (void)client:(nonnull VIClient *)client didReceiveIncomingCall:(nonnull VICall *)call withIncomingVideo:(BOOL)video headers:(nullable NSDictionary *)headers {
     if (self.managedCall) {
-        [call rejectWithMode:VIRejectModeBusy headers:nil];
-    } else {
-        CXCallUpdate *callInfo = [[CXCallUpdate alloc] init];
-        callInfo.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypeGeneric value:call.endpoints.firstObject.user];
-        callInfo.hasVideo = NO;
-        callInfo.supportsHolding = YES;
-        callInfo.supportsGrouping = NO;
-        callInfo.supportsUngrouping = NO;
-        callInfo.supportsDTMF = YES;
-        if (call.endpoints.firstObject.userDisplayName) {
-            callInfo.localizedCallerName = call.endpoints.firstObject.userDisplayName;
+        if ([self.managedCall.uuid isEqual:call.callKitUUID]) {
+            [self updateIncomingCall:call];
+            [self.callProvider commitTransactionsWithDelegate:self];
+            NSLog(@"CallManager sdk rcv: updated already managed incoming call %@", call.callKitUUID);
+        } else {
+            // another call has been reported, reject a new one:
+            [call rejectWithMode:VIRejectModeDecline headers:nil];
+            NSLog(@"CallManager sdk rcv: rejected new incoming call %@ while has already managed call %@", call.callKitUUID, self.managedCall.uuid);
         }
-        
-        NSUUID *newUUID = [[NSUUID alloc] init];
-        
-        __weak ACKCallManager *weakSelf = self;
-        [self.callProvider reportNewIncomingCallWithUUID:newUUID update:callInfo
-                                              completion:^(NSError * _Nullable error) {
-                                                  __strong ACKCallManager *strongSelf = weakSelf;
-                                                  if (error) {
-                                                      NSLog(@"%@", error.localizedDescription);
-                                                      // CallKit can reject new incoming call in the following cases:
-                                                      // - "Do Not Disturb" mode is on
-                                                      // - the caller is in the system black list
-                                                  } else if (strongSelf) {
-                                                      strongSelf.managedCall = [ACKCallWrapper createCall:call uuid:newUUID isOutgoing:NO hasConnected: NO];
-                                                  }
-                                              }];
+    } else {
+        [self createIncomingCallWithUUID:call.callKitUUID fullUsername:call.endpoints.firstObject.user displayName:call.endpoints.firstObject.userDisplayName pushCompletion:nil];
+        [self updateIncomingCall:call];
+        NSLog(@"CallManager sdk rcv: created and updated new incoming call %@", call.callKitUUID);
     }
 }
 
+#pragma mark - PushCallNotifierDelegate
 
-
+- (void)didReceiveIncomingCall:(NSUUID *)uuid from:(NSString *)fullUsername with:(NSString *)displayName with:(dispatch_block_t)completion {
+    if (self.managedCall) {
+        // another call has been reported, skipped a new one:
+        NSLog(@"CallManager push rcv: skipped new incoming call %@ while has already managed call %@", uuid, self.managedCall.uuid);
+        return;
+    }
+    
+    [self createIncomingCallWithUUID:uuid fullUsername:fullUsername displayName:displayName pushCompletion:completion];
+    NSLog(@"CallManager push rcv: created new incoming call %@", uuid);
+    
+    __weak ACKCallManager *weakSelf = self;
+    [self.authService loginUsingAccessTokenWithCompletion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
+        if (error) {
+            __strong ACKCallManager *strongSelf = weakSelf;
+            [strongSelf reportCallEndedWithUUID:uuid endReason:CXCallEndedReasonFailed];
+        }
+        // in case of success we will receive VICall instance via VICallManagerDelegate
+    }];
+    
+}
 
 @end
 

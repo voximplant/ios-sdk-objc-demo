@@ -5,7 +5,7 @@
 #import "ACLoginViewController.h"
 #import "VoxBranding.h"
 #import "ACMainViewController.h"
-#import "ACCustomTextField.h"
+#import "VoxTextField.h"
 #import "ACAuthService.h"
 #import "ACAppDelegate.h"
 #import "UIExtensions.h"
@@ -14,13 +14,12 @@
 
 @interface ACLoginViewController ()
 
-@property (weak, nonatomic) IBOutlet ACCustomTextField *loginUserField;
-@property (weak, nonatomic) IBOutlet ACCustomTextField *loginPasswordField;
+@property (weak, nonatomic) IBOutlet VoxTextField *loginUserField;
+@property (weak, nonatomic) IBOutlet VoxTextField *loginPasswordField;
 @property (weak, nonatomic) IBOutlet UILabel *tokenLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIView *tokenContainerView;
 @property (strong, nonatomic) NSString *tokenExpireDate;
-@property (strong, nonatomic) NSString *usernameFromField;
 @property (strong, nonatomic) NSString *userDisplayName;
 
 @end
@@ -36,10 +35,6 @@
         return [formatter stringFromDate:date];
     }
     return nil;
-}
-
-- (NSString *)usernameFromField {
-    return [self.loginUserField.text stringByAppendingString:@".voximplant.com"];
 }
 
 #pragma mark - LifeCycle
@@ -65,8 +60,9 @@
 }
 
 - (void)refreshUI {
-    self.loginUserField.text = [AppDelegateMacros.sharedAuthService.lastLoggedInUser.username
+    self.loginUserField.text = [AppDelegateMacros.sharedAuthService.loggedInUser
                                 stringByReplacingOccurrencesOfString:@".voximplant.com" withString:@""];
+    self.loginPasswordField.text = @"";
 
     [self.tokenContainerView setHidden:NO];
     if (!self.tokenExpireDate) {
@@ -80,7 +76,7 @@
 - (IBAction)loginTouch:(NSObject *)sender {
     NSLog(@"LoginTouch called on LoginViewController ");
 
-    NSString *login = self.usernameFromField;
+    NSString *login = self.loginUserField.textWithVoxDomain;
     NSString *password = self.loginPasswordField.text;
 
     [UIHelper showProgressWithTitle:@"Connecting" details:@"Please wait..." controller:self];
@@ -109,15 +105,14 @@
     NSLog(@"loginWithTokenTouch called on CallViewController");
 
     [UIHelper showProgressWithTitle:@"Connecting" details:@"Please wait..." controller:self];
-
-    NSString *login = self.usernameFromField;
+    
     __weak ACLoginViewController *weakSelf = self;
-    [AppDelegateMacros.sharedAuthService loginUsingTokenWithUser:login completion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
-
+    [AppDelegateMacros.sharedAuthService loginUsingTokenWithCompletion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
+        
         __strong ACLoginViewController *strongSelf = weakSelf;
         [UIHelper hideProgressOnViewController:strongSelf];
         [strongSelf refreshUI];
-
+        
         if (error) {
             [UIHelper showError:error.localizedDescription action:nil controller:nil];
         } else {

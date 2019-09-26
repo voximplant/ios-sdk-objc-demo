@@ -3,26 +3,22 @@
  */
 
 #import "ACAuthService.h"
-#import "ACKeys.h"
-#import "ACTokenManager.h"
+#import "VoxKeys.h"
+#import "VoxTokenManager.h"
 #import "VoxErrors.h"
 
 
 @interface NSUserDefaults (lastUser)
 
-@property (strong, nonatomic, readonly) NSString *lastUserIDKey;
-@property (strong, nonatomic, readonly) NSString *lastUserDisplayNameKey;
+@property (strong, nonatomic, readonly) NSString *lastFullUsername;
 
 @end
 
 
 @implementation NSUserDefaults (lastUser)
 
-- (NSString *)lastUserIDKey {
-    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"latestUserID"];
-}
-- (NSString *)lastUserDisplayNameKey {
-    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"latestUserDisplayName"];
+- (NSString *)lastFullUsername {
+    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"lastFullUsername"];
 }
 
 @end
@@ -34,7 +30,7 @@
 @property (strong, nonatomic) VICall *currentCall;
 @property (copy, nonatomic) void (^connectCompletion)(NSString *_Nullable, NSError *_Nullable);
 @property (copy, nonatomic) void (^disconnectCompletion)(void);
-@property (strong, nonatomic) ACTokenManager *tokenManager;
+@property (strong, nonatomic) VoxTokenManager *tokenManager;
 
 - (void)connect: (void (^)(NSString *, NSError *))completion;
 
@@ -43,18 +39,16 @@
 
 @implementation ACAuthService
 
-- (ACUser *)lastLoggedInUser {
-    NSString *username = [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastUserIDKey];
-    NSString *displayName = [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastUserDisplayNameKey];
-    if (username && displayName) {
-        return [ACUser userWithUsername:username displayName:displayName];
-    }
-    return nil;
+- (NSString *)loggedInUser {
+    return [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastFullUsername];
 }
 
-- (void)setLastLoggedInUser:(ACUser *)newValue {
-    [NSUserDefaults.standardUserDefaults setValue:newValue.username forKey:NSUserDefaults.standardUserDefaults.lastUserIDKey];
-    [NSUserDefaults.standardUserDefaults setValue:newValue.displayName forKey:NSUserDefaults.standardUserDefaults.lastUserDisplayNameKey];
+- (void)setLoggedInUser:(NSString *)newValue {
+    [NSUserDefaults.standardUserDefaults setValue:newValue forKey:NSUserDefaults.standardUserDefaults.lastFullUsername];
+}
+
+- (VIClientState)state {
+    return self.client.clientState;
 }
 
 #pragma mark - Init
@@ -63,20 +57,20 @@
     if (self) {
         self.client = client;
         self.client.sessionDelegate = self;
-        self.tokenManager = [[ACTokenManager alloc] init];
+        self.tokenManager = [[VoxTokenManager alloc] init];
     }
     return self;
 }
 
 #pragma mark - Login methods
 - (NSDate *)possibleToLogin {
-    ACKeys *keys = [self.tokenManager getKeys];
+    VoxKeys *keys = [self.tokenManager getKeys];
     return keys.refresh.expireDate;
 }
 
 - (void)loginWithUser:(NSString *)user
              password:(NSString *)password
-               result:(ACResult)completion {
+               result:(VoxResult)completion {
     
     __weak ACAuthService *weakSelf = self;
     [self disconnect:^(void) {
@@ -101,14 +95,15 @@
                                          if (refreshExpire && refreshToken && accessExpire && accessToken) {
                                              __strong ACAuthService *strongSelf = weakSelf;
                                              
-                                             ACToken *validAccessToken = [ACToken createToken:accessToken
+                                             VoxToken *validAccessToken = [VoxToken createToken:accessToken
                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
                                              
-                                             ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                             VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
                                                                                     expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                             ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                             VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                              [strongSelf.tokenManager setKeys:keys];
-                                             strongSelf.lastLoggedInUser = [ACUser userWithUsername:user displayName:userDisplayName];
+                                             strongSelf.loggedInUser = user;
+                                             strongSelf.loggedInUserDisplayName = userDisplayName;
                                          }
                                          completion(userDisplayName, nil);
                                      }
@@ -124,10 +119,17 @@
     return refreshToken;
 }
 
-- (void)loginUsingTokenWithUser:(NSString *)user completion:(ACResult)completion {
+- (void)loginUsingTokenWithCompletion:(VoxResult)completion {
     
-    if (self.client.clientState == VIClientStateLoggedIn) {
-        completion(self.lastLoggedInUser.displayName, nil);
+    NSString *user = self.loggedInUser;
+    if (!user) {
+        NSError *error = [NSError errorRequiredPassword];
+        completion(nil, error);
+        return;
+    }
+    
+    if (self.state == VIClientStateLoggedIn && self.loggedInUserDisplayName && !self.tokenManager.getKeys.refresh.isExpired) {
+        completion(self.loggedInUserDisplayName, nil);
         return;
     }
     
@@ -143,7 +145,7 @@
             }
             
             __strong ACAuthService *strongSelf = weakSelf;
-            [strongSelf updateAccessTokenIfNeeded:user completion:^(ACToken * _Nullable accessToken, NSError * _Nullable error) {
+            [strongSelf updateAccessTokenIfNeeded:user completion:^(VoxToken * _Nullable accessToken, NSError * _Nullable error) {
                 if (error) {
                     completion(nil, error);
                     return;
@@ -158,13 +160,14 @@
                                              NSString *accessToken = authParams[@"accessToken"];
                                              
                                              if (refreshExpire && refreshToken && accessExpire && accessToken) {
-                                                 ACToken *validAccessToken = [ACToken createToken:accessToken
+                                                 VoxToken *validAccessToken = [VoxToken createToken:accessToken
                                                                                        expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                                 ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                                 VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
                                                                                         expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                                 ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                                 VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                                  [strongSelf.tokenManager setKeys:keys];
-                                                 strongSelf.lastLoggedInUser = [ACUser userWithUsername:user displayName:userDisplayName];
+                                                 strongSelf.loggedInUser = user;
+                                                 strongSelf.loggedInUserDisplayName = userDisplayName;
                                              }
                                              completion(userDisplayName, nil);
                                              
@@ -177,9 +180,9 @@
 }
 
 - (void)updateAccessTokenIfNeeded:(NSString *)user
-                       completion:(void(^)(ACToken *_Nullable accessToken, NSError *_Nullable error))completion {
+                       completion:(void(^)(VoxToken *_Nullable accessToken, NSError *_Nullable error))completion {
     
-    ACKeys *tokens = self.tokenManager.getKeys;
+    VoxKeys *tokens = self.tokenManager.getKeys;
     
     if (tokens) {
         __weak ACAuthService *weakSelf = self;
@@ -199,11 +202,11 @@
                                            
                                            if (refreshExpire && refreshToken && accessExpire && accessToken) {
                                                __strong ACAuthService *strongSelf = weakSelf;
-                                               ACToken *validAccessToken = [ACToken createToken:accessToken
+                                               VoxToken *validAccessToken = [VoxToken createToken:accessToken
                                                                                      expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                               ACToken *validRefreshToken = [ACToken createToken:refreshToken
+                                               VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
                                                                                       expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                               ACKeys *keys = [ACKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                               VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                                
                                                [strongSelf.tokenManager setKeys:keys];
                                                completion(validAccessToken, nil);
@@ -220,8 +223,8 @@
 
 #pragma mark - Connect methods
 - (void)connect:(void (^)(NSString *userDisplayName, NSError *error))completion {
-    if (self.client.clientState == VIClientStateDisconnected
-        || self.client.clientState == VIClientStateConnecting) {
+    if (self.state == VIClientStateDisconnected
+        || self.state == VIClientStateConnecting) {
         self.connectCompletion = completion;
         [self.client connect];
     } else {
@@ -230,12 +233,17 @@
 }
 
 - (void)disconnect:(dispatch_block_t)completion {
-    if (self.client.clientState == VIClientStateDisconnected) {
+    if (self.state == VIClientStateDisconnected) {
         completion();
     } else {
         self.disconnectCompletion = completion;
         [self.client disconnect];
     }
+}
+
+- (void)logout:(dispatch_block_t)completion {
+    [self.tokenManager setKeys:nil];
+    [self disconnect:completion];
 }
 
 #pragma mark - VIClient delegate methods

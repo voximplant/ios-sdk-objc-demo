@@ -4,9 +4,19 @@
 
 #import "VoxTextField.h"
 
+@interface VoxTextField ()
+
+@property (nonatomic) UIEdgeInsets padding;
+
+@end
+
 @implementation VoxTextField
 
 @dynamic rightSideView;
+
+- (UIEdgeInsets)padding {
+    return UIEdgeInsetsMake(0, 5, 0, 100);
+}
 
 - (UIView *)rightSideView {
     return super.rightView;
@@ -45,7 +55,23 @@
     self.layer.shadowRadius = 15;
     self.layer.shadowOffset = CGSizeMake(0, 0);
     self.layer.shadowOpacity = 0.03;
+    self.layer.masksToBounds = true;
+    self.layer.cornerRadius = 8;
+    self.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    self.layer.borderWidth = 0.3;
     self.rightViewMode = UITextFieldViewModeAlways;
+}
+
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    return UIEdgeInsetsInsetRect(bounds, self.padding);
+}
+
+- (CGRect)placeholderRectForBounds:(CGRect)bounds {
+     return UIEdgeInsetsInsetRect(bounds, self.padding);
+}
+
+- (CGRect)editingRectForBounds:(CGRect)bounds {
+     return UIEdgeInsetsInsetRect(bounds, self.padding);
 }
 
 #pragma mark - Actions

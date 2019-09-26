@@ -10,30 +10,11 @@
 #import "UIHelper.h"
 #import "ACKAppDelegate.h"
 #import "VoxEndpointlabel.h"
+#import "CXExtensions.h"
 
+@interface VoxLabelWithTimer (UpdateCallStatus)
 
-@interface CXCall (CallInfo)
-
-@property (strong, nonatomic, nullable, readonly)VICall *info;
-
-@end
-
-
-@implementation CXCall (CallInfo)
-
-- (VICall *)info {
-    if ([AppDelegateMacros.sharedCallManager.managedCall.uuid isEqual:self.UUID]) {
-        return AppDelegateMacros.sharedCallManager.managedCall.call;
-    }
-    return nil;
-}
-
-@end
-
-
-@interface UIViewController (ConvertTimeToString)
-
-+ (NSString *)convertTimeToString:(NSTimeInterval)time;
+- (void)updateCallStatusWithTime:(NSTimeInterval)time;
 
 @end
 
@@ -51,7 +32,6 @@
 @property (strong, nonatomic, nullable) CXCall *call;
 @property (strong, nonatomic) CXCallController *callController;
 @property (strong, nonatomic) NSSet<VIAudioDevice *> *audioDevices;
-@property (strong, nonatomic, nullable) NSString *reasonToFail;
 
 @end
 
@@ -60,10 +40,6 @@
 
 - (CXCallController *)callController {
     return AppDelegateMacros.sharedCallController;
-}
-
-- (ACKCallManager *)callManager {
-    return AppDelegateMacros.sharedCallManager;
 }
 
 - (CXCall *)call {
@@ -83,19 +59,13 @@
 #pragma mark - LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.isMuted = NO;
-    VIAudioManager.sharedAudioManager.delegate = self; // to work with audio devices events
+    VIAudioManager.sharedAudioManager.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self updateContent];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
 }
 
 - (void)updateContent {
@@ -115,9 +85,7 @@
         if (call.hasConnected) {
             [self.dtmfButton setEnabled:YES]; // show call duration and unblock buttons
             [self.holdButton setEnabled:YES];
-            if (self.callStateLabel.isTimerRunning == NO) {
-                 [self.callStateLabel runTimer];
-            }
+            if (!self.callStateLabel.isTimerRunning) { [self.callStateLabel runTimer]; }
         } else {
             [self.dtmfButton setEnabled:NO];
             [self.holdButton setEnabled:NO];
@@ -135,6 +103,11 @@
     }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (@available(iOS 13.0, *)) { return UIStatusBarStyleDarkContent; }
+    else { return UIStatusBarStyleDefault; }
+}
+
 #pragma mark - Actions
 - (IBAction)muteTouch:(VoxButtonWithLabel *)sender {
     NSLog(@"MuteTouch called on CallViewController");
@@ -143,26 +116,24 @@
         CXSetMutedCallAction *setMute = [[CXSetMutedCallAction alloc] initWithCallUUID:self.call.UUID
                                                                                  muted:self.isMuted];
         if (@available(iOS 11.0, *)) {
-            [self.callController requestTransactionWithAction:setMute completion:^(NSError * _Nullable error) {
+            [self.callController requestTransactionWithAction:setMute
+                                                   completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        } else {
-            [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:setMute] completion:^(NSError * _Nullable error) {
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
+        else { [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:setMute]
+                                            completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        }
+                   [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
     }
 }
 
 - (IBAction)dtmfTouch:(VoxButtonWithLabel *)sender {
     self.endpointDisplayNameLabel.text = @" "; // clear label to show numbers
-    [self.keyPadView setHidden:NO];
+    [self.keyPadView setHidden:NO]; //show keypad
 }
 
 - (IBAction)audioDeviceTouch:(VoxButtonWithLabel *)sender {
@@ -170,60 +141,53 @@
 }
 
 - (IBAction)holdTouch:(VoxButtonWithLabel *)sender {
+    [self.holdButton setEnabled:NO];
     if (self.call) {
-        [self.holdButton setEnabled:NO];
         CXSetHeldCallAction *setHeld = [[CXSetHeldCallAction alloc] initWithCallUUID:self.call.UUID
                                                                               onHold:!sender.isSelected];
         if (@available(iOS 11.0, *)) {
-            [self.callController requestTransactionWithAction:setHeld completion:^(NSError * _Nullable error) {
+            [self.callController requestTransactionWithAction:setHeld
+                                                   completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"setHold: %@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        } else {
-            [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:setHeld] completion:^(NSError * _Nullable error) {
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
+        else { [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:setHeld]
+                                         completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"setHold: %@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        }
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
     }
 }
 
 - (IBAction)hangupTouch:(UIButton *)sender {
     NSLog(@"hangupTouch called on CallViewController");
+    [sender setEnabled:NO];
     if (self.call) {
         CXEndCallAction *doEndCall = [[CXEndCallAction alloc] initWithCallUUID:self.call.UUID];
         if (@available(iOS 11.0, *)) {
-            [self.callController requestTransactionWithAction:doEndCall completion:^(NSError * _Nullable error) {
+            [self.callController requestTransactionWithAction:doEndCall
+                                                   completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        } else {
-            [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:doEndCall] completion:^(NSError * _Nullable error) {
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
+        else { [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:doEndCall]
+                                            completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        }
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
     }
-}
-
-#pragma mark - AppLifeCycleDelegate
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self updateContent];
 }
 
 #pragma mark - CXCallObserverDelegate
 - (void)callObserver:(CXCallObserver *)callObserver callChanged:(CXCall *)call {
+    NSLog(@"callObserver called on ACKCallViewController callended %d", call.hasEnded);
     [self updateContent];
     if (call.hasEnded) {
-        NSLog(@"callObserver called on ACKCallViewController");
+
         [self performSegueWithIdentifier:NSStringFromClass([ACKMainViewController class]) sender:self];
     }
 }
@@ -276,7 +240,7 @@
     [self presentViewController:alertSheet animated:YES completion:nil]; // show alertsheet with audio devices
 }
 
-- (NSString *)generateDeviceTitleForDevice:(VIAudioDevice *)device {
+- (NSString *)generateDeviceTitleForDevice:(VIAudioDevice *)device { // generates fromatted string from VIAudioDevice names
     NSString *deviceString = device.description;
     NSString *clearDeviceName = [deviceString stringByReplacingOccurrencesOfString:@"VIAudioDevice" withString:@""];
     return clearDeviceName;
@@ -287,39 +251,53 @@
     [self.speakerButton setSelected:isSelected];
 }
 
+#pragma mark - AppLifeCycleDelegate
+- (void)applicationDidBecomeActive:(UIApplication *)application { [self updateContent]; }
+
 #pragma mark - KeyPadDelegate
 - (void)DTMFButtonTouched:(NSString *)symbol {
     NSLog(@"DTMF code sent: %@", symbol);
-    self.endpointDisplayNameLabel.text = [self.endpointDisplayNameLabel.text stringByAppendingString:symbol]; // saves all buttons touched in dtmf to label
+     // replace the endpoint display name with DTMFs sent
+    self.endpointDisplayNameLabel.text = [self.endpointDisplayNameLabel.text stringByAppendingString:symbol];
     if (self.call) {
         CXPlayDTMFCallAction *sendDTMF = [[CXPlayDTMFCallAction alloc] initWithCallUUID:self.call.UUID
                                                                                  digits:symbol
                                                                                    type:CXPlayDTMFCallActionTypeSingleTone];
         if (@available(iOS 11.0, *)) {
-            [self.callController requestTransactionWithAction:sendDTMF completion:^(NSError * _Nullable error) {
+            [self.callController requestTransactionWithAction:sendDTMF
+                                                   completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        } else {
-            [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:sendDTMF] completion:^(NSError * _Nullable error) {
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
+        else { [self.callController requestTransaction:[[CXTransaction alloc] initWithAction:sendDTMF]
+                                            completion:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"%@", error.localizedDescription);
-                    [UIHelper showError:error.localizedDescription action:nil controller:nil];
-                }
-            }];
-        }
+                    [UIHelper showError:error.localizedDescription action:nil controller:nil]; }
+            }]; }
     }
 }
 
 - (void)keypadDidHide {
+    // show the endpoint display name instead of DTMFs
     [self.endpointDisplayNameLabel updateLabel];
 }
 
 #pragma mark - TimerDelegate
-- (void)updateTime {
-    [self.callStateLabel setTime:self.call.info.duration];
+- (void)updateTime { [self.callStateLabel updateCallStatusWithTime:self.call.info.duration]; }
+
+@end
+
+@implementation VoxLabelWithTimer (UpdateCallStatus)
+
+- (void)updateCallStatusWithTime:(NSTimeInterval)time {
+    if (time) {
+        NSString *text = [self buildStringTimeToDisplayWithTime:time];
+        self.text = [NSString stringWithFormat:@"%@ - Call in progress", text];
+    } else {
+        self.text = @"Call in progress";
+    }
 }
 
 @end

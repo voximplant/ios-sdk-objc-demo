@@ -4,7 +4,6 @@
 
 #import "ACKPushCallNotifier.h"
 
-
 @interface ACKPushCallNotifier ()
 
 @property (strong, nonatomic)PKPushRegistry *voipRegistry;
@@ -19,6 +18,7 @@
 @implementation ACKPushCallNotifier
 
 #pragma mark - Init
+
 - (instancetype)initPushNotifierWithClient:(VIClient *)client authService:(ACKAuthService *)authService {
     self = [super init]; {
         if (self) {
@@ -26,10 +26,10 @@
             self.client = client;
             self.authService = authService;
             self.voipRegistry.delegate = self;
-            NSData *token = [self.voipRegistry pushTokenForType:PKPushTypeVoIP];
+            
             // check if pushToken is already available
             // if not, request it from PushKit (see - (void)pushRegistry:registry didUpdatePushCredentials:pushCredentials forType:type)
-            
+            NSData *token = [self.voipRegistry pushTokenForType:PKPushTypeVoIP];
             if (token) {
                 [self.authService setPushToken:token];
             } else {
@@ -41,6 +41,7 @@
 }
 
 #pragma mark - PKPushRegistryDelegate
+
 - (void)pushRegistry:(PKPushRegistry *)registry didUpdatePushCredentials:(PKPushCredentials *)pushCredentials
              forType:(PKPushType)type {
     
@@ -59,14 +60,13 @@
              forType:(PKPushType)type withCompletionHandler:(void (^)(void))completion {
     NSLog(@"%@ Push reveived %@", type, payload);
     
-    pushNotificationCompletion = completion;
-    [self handlePushNotification:payload.dictionaryPayload];
+    [self handlePushNotificationWithPayload:payload.dictionaryPayload pushCompletion:completion];
 }
 
 - (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload forType:(PKPushType)type {
     NSLog(@"%@ Push received %@", type, payload);
 
-    [self handlePushNotification:payload.dictionaryPayload];
+    [self handlePushNotificationWithPayload:payload.dictionaryPayload pushCompletion:nil];
 }
 
 - (void)pushRegistry:(PKPushRegistry *)registry didInvalidatePushTokenForType:(PKPushType)type {
@@ -74,30 +74,13 @@
 }
 
 #pragma mark - PushCallNotifierDelegate
-- (void)handlePushNotification:(NSDictionary *)payload {
-    // To check that the push notification is sent from the Voximplant Cloud
-    // if (payload[@"voximplant"]) {
-    // } else { return; }
+
+- (void)handlePushNotificationWithPayload:(NSDictionary *)pushPayload pushCompletion:(nullable dispatch_block_t)pushCimpletion {
+    NSUUID *callUUID = [self.client handlePushNotification:pushPayload];
+    NSString *displayName = [[pushPayload valueForKey:@"voximplant"] valueForKey:@"display_name"];
+    NSString *username = [[pushPayload valueForKey:@"voximplant"] valueForKey:@"display_name"];
     
-    VoxUser *user = self.authService.lastLoggedInUser;
-    if (user) {
-        __weak ACKPushCallNotifier *weakSelf = self;
-        [self.authService loginUsingTokenWithUser:user.username
-                                       completion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
-            if (error) {
-                if (pushNotificationCompletion) {
-                    pushNotificationCompletion();
-                }
-            } else {
-                __strong ACKPushCallNotifier *strongSelf = weakSelf;
-                [strongSelf.client handlePushNotification:payload];
-            }
-        }];
-    } else {
-        if (pushNotificationCompletion) {
-            pushNotificationCompletion();
-        }
-    }
+    [self.delegate didReceiveIncomingCall:callUUID from:username with:displayName with:pushCimpletion];
 }
 
 

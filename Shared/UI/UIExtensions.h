@@ -26,5 +26,11 @@
 
 @end
 
+@interface UIViewController (Segues)
+
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender completion:(dispatch_block_t)completion;
+
+@end
+
 
 

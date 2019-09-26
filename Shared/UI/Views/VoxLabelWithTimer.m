@@ -7,12 +7,36 @@
 @interface VoxLabelWithTimer ()
 
 @property (strong, nonatomic) NSTimer *timer;
-
-- (NSString *_Nullable)convertTimeToString:(NSTimeInterval)time;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 
 @end
 
+
 @implementation VoxLabelWithTimer
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupDateFormatter];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self setupDateFormatter];
+    }
+    return self;
+}
+
+- (void)setupDateFormatter {
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.timeZone = [[NSTimeZone alloc] initWithName:@"UTC"];
+    self.dateFormatter.dateFormat = @"HH:mm:ss";
+}
 
 - (void)runTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1
@@ -27,20 +51,10 @@
     [self.delegate updateTime];
 }
 
-- (void)setTime:(NSTimeInterval)time {
-    NSString *text;
-    if (time) {
-        text = [[self convertTimeToString:time] stringByAppendingString:@" - "];
-    } else {
-        text = @"";
-    }
-    self.text = [text stringByAppendingString:@"Call in progress"];
-}
-
-- (NSString *_Nullable)convertTimeToString:(NSTimeInterval)time {
-    int minutes = (int)time / 60 % 60;
-    int seconds = (int)time % 60;
-    return [NSString stringWithFormat:@"%02i:%02i",minutes,seconds];
+- (NSString *)buildStringTimeToDisplayWithTime:(NSTimeInterval)timeInterval {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSString *formattedDate = [self.dateFormatter stringFromDate:date];
+    return [formattedDate hasPrefix:@"00"] ? [formattedDate substringFromIndex:3] : formattedDate;
 }
 
 - (void)dealloc {

@@ -7,8 +7,7 @@
 #import <VoxImplant/VoxImplant.h>
 #import "VoxApplication.h"
 #import <CallKit/CallKit.h>
-#import "VoxUser.h"
 
-@interface ACKCallViewController : UIViewController<VICallDelegate, VIAudioManagerDelegate, KeyPadDelegate, AppLifeCycleDelegate, CXCallObserverDelegate>
+@interface ACKCallViewController : UIViewController<VIAudioManagerDelegate, KeyPadDelegate, AppLifeCycleDelegate, CXCallObserverDelegate>
 
 @end

@@ -13,7 +13,7 @@
 @interface VoxLabelWithTimer : UILabel
 
 - (void)runTimer;
-- (void)setTime:(NSTimeInterval)time;
+- (NSString *)buildStringTimeToDisplayWithTime:(NSTimeInterval)timeInterval;
 
 @property (nonatomic) BOOL isTimerRunning;
 @property (weak, atomic) IBOutlet id<ACKTimerDelegate> delegate;

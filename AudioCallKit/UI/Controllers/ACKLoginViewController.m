@@ -58,20 +58,21 @@
 }
 
 - (void)refreshUI {
-    self.loginUserField.text = [AppDelegateMacros.sharedAuthService.lastLoggedInUser.username
-                                stringByReplacingOccurrencesOfString:@".voximplant.com" withString:@""];
-    
-    [self.tokenContainerView setHidden:NO];
-    if (!self.tokenExpireDate) {
-        [self.tokenContainerView setHidden:YES];
+    NSString *username = AppDelegateMacros.sharedAuthService.loggedInUser;
+    if (username) {
+        self.loginUserField.text = [username stringByReplacingOccurrencesOfString:@".voximplant.com" withString:@""];
     }
+    self.loginPasswordField.text = @"";
     
-    self.tokenLabel.text = [NSString stringWithFormat:@"Token will expire at:\n%@", self.tokenExpireDate];
+    if (self.tokenExpireDate) {
+        [self.tokenContainerView setHidden:NO];
+        self.tokenLabel.text = [NSString stringWithFormat:@"Token will expire at:\n%@", self.tokenExpireDate]; }
+    else { [self.tokenContainerView setHidden:YES]; }
 }
 
 #pragma mark - Actions
 - (IBAction)loginTouch:(NSObject *)sender {
-    NSLog(@"LoginTouch called on LoginViewController ");
+    NSLog(@"LoginTouch called on LoginViewController");
     
     NSString *login = self.loginUserField.textWithVoxDomain;
     NSString *password = self.loginPasswordField.text;
@@ -95,7 +96,7 @@
                                                         strongSelf.userDisplayName = userDisplayName;
                                                         [strongSelf performSegueWithIdentifier:NSStringFromClass([ACKMainViewController class]) sender:strongSelf];
                                                     }
-                                                }];
+    }];
 }
 
 - (IBAction)loginWithTokenTouch:(UIButton *)sender {
@@ -103,11 +104,9 @@
     
     [UIHelper showProgressWithTitle:@"Connecting" details:@"Please wait..." controller:self];
     
-    NSString *login = self.loginUserField.textWithVoxDomain;
     __weak ACKLoginViewController *weakSelf = self;
-    [AppDelegateMacros.sharedAuthService loginUsingTokenWithUser:login completion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
-        
-        __strong ACKLoginViewController *strongSelf = weakSelf;
+    [AppDelegateMacros.sharedAuthService loginUsingAccessTokenWithCompletion:^(NSString * _Nullable userDisplayName, NSError * _Nullable error) {
+                __strong ACKLoginViewController *strongSelf = weakSelf;
         [UIHelper hideProgressOnViewController:strongSelf];
         [strongSelf refreshUI];
         

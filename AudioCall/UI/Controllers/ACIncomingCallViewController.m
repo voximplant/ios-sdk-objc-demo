@@ -6,6 +6,7 @@
 #import "ACCallManager.h"
 #import "ACMainViewController.h"
 #import "ACAppDelegate.h"
+#import "VoxPermissionsManager.h"
 
 
 
@@ -35,7 +36,8 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
+    if (@available(iOS 13.0, *)) { return UIStatusBarStyleDarkContent; }
+    else { return UIStatusBarStyleDefault; }
 }
 
 - (IBAction)declineTouch:(UIButton *)sender {
@@ -45,8 +47,10 @@
 
 - (IBAction)acceptTouch:(UIButton *)sender {
     NSLog(@"acceptTouch called on IncomingCallViewController");
-    [AppDelegateMacros.sharedCallManager makeIncomingCallActive]; // answer call
-    [self.call removeDelegate:self];
+    [VoxPermissionsManager checkAudioPermission:^{
+        [AppDelegateMacros.sharedCallManager makeIncomingCallActive]; // answer call
+        [self.call removeDelegate:self];
+    }];
 }
 
 - (void)call:(VICall *)call didDisconnectWithHeaders:(NSDictionary *)headers answeredElsewhere:(NSNumber *)answeredElsewhere {

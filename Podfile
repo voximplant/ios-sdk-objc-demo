@@ -15,7 +15,6 @@ end
 
 target 'Quality Issues' do
   common_pods
-
   pod 'VoxImplantSDK', sdk_version
 end
 

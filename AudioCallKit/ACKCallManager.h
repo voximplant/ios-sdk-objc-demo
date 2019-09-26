@@ -6,33 +6,17 @@
 #import "ACKAuthService.h"
 #import <VoxImplant/VoxImplant.h>
 #import <CallKit/CallKit.h>
+#import <PushKit/PushKit.h>
+#import "ACKCallWrapper.h"
+#import "ACKPushCallNotifier.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CallManagerDelegate <NSObject>
+@interface ACKCallManager : NSObject<CXProviderDelegate, VIClientCallManagerDelegate, VICallDelegate, ACKPushCallNotifierDelegate>
 
--(void)notifyIncomingCall:(VICall *)descriptor;
-
-@end
-
-@interface ACKCallWrapper : NSObject
-
-@property (strong, nonatomic) VICall *call;
-@property (strong, nonatomic) NSUUID *uuid;
-@property (nonatomic) BOOL isOutgoing;
-@property (nonatomic) BOOL hasConnected;
-
-+ (instancetype)createCall:(VICall *)call uuid:(NSUUID *)uuid isOutgoing:(BOOL)isOutgoing hasConnected:(BOOL)hasConnected;
-
-@end
-
-@interface ACKCallManager : NSObject<CXProviderDelegate, VIClientCallManagerDelegate, VICallDelegate>
-
-@property (weak, atomic) id<CallManagerDelegate> delegate;
 @property (nonatomic, strong, nullable) ACKCallWrapper *managedCall;
 
 - (instancetype)initWithClient:(VIClient *)client authService:(ACKAuthService *)authService;
-- (void)startOutgoingCallWithContact:(NSString *)contact completion:(void (^)(VICall *_Nullable call, NSError *_Nullable error))completion;
 
 @end
 

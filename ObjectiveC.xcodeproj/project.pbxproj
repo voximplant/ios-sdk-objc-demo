@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8E05439621CAA3E500DF2EE4 /* QIIssueCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E05439421CAA3E400DF2EE4 /* QIIssueCollectionViewCell.m */; };
+		8E7B2C0821AC11DB0023167F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */; };
+		8E7B2C0B21AC11E70023167F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */; };
 		8E89C73721AD6F040071E45C /* QILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89C73521AD6F040071E45C /* QILoginViewController.m */; };
 		8E89C73C21AD6F8A0071E45C /* QIDialerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89C73A21AD6F8A0071E45C /* QIDialerViewController.m */; };
 		8E89C74121AD6F9C0071E45C /* QICallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E89C73F21AD6F9C0071E45C /* QICallViewController.m */; };
@@ -20,94 +22,100 @@
 		8E9C926721A3148100BE506F /* QIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C926621A3148100BE506F /* QIAppDelegate.m */; };
 		8E9C926F21A3148200BE506F /* QIAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9C926E21A3148200BE506F /* QIAssets.xcassets */; };
 		8E9C927521A3148200BE506F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C927421A3148200BE506F /* main.m */; };
+		8E9C929521A31D9100BE506F /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9C929421A31D9100BE506F /* Shared.xcassets */; };
+		8E9C929621A31D9100BE506F /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9C929421A31D9100BE506F /* Shared.xcassets */; };
 		8EC372F421CB9BCD00371E4C /* QualityIssues.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC372F221CB9BCD00371E4C /* QualityIssues.storyboard */; };
-		B2B1914D230AA32300D0038A /* ACKCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19148230AA32300D0038A /* ACKCallViewController.m */; };
-		B2B1914E230AA32300D0038A /* ACKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19149230AA32300D0038A /* ACKLoginViewController.m */; };
-		B2B1914F230AA32300D0038A /* ACKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1914B230AA32300D0038A /* ACKMainViewController.m */; };
-		B2B19158230AA34200D0038A /* ACKCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19151230AA34100D0038A /* ACKCallManager.m */; };
-		B2B19159230AA34200D0038A /* ACKPushCallNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19152230AA34100D0038A /* ACKPushCallNotifier.m */; };
-		B2B1915A230AA34200D0038A /* ACKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19154230AA34200D0038A /* ACKAppDelegate.m */; };
-		B2B1915B230AA34200D0038A /* ACKAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19155230AA34200D0038A /* ACKAuthService.m */; };
-		B2B1915D230AA38600D0038A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2B1915C230AA38600D0038A /* Main.storyboard */; };
-		B2B1915F230AA3A900D0038A /* ACKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B1915E230AA3A900D0038A /* ACKAssets.xcassets */; };
-		B2B19161230AA44800D0038A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19160230AA44800D0038A /* main.m */; };
-		B2B19190230AA50100D0038A /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2B19165230AA50000D0038A /* LaunchScreen.strings */; };
-		B2B19191230AA50100D0038A /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19168230AA50000D0038A /* UIExtensions.m */; };
-		B2B19192230AA50100D0038A /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19169230AA50000D0038A /* VoxBranding.m */; };
-		B2B19193230AA50100D0038A /* VoxButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1916F230AA50000D0038A /* VoxButtonWithLabel.m */; };
-		B2B19194230AA50100D0038A /* VoxEndpointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19170230AA50000D0038A /* VoxEndpointLabel.m */; };
-		B2B19195230AA50100D0038A /* VoxLabelWithTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19171230AA50000D0038A /* VoxLabelWithTimer.m */; };
-		B2B19196230AA50100D0038A /* VoxKeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19176230AA50000D0038A /* VoxKeyPadView.m */; };
-		B2B19197230AA50100D0038A /* VoxTextFieldWithButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19177230AA50000D0038A /* VoxTextFieldWithButton.m */; };
-		B2B19198230AA50100D0038A /* VoxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19179230AA50000D0038A /* VoxTextField.m */; };
-		B2B19199230AA50100D0038A /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917A230AA50000D0038A /* UIHelper.m */; };
-		B2B1919A230AA50100D0038A /* VoxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917D230AA50000D0038A /* VoxKeys.m */; };
-		B2B1919B230AA50100D0038A /* VoxTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917E230AA50000D0038A /* VoxTokenManager.m */; };
-		B2B1919C230AA50100D0038A /* VoxErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19180230AA50000D0038A /* VoxErrors.m */; };
-		B2B1919D230AA50100D0038A /* VoxApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19181230AA50000D0038A /* VoxApplication.m */; };
-		B2B1919E230AA50100D0038A /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19183230AA50100D0038A /* VoxPermissionsManager.m */; };
-		B2B1919F230AA50100D0038A /* VoxUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19186230AA50100D0038A /* VoxUser.m */; };
-		B2B191A0230AA50100D0038A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2B19188230AA50100D0038A /* LaunchScreen.storyboard */; };
-		B2B191A1230AA50100D0038A /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918A230AA50100D0038A /* Shared.xcassets */; };
-		B2B191A2230AA50100D0038A /* VoxKeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918B230AA50100D0038A /* VoxKeyPadView.xib */; };
-		B2B191A3230AA50100D0038A /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918D230AA50100D0038A /* Roboto-Regular.ttf */; };
-		B2B191A4230AA50100D0038A /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918E230AA50100D0038A /* Roboto-Bold.ttf */; };
-		B2B191A5230AA60F00D0038A /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19168230AA50000D0038A /* UIExtensions.m */; };
-		B2B191A6230AA61000D0038A /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19168230AA50000D0038A /* UIExtensions.m */; };
-		B2B191A7230AA61100D0038A /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19168230AA50000D0038A /* UIExtensions.m */; };
-		B2B191A8230AA61500D0038A /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19169230AA50000D0038A /* VoxBranding.m */; };
-		B2B191AA230AA61600D0038A /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19169230AA50000D0038A /* VoxBranding.m */; };
-		B2B191AB230AA61700D0038A /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B19169230AA50000D0038A /* VoxBranding.m */; };
-		B2B191AC230AA62900D0038A /* VoxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917D230AA50000D0038A /* VoxKeys.m */; };
-		B2B191AD230AA62D00D0038A /* VoxTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917E230AA50000D0038A /* VoxTokenManager.m */; };
-		B2B191AE230AA64700D0038A /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917A230AA50000D0038A /* UIHelper.m */; };
-		B2B191AF230AA64800D0038A /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B1917A230AA50000D0038A /* UIHelper.m */; };
-		B2B191B0230AA6D200D0038A /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918A230AA50100D0038A /* Shared.xcassets */; };
-		B2B191B1230AA6D200D0038A /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918A230AA50100D0038A /* Shared.xcassets */; };
-		B2B191B2230AA6D400D0038A /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B1918A230AA50100D0038A /* Shared.xcassets */; };
-		B2B191B8230AA8D900D0038A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B2B191B7230AA8D900D0038A /* README.md */; };
-		B2DD9DFB22F48108003923CF /* ACTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DCE22F48107003923CF /* ACTokenManager.m */; };
-		B2DD9DFD22F48108003923CF /* ACUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD022F48108003923CF /* ACUser.m */; };
-		B2DD9DFE22F48108003923CF /* ACKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD222F48108003923CF /* ACKeys.m */; };
-		B2DD9DFF22F48108003923CF /* ACAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD422F48108003923CF /* ACAuthService.m */; };
-		B2DD9E0022F48108003923CF /* ACCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD522F48108003923CF /* ACCallManager.m */; };
-		B2DD9E0122F48108003923CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD622F48108003923CF /* main.m */; };
-		B2DD9E0222F48108003923CF /* ACKeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2DD9DDA22F48108003923CF /* ACKeyPadView.xib */; };
-		B2DD9E0322F48108003923CF /* ACMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DD9DDB22F48108003923CF /* ACMain.storyboard */; };
-		B2DD9E0422F48108003923CF /* ACAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DD9DDC22F48108003923CF /* ACAssets.xcassets */; };
-		B2DD9E0922F48108003923CF /* ACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE322F48108003923CF /* ACAppDelegate.m */; };
-		B2DD9E0A22F48108003923CF /* ACLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE622F48108003923CF /* ACLoginViewController.m */; };
-		B2DD9E0B22F48108003923CF /* ACCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE722F48108003923CF /* ACCallViewController.m */; };
-		B2DD9E0C22F48108003923CF /* ACCallFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DEA22F48108003923CF /* ACCallFailedViewController.m */; };
-		B2DD9E0D22F48108003923CF /* ACIncomingCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DEC22F48108003923CF /* ACIncomingCallViewController.m */; };
-		B2DD9E0E22F48108003923CF /* ACMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DED22F48108003923CF /* ACMainViewController.m */; };
-		B2DD9E0F22F48108003923CF /* ACCustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF222F48108003923CF /* ACCustomTextField.m */; };
-		B2DD9E1022F48108003923CF /* ACKeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF322F48108003923CF /* ACKeyPadView.m */; };
-		B2DD9E1122F48108003923CF /* ACLabelWithTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF522F48108003923CF /* ACLabelWithTimer.m */; };
-		B2DD9E1222F48108003923CF /* ACCustomTextFieldWithButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF722F48108003923CF /* ACCustomTextFieldWithButton.m */; };
-		B2DD9E1322F48108003923CF /* ACButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DFA22F48108003923CF /* ACButtonWithLabel.m */; };
-		B2DD9E1422F481C5003923CF /* ACAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD322F48108003923CF /* ACAppDelegate.h */; };
-		B2DD9E1522F481C5003923CF /* ACAuthService.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD122F48108003923CF /* ACAuthService.h */; };
-		B2DD9E1622F481C5003923CF /* ACCallManager.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DD722F48108003923CF /* ACCallManager.h */; };
-		B2DD9E1722F481C5003923CF /* ACKeys.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DCD22F48107003923CF /* ACKeys.h */; };
-		B2DD9E1822F481C5003923CF /* ACTokenManager.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DCC22F48107003923CF /* ACTokenManager.h */; };
-		B2DD9E1922F481C5003923CF /* ACUser.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE222F48108003923CF /* ACUser.h */; };
-		B2DD9E1A22F481CF003923CF /* ACMainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE822F48108003923CF /* ACMainViewController.h */; };
-		B2DD9E1B22F481CF003923CF /* ACIncomingCallViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DE922F48108003923CF /* ACIncomingCallViewController.h */; };
-		B2DD9E1C22F481CF003923CF /* ACLoginViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DEB22F48108003923CF /* ACLoginViewController.h */; };
-		B2DD9E1D22F481CF003923CF /* ACCallViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DEE22F48108003923CF /* ACCallViewController.h */; };
-		B2DD9E1E22F481CF003923CF /* ACCallFailedViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DEF22F48108003923CF /* ACCallFailedViewController.h */; };
-		B2DD9E1F22F481DC003923CF /* ACCustomTextFieldWithButton.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF122F48108003923CF /* ACCustomTextFieldWithButton.h */; };
-		B2DD9E2022F481DC003923CF /* ACButtonWithLabel.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF422F48108003923CF /* ACButtonWithLabel.h */; };
-		B2DD9E2122F481DC003923CF /* ACCustomTextField.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF622F48108003923CF /* ACCustomTextField.h */; };
-		B2DD9E2222F481DC003923CF /* ACKeyPadView.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF822F48108003923CF /* ACKeyPadView.h */; };
-		B2DD9E2322F481DC003923CF /* ACLabelWithTimer.h in Sources */ = {isa = PBXBuildFile; fileRef = B2DD9DF922F48108003923CF /* ACLabelWithTimer.h */; };
-		B2DD9E4622F48B57003923CF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B2DD9E4522F48B57003923CF /* README.md */; };
+		9200A52322FD9D62000495FE /* VoxEndpointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200A52222FD9D62000495FE /* VoxEndpointLabel.m */; };
+		9200A52422FD9D62000495FE /* VoxEndpointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200A52222FD9D62000495FE /* VoxEndpointLabel.m */; };
+		9200A52522FD9D62000495FE /* VoxEndpointLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9200A52222FD9D62000495FE /* VoxEndpointLabel.m */; };
+		92049F6E22DC72AF006DB07F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 92049F6D22DC72AF006DB07F /* README.md */; };
+		92049F8A22DCC79F006DB07F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */; };
+		92182AFA22E89AA400E5992B /* VoxErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 92182AF922E89AA400E5992B /* VoxErrors.m */; };
+		9228F69922DF6BB00070E0DE /* VoxUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9228F69822DF6BB00070E0DE /* VoxUser.m */; };
+		9244C00422DF5DC9007F0064 /* ACAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92049F7722DC7389006DB07F /* ACAppDelegate.m */; };
+		9244C00A22DF600B007F0064 /* ACMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */; };
+		926078C62304636700B9E4C6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 926078C52304636700B9E4C6 /* README.md */; };
+		92653F0A22D8891C00B3CBE5 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9C929421A31D9100BE506F /* Shared.xcassets */; };
+		92653F1622D88C0900B3CBE5 /* ACAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92653F1522D88C0900B3CBE5 /* ACAssets.xcassets */; };
+		9284FAA822F97D66002B9E70 /* ACKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAA722F97D66002B9E70 /* ACKAppDelegate.m */; };
+		9284FAB022F97D67002B9E70 /* ACKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9284FAAF22F97D67002B9E70 /* ACKAssets.xcassets */; };
+		9284FAB622F97D67002B9E70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAB522F97D67002B9E70 /* main.m */; };
+		9284FABA22F97DC9002B9E70 /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FB22EB2097006CCCFF /* UIHelper.m */; };
+		9284FABB22F97DD0002B9E70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */; };
+		9284FABC22F97DD3002B9E70 /* Shared.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E9C929421A31D9100BE506F /* Shared.xcassets */; };
+		9284FABD22F97DD5002B9E70 /* VoxErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 92182AF922E89AA400E5992B /* VoxErrors.m */; };
+		9284FABE22F97DDA002B9E70 /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FE22EB2152006CCCFF /* UIExtensions.m */; };
+		9284FABF22F97DDF002B9E70 /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3731821CBCA4500371E4C /* VoxBranding.m */; };
+		9284FAC022F97DE3002B9E70 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */; };
+		9284FAC122F97DE6002B9E70 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */; };
+		9284FACF22F98F09002B9E70 /* VoxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FACE22F98F09002B9E70 /* VoxKeys.m */; };
+		9284FAD222F9921E002B9E70 /* VoxTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAD122F9921E002B9E70 /* VoxTokenManager.m */; };
+		9284FAD522F99343002B9E70 /* ACKCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAD422F99343002B9E70 /* ACKCallManager.m */; };
+		9284FAD822F99468002B9E70 /* ACKAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAD722F99468002B9E70 /* ACKAuthService.m */; };
+		9284FAE022F99827002B9E70 /* ACKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FADF22F99827002B9E70 /* ACKLoginViewController.m */; };
+		9284FAE322F99833002B9E70 /* ACKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAE222F99833002B9E70 /* ACKMainViewController.m */; };
+		9284FAE622F9983D002B9E70 /* ACKCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAE522F9983D002B9E70 /* ACKCallViewController.m */; };
+		9284FAF022F99A50002B9E70 /* VoxButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAEF22F99A50002B9E70 /* VoxButtonWithLabel.m */; };
+		9284FAF322F99A81002B9E70 /* VoxTextFieldWithButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF222F99A81002B9E70 /* VoxTextFieldWithButton.m */; };
+		9284FAF622F99AB1002B9E70 /* VoxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF522F99AB1002B9E70 /* VoxTextField.m */; };
+		9284FAF922F99B44002B9E70 /* VoxKeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF822F99B44002B9E70 /* VoxKeyPadView.m */; };
+		9284FAFC22F99B77002B9E70 /* VoxLabelWithTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAFB22F99B77002B9E70 /* VoxLabelWithTimer.m */; };
+		9284FB0122F9BCA4002B9E70 /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FB22EB2097006CCCFF /* UIHelper.m */; };
+		9284FB0222F9BCA6002B9E70 /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FE22EB2152006CCCFF /* UIExtensions.m */; };
+		9284FB0522F9BCAE002B9E70 /* VoxErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 92182AF922E89AA400E5992B /* VoxErrors.m */; };
+		9284FB0622F9BCB2002B9E70 /* VoxKeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF822F99B44002B9E70 /* VoxKeyPadView.m */; };
+		9284FB0722F9BCB2002B9E70 /* VoxKeyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF822F99B44002B9E70 /* VoxKeyPadView.m */; };
+		9284FB0822F9BCB5002B9E70 /* VoxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF522F99AB1002B9E70 /* VoxTextField.m */; };
+		9284FB0922F9BCB5002B9E70 /* VoxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF522F99AB1002B9E70 /* VoxTextField.m */; };
+		9284FB0A22F9BCB7002B9E70 /* VoxTextFieldWithButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF222F99A81002B9E70 /* VoxTextFieldWithButton.m */; };
+		9284FB0B22F9BCB7002B9E70 /* VoxTextFieldWithButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAF222F99A81002B9E70 /* VoxTextFieldWithButton.m */; };
+		9284FB0C22F9BCB9002B9E70 /* VoxButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAEF22F99A50002B9E70 /* VoxButtonWithLabel.m */; };
+		9284FB0D22F9BCBA002B9E70 /* VoxButtonWithLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAEF22F99A50002B9E70 /* VoxButtonWithLabel.m */; };
+		9284FB0E22F9BCBC002B9E70 /* VoxLabelWithTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAFB22F99B77002B9E70 /* VoxLabelWithTimer.m */; };
+		9284FB0F22F9BCBC002B9E70 /* VoxLabelWithTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAFB22F99B77002B9E70 /* VoxLabelWithTimer.m */; };
+		9284FB1022F9BCC5002B9E70 /* VoxTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAD122F9921E002B9E70 /* VoxTokenManager.m */; };
+		9284FB1122F9BCC5002B9E70 /* VoxTokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FAD122F9921E002B9E70 /* VoxTokenManager.m */; };
+		9284FB1222F9BCC7002B9E70 /* VoxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FACE22F98F09002B9E70 /* VoxKeys.m */; };
+		9284FB1322F9BCC8002B9E70 /* VoxKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FACE22F98F09002B9E70 /* VoxKeys.m */; };
+		9284FB1422F9BCD2002B9E70 /* VoxKeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */; };
+		9284FB1522F9BCD3002B9E70 /* VoxKeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */; };
+		9284FB1722F9C1AF002B9E70 /* VoxUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9228F69822DF6BB00070E0DE /* VoxUser.m */; };
+		9284FB1A22F9C208002B9E70 /* ACKPushCallNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FB1922F9C208002B9E70 /* ACKPushCallNotifier.m */; };
+		9284FB1E22F9C8B0002B9E70 /* VoxUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9228F69822DF6BB00070E0DE /* VoxUser.m */; };
+		9284FB2122FACA88002B9E70 /* VoxApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FB2022FACA88002B9E70 /* VoxApplication.m */; };
+		9284FB2222FACA88002B9E70 /* VoxApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FB2022FACA88002B9E70 /* VoxApplication.m */; };
+		9284FB2322FACA88002B9E70 /* VoxApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9284FB2022FACA88002B9E70 /* VoxApplication.m */; };
+		928AE67922DF5BBB009F8DB5 /* VoxKeyPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */; };
+		92A0112422E7484200849612 /* ACLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0110F22E7484200849612 /* ACLoginViewController.m */; };
+		92A0112522E7484200849612 /* ACMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0111122E7484200849612 /* ACMainViewController.m */; };
+		92A0112622E7484200849612 /* ACCallFailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0111222E7484200849612 /* ACCallFailedViewController.m */; };
+		92A0112722E7484200849612 /* ACIncomingCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0111422E7484200849612 /* ACIncomingCallViewController.m */; };
+		92A0112822E7484200849612 /* ACCallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0111622E7484200849612 /* ACCallViewController.m */; };
+		92A0113022E74C0B00849612 /* ACCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A0112F22E74C0B00849612 /* ACCallManager.m */; };
+		92A8179B22FDB8400039E0E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A8179A22FDB8400039E0E6 /* Main.storyboard */; };
+		92ADE49622D8A0DB00A604E3 /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3731821CBCA4500371E4C /* VoxBranding.m */; };
+		92ADE49B22D8A60300A604E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ADE49A22D8A60300A604E3 /* main.m */; };
+		92BC83792302FFC400319152 /* ACAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BC83772302FFC300319152 /* ACAuthService.m */; };
+		92C8E1FC22EB2098006CCCFF /* UIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FB22EB2097006CCCFF /* UIHelper.m */; };
+		92C8E1FF22EB2152006CCCFF /* UIExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C8E1FE22EB2152006CCCFF /* UIExtensions.m */; };
+		92D153DB2338F23B002282A6 /* ACKCallWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 92D153DA2338F23B002282A6 /* ACKCallWrapper.m */; };
+		92D551DF22F1D31500873E8C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */; };
+		92D551E022F1D31500873E8C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */; };
+		92D551E122F1D31500873E8C /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */; };
+		92D551E322F1D31500873E8C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */; };
+		92D551E422F1D31500873E8C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */; };
+		92D551E522F1D31500873E8C /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */; };
+		92DB9E652334CEFC007BF73C /* CXExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DB9E642334CEFC007BF73C /* CXExtensions.m */; };
+		92DF8D2622F46EB600DF2C40 /* VoxBranding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3731821CBCA4500371E4C /* VoxBranding.m */; };
+		92F7242222FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
+		92F7242322FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
+		92F7242422FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E05439321CAA3E400DF2EE4 /* QIIssueCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QIIssueCollectionViewCell.h; sourceTree = "<group>"; };
 		8E05439421CAA3E400DF2EE4 /* QIIssueCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QIIssueCollectionViewCell.m; sourceTree = "<group>"; };
+		8E7B2C0721AC11DB0023167F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E7B2C0C21AC12E90023167F /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		8E7B2C0D21AC12E90023167F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8E7B2C1021AC13020023167F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -135,104 +143,88 @@
 		8E9C926E21A3148200BE506F /* QIAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = QIAssets.xcassets; sourceTree = "<group>"; };
 		8E9C927321A3148200BE506F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E9C927421A3148200BE506F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E9C929421A31D9100BE506F /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
 		8EC372F321CB9BCD00371E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/QualityIssues.storyboard; sourceTree = "<group>"; };
-		B2B1912F230AA2E300D0038A /* AudioCallKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCallKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2B19147230AA32300D0038A /* ACKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKMainViewController.h; sourceTree = "<group>"; };
-		B2B19148230AA32300D0038A /* ACKCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKCallViewController.m; sourceTree = "<group>"; };
-		B2B19149230AA32300D0038A /* ACKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKLoginViewController.m; sourceTree = "<group>"; };
-		B2B1914A230AA32300D0038A /* ACKCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKCallViewController.h; sourceTree = "<group>"; };
-		B2B1914B230AA32300D0038A /* ACKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKMainViewController.m; sourceTree = "<group>"; };
-		B2B1914C230AA32300D0038A /* ACKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKLoginViewController.h; sourceTree = "<group>"; };
-		B2B19150230AA34100D0038A /* ACKAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKAuthService.h; sourceTree = "<group>"; };
-		B2B19151230AA34100D0038A /* ACKCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKCallManager.m; sourceTree = "<group>"; };
-		B2B19152230AA34100D0038A /* ACKPushCallNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKPushCallNotifier.m; sourceTree = "<group>"; };
-		B2B19153230AA34200D0038A /* ACKCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKCallManager.h; sourceTree = "<group>"; };
-		B2B19154230AA34200D0038A /* ACKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKAppDelegate.m; sourceTree = "<group>"; };
-		B2B19155230AA34200D0038A /* ACKAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKAuthService.m; sourceTree = "<group>"; };
-		B2B19156230AA34200D0038A /* ACKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKAppDelegate.h; sourceTree = "<group>"; };
-		B2B19157230AA34200D0038A /* ACKPushCallNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKPushCallNotifier.h; sourceTree = "<group>"; };
-		B2B1915C230AA38600D0038A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		B2B1915E230AA3A900D0038A /* ACKAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ACKAssets.xcassets; sourceTree = "<group>"; };
-		B2B19160230AA44800D0038A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2B19166230AA50000D0038A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = LaunchScreen.strings; sourceTree = "<group>"; };
-		B2B19168230AA50000D0038A /* UIExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIExtensions.m; sourceTree = "<group>"; };
-		B2B19169230AA50000D0038A /* VoxBranding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxBranding.m; sourceTree = "<group>"; };
-		B2B1916A230AA50000D0038A /* UIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
-		B2B1916B230AA50000D0038A /* VoxBranding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxBranding.h; sourceTree = "<group>"; };
-		B2B1916C230AA50000D0038A /* UIExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIExtensions.h; sourceTree = "<group>"; };
-		B2B1916E230AA50000D0038A /* VoxKeyPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxKeyPadView.h; sourceTree = "<group>"; };
-		B2B1916F230AA50000D0038A /* VoxButtonWithLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxButtonWithLabel.m; sourceTree = "<group>"; };
-		B2B19170230AA50000D0038A /* VoxEndpointLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxEndpointLabel.m; sourceTree = "<group>"; };
-		B2B19171230AA50000D0038A /* VoxLabelWithTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxLabelWithTimer.m; sourceTree = "<group>"; };
-		B2B19172230AA50000D0038A /* VoxTextFieldWithButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxTextFieldWithButton.h; sourceTree = "<group>"; };
-		B2B19173230AA50000D0038A /* VoxTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxTextField.h; sourceTree = "<group>"; };
-		B2B19174230AA50000D0038A /* VoxButtonWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxButtonWithLabel.h; sourceTree = "<group>"; };
-		B2B19175230AA50000D0038A /* VoxEndpointLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxEndpointLabel.h; sourceTree = "<group>"; };
-		B2B19176230AA50000D0038A /* VoxKeyPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxKeyPadView.m; sourceTree = "<group>"; };
-		B2B19177230AA50000D0038A /* VoxTextFieldWithButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxTextFieldWithButton.m; sourceTree = "<group>"; };
-		B2B19178230AA50000D0038A /* VoxLabelWithTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxLabelWithTimer.h; sourceTree = "<group>"; };
-		B2B19179230AA50000D0038A /* VoxTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxTextField.m; sourceTree = "<group>"; };
-		B2B1917A230AA50000D0038A /* UIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
-		B2B1917C230AA50000D0038A /* VoxTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxTokenManager.h; sourceTree = "<group>"; };
-		B2B1917D230AA50000D0038A /* VoxKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxKeys.m; sourceTree = "<group>"; };
-		B2B1917E230AA50000D0038A /* VoxTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxTokenManager.m; sourceTree = "<group>"; };
-		B2B1917F230AA50000D0038A /* VoxKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxKeys.h; sourceTree = "<group>"; };
-		B2B19180230AA50000D0038A /* VoxErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxErrors.m; sourceTree = "<group>"; };
-		B2B19181230AA50000D0038A /* VoxApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxApplication.m; sourceTree = "<group>"; };
-		B2B19182230AA50100D0038A /* VoxPermissionsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxPermissionsManager.h; sourceTree = "<group>"; };
-		B2B19183230AA50100D0038A /* VoxPermissionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxPermissionsManager.m; sourceTree = "<group>"; };
-		B2B19184230AA50100D0038A /* VoxApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxApplication.h; sourceTree = "<group>"; };
-		B2B19185230AA50100D0038A /* VoxUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxUser.h; sourceTree = "<group>"; };
-		B2B19186230AA50100D0038A /* VoxUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoxUser.m; sourceTree = "<group>"; };
-		B2B19189230AA50100D0038A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B2B1918A230AA50100D0038A /* Shared.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Shared.xcassets; sourceTree = "<group>"; };
-		B2B1918B230AA50100D0038A /* VoxKeyPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoxKeyPadView.xib; sourceTree = "<group>"; };
-		B2B1918D230AA50100D0038A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		B2B1918E230AA50100D0038A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		B2B1918F230AA50100D0038A /* VoxErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoxErrors.h; sourceTree = "<group>"; };
-		B2B191B3230AA74A00D0038A /* AudioCall.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioCall.entitlements; sourceTree = "<group>"; };
-		B2B191B4230AA76100D0038A /* AudioCallKit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioCallKit.entitlements; sourceTree = "<group>"; };
-		B2B191B5230AA78600D0038A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2B191B7230AA8D900D0038A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B2DD9DB622F480B9003923CF /* AudioCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2DD9DCC22F48107003923CF /* ACTokenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTokenManager.h; sourceTree = "<group>"; };
-		B2DD9DCD22F48107003923CF /* ACKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKeys.h; sourceTree = "<group>"; };
-		B2DD9DCE22F48107003923CF /* ACTokenManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTokenManager.m; sourceTree = "<group>"; };
-		B2DD9DCF22F48107003923CF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B2DD9DD022F48108003923CF /* ACUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACUser.m; sourceTree = "<group>"; };
-		B2DD9DD122F48108003923CF /* ACAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAuthService.h; sourceTree = "<group>"; };
-		B2DD9DD222F48108003923CF /* ACKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKeys.m; sourceTree = "<group>"; };
-		B2DD9DD322F48108003923CF /* ACAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAppDelegate.h; sourceTree = "<group>"; };
-		B2DD9DD422F48108003923CF /* ACAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAuthService.m; sourceTree = "<group>"; };
-		B2DD9DD522F48108003923CF /* ACCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCallManager.m; sourceTree = "<group>"; };
-		B2DD9DD622F48108003923CF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B2DD9DD722F48108003923CF /* ACCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallManager.h; sourceTree = "<group>"; };
-		B2DD9DDA22F48108003923CF /* ACKeyPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACKeyPadView.xib; sourceTree = "<group>"; };
-		B2DD9DDB22F48108003923CF /* ACMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ACMain.storyboard; sourceTree = "<group>"; };
-		B2DD9DDC22F48108003923CF /* ACAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ACAssets.xcassets; sourceTree = "<group>"; };
-		B2DD9DE222F48108003923CF /* ACUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACUser.h; sourceTree = "<group>"; };
-		B2DD9DE322F48108003923CF /* ACAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAppDelegate.m; sourceTree = "<group>"; };
-		B2DD9DE622F48108003923CF /* ACLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoginViewController.m; sourceTree = "<group>"; };
-		B2DD9DE722F48108003923CF /* ACCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCallViewController.m; sourceTree = "<group>"; };
-		B2DD9DE822F48108003923CF /* ACMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMainViewController.h; sourceTree = "<group>"; };
-		B2DD9DE922F48108003923CF /* ACIncomingCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACIncomingCallViewController.h; sourceTree = "<group>"; };
-		B2DD9DEA22F48108003923CF /* ACCallFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCallFailedViewController.m; sourceTree = "<group>"; };
-		B2DD9DEB22F48108003923CF /* ACLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoginViewController.h; sourceTree = "<group>"; };
-		B2DD9DEC22F48108003923CF /* ACIncomingCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACIncomingCallViewController.m; sourceTree = "<group>"; };
-		B2DD9DED22F48108003923CF /* ACMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMainViewController.m; sourceTree = "<group>"; };
-		B2DD9DEE22F48108003923CF /* ACCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallViewController.h; sourceTree = "<group>"; };
-		B2DD9DEF22F48108003923CF /* ACCallFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallFailedViewController.h; sourceTree = "<group>"; };
-		B2DD9DF122F48108003923CF /* ACCustomTextFieldWithButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCustomTextFieldWithButton.h; sourceTree = "<group>"; };
-		B2DD9DF222F48108003923CF /* ACCustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCustomTextField.m; sourceTree = "<group>"; };
-		B2DD9DF322F48108003923CF /* ACKeyPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACKeyPadView.m; sourceTree = "<group>"; };
-		B2DD9DF422F48108003923CF /* ACButtonWithLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACButtonWithLabel.h; sourceTree = "<group>"; };
-		B2DD9DF522F48108003923CF /* ACLabelWithTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLabelWithTimer.m; sourceTree = "<group>"; };
-		B2DD9DF622F48108003923CF /* ACCustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCustomTextField.h; sourceTree = "<group>"; };
-		B2DD9DF722F48108003923CF /* ACCustomTextFieldWithButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCustomTextFieldWithButton.m; sourceTree = "<group>"; };
-		B2DD9DF822F48108003923CF /* ACKeyPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACKeyPadView.h; sourceTree = "<group>"; };
-		B2DD9DF922F48108003923CF /* ACLabelWithTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLabelWithTimer.h; sourceTree = "<group>"; };
-		B2DD9DFA22F48108003923CF /* ACButtonWithLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACButtonWithLabel.m; sourceTree = "<group>"; };
-		B2DD9E4522F48B57003923CF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8EC3731721CBCA4500371E4C /* VoxBranding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxBranding.h; sourceTree = "<group>"; };
+		8EC3731821CBCA4500371E4C /* VoxBranding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxBranding.m; sourceTree = "<group>"; };
+		9200A52122FD9D62000495FE /* VoxEndpointLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxEndpointLabel.h; sourceTree = "<group>"; };
+		9200A52222FD9D62000495FE /* VoxEndpointLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxEndpointLabel.m; sourceTree = "<group>"; };
+		92049F6D22DC72AF006DB07F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		92049F7622DC7389006DB07F /* ACAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACAppDelegate.h; sourceTree = "<group>"; };
+		92049F7722DC7389006DB07F /* ACAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACAppDelegate.m; sourceTree = "<group>"; };
+		92049F8822DCC6B4006DB07F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92182AF822E89AA400E5992B /* VoxErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxErrors.h; sourceTree = "<group>"; };
+		92182AF922E89AA400E5992B /* VoxErrors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxErrors.m; sourceTree = "<group>"; };
+		9228F69722DF6BB00070E0DE /* VoxUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxUser.h; sourceTree = "<group>"; };
+		9228F69822DF6BB00070E0DE /* VoxUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxUser.m; sourceTree = "<group>"; };
+		926078C52304636700B9E4C6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		92653F1222D8891C00B3CBE5 /* AudioCall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCall.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		92653F1522D88C0900B3CBE5 /* ACAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ACAssets.xcassets; sourceTree = "<group>"; };
+		9284FAA422F97D66002B9E70 /* AudioCallKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioCallKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9284FAA622F97D66002B9E70 /* ACKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKAppDelegate.h; sourceTree = "<group>"; };
+		9284FAA722F97D66002B9E70 /* ACKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKAppDelegate.m; sourceTree = "<group>"; };
+		9284FAAF22F97D67002B9E70 /* ACKAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ACKAssets.xcassets; sourceTree = "<group>"; };
+		9284FAB422F97D67002B9E70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9284FAB522F97D67002B9E70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9284FACD22F98F09002B9E70 /* VoxKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxKeys.h; sourceTree = "<group>"; };
+		9284FACE22F98F09002B9E70 /* VoxKeys.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxKeys.m; sourceTree = "<group>"; };
+		9284FAD022F9921E002B9E70 /* VoxTokenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxTokenManager.h; sourceTree = "<group>"; };
+		9284FAD122F9921E002B9E70 /* VoxTokenManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxTokenManager.m; sourceTree = "<group>"; };
+		9284FAD322F99343002B9E70 /* ACKCallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKCallManager.h; sourceTree = "<group>"; };
+		9284FAD422F99343002B9E70 /* ACKCallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKCallManager.m; sourceTree = "<group>"; };
+		9284FAD622F99468002B9E70 /* ACKAuthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKAuthService.h; sourceTree = "<group>"; };
+		9284FAD722F99468002B9E70 /* ACKAuthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKAuthService.m; sourceTree = "<group>"; };
+		9284FADE22F99827002B9E70 /* ACKLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKLoginViewController.h; sourceTree = "<group>"; };
+		9284FADF22F99827002B9E70 /* ACKLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKLoginViewController.m; sourceTree = "<group>"; };
+		9284FAE122F99833002B9E70 /* ACKMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKMainViewController.h; sourceTree = "<group>"; };
+		9284FAE222F99833002B9E70 /* ACKMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKMainViewController.m; sourceTree = "<group>"; };
+		9284FAE422F9983D002B9E70 /* ACKCallViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKCallViewController.h; sourceTree = "<group>"; };
+		9284FAE522F9983D002B9E70 /* ACKCallViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKCallViewController.m; sourceTree = "<group>"; };
+		9284FAEE22F99A50002B9E70 /* VoxButtonWithLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxButtonWithLabel.h; sourceTree = "<group>"; };
+		9284FAEF22F99A50002B9E70 /* VoxButtonWithLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxButtonWithLabel.m; sourceTree = "<group>"; };
+		9284FAF122F99A81002B9E70 /* VoxTextFieldWithButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxTextFieldWithButton.h; sourceTree = "<group>"; };
+		9284FAF222F99A81002B9E70 /* VoxTextFieldWithButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxTextFieldWithButton.m; sourceTree = "<group>"; };
+		9284FAF422F99AB1002B9E70 /* VoxTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxTextField.h; sourceTree = "<group>"; };
+		9284FAF522F99AB1002B9E70 /* VoxTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxTextField.m; sourceTree = "<group>"; };
+		9284FAF722F99B44002B9E70 /* VoxKeyPadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxKeyPadView.h; sourceTree = "<group>"; };
+		9284FAF822F99B44002B9E70 /* VoxKeyPadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxKeyPadView.m; sourceTree = "<group>"; };
+		9284FAFA22F99B77002B9E70 /* VoxLabelWithTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxLabelWithTimer.h; sourceTree = "<group>"; };
+		9284FAFB22F99B77002B9E70 /* VoxLabelWithTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxLabelWithTimer.m; sourceTree = "<group>"; };
+		9284FB1822F9C208002B9E70 /* ACKPushCallNotifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKPushCallNotifier.h; sourceTree = "<group>"; };
+		9284FB1922F9C208002B9E70 /* ACKPushCallNotifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKPushCallNotifier.m; sourceTree = "<group>"; };
+		9284FB2022FACA88002B9E70 /* VoxApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxApplication.m; sourceTree = "<group>"; };
+		9284FB2422FACA99002B9E70 /* VoxApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxApplication.h; sourceTree = "<group>"; };
+		928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoxKeyPadView.xib; path = Shared/Resources/VoxKeyPadView.xib; sourceTree = SOURCE_ROOT; };
+		928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ACMain.storyboard; path = AudioCall/Resources/Storyboards/ACMain.storyboard; sourceTree = SOURCE_ROOT; };
+		92A0110D22E7484200849612 /* ACCallFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallFailedViewController.h; sourceTree = "<group>"; };
+		92A0110E22E7484200849612 /* ACIncomingCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACIncomingCallViewController.h; sourceTree = "<group>"; };
+		92A0110F22E7484200849612 /* ACLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoginViewController.m; sourceTree = "<group>"; };
+		92A0111022E7484200849612 /* ACCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallViewController.h; sourceTree = "<group>"; };
+		92A0111122E7484200849612 /* ACMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMainViewController.m; sourceTree = "<group>"; };
+		92A0111222E7484200849612 /* ACCallFailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCallFailedViewController.m; sourceTree = "<group>"; };
+		92A0111322E7484200849612 /* ACLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoginViewController.h; sourceTree = "<group>"; };
+		92A0111422E7484200849612 /* ACIncomingCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACIncomingCallViewController.m; sourceTree = "<group>"; };
+		92A0111522E7484200849612 /* ACMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMainViewController.h; sourceTree = "<group>"; };
+		92A0111622E7484200849612 /* ACCallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCallViewController.m; sourceTree = "<group>"; };
+		92A0112E22E74C0B00849612 /* ACCallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACCallManager.h; sourceTree = "<group>"; };
+		92A0112F22E74C0B00849612 /* ACCallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACCallManager.m; sourceTree = "<group>"; };
+		92A8179A22FDB8400039E0E6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		92ADE49A22D8A60300A604E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		92BC83772302FFC300319152 /* ACAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAuthService.m; sourceTree = "<group>"; };
+		92BC83782302FFC300319152 /* ACAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAuthService.h; sourceTree = "<group>"; };
+		92C8E1FA22EB2097006CCCFF /* UIHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIHelper.h; sourceTree = "<group>"; };
+		92C8E1FB22EB2097006CCCFF /* UIHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIHelper.m; sourceTree = "<group>"; };
+		92C8E1FD22EB2152006CCCFF /* UIExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIExtensions.h; sourceTree = "<group>"; };
+		92C8E1FE22EB2152006CCCFF /* UIExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIExtensions.m; sourceTree = "<group>"; };
+		92D153D92338F23B002282A6 /* ACKCallWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACKCallWrapper.h; sourceTree = "<group>"; };
+		92D153DA2338F23B002282A6 /* ACKCallWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACKCallWrapper.m; sourceTree = "<group>"; };
+		92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		92DB9E632334CEFC007BF73C /* CXExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CXExtensions.h; sourceTree = "<group>"; };
+		92DB9E642334CEFC007BF73C /* CXExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CXExtensions.m; sourceTree = "<group>"; };
+		92F7242022FC47C6005742DA /* VoxPermissionsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxPermissionsManager.h; sourceTree = "<group>"; };
+		92F7242122FC47C6005742DA /* VoxPermissionsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxPermissionsManager.m; sourceTree = "<group>"; };
+		92F7242522FC73AA005742DA /* AudioCallKit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AudioCallKit.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,14 +242,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B1912C230AA2E300D0038A /* Frameworks */ = {
+		92653F0722D8891C00B3CBE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2DD9DB322F480B9003923CF /* Frameworks */ = {
+		9284FAA122F97D66002B9E70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,8 +298,8 @@
 				8E9C929321A31D5700BE506F /* Shared */,
 				8E9C924A21A313BE00BE506F /* QuickStart */,
 				8E9C926421A3148100BE506F /* QualityIssues */,
-				B2DD9DB722F480B9003923CF /* AudioCall */,
-				B2B19130230AA2E400D0038A /* AudioCallKit */,
+				92653F1922D88E1700B3CBE5 /* AudioCall */,
+				9284FAA522F97D66002B9E70 /* AudioCallKit */,
 				8E9C924921A313BE00BE506F /* Products */,
 				6E1E45E735261D60E6711BB0 /* Pods */,
 			);
@@ -318,8 +310,8 @@
 			children = (
 				8E9C924821A313BE00BE506F /* Quick Start.app */,
 				8E9C926321A3148100BE506F /* Quality Issues.app */,
-				B2DD9DB622F480B9003923CF /* AudioCall.app */,
-				B2B1912F230AA2E300D0038A /* AudioCallKit.app */,
+				92653F1222D8891C00B3CBE5 /* AudioCall.app */,
+				9284FAA422F97D66002B9E70 /* AudioCallKit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -359,221 +351,190 @@
 		8E9C929321A31D5700BE506F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B2B1917B230AA50000D0038A /* AuthTokens */,
-				B2B19164230AA50000D0038A /* en.lproj */,
-				B2B19187230AA50100D0038A /* Resources */,
-				B2B19167230AA50000D0038A /* UI */,
-				B2B19184230AA50100D0038A /* VoxApplication.h */,
-				B2B19181230AA50000D0038A /* VoxApplication.m */,
-				B2B1918F230AA50100D0038A /* VoxErrors.h */,
-				B2B19180230AA50000D0038A /* VoxErrors.m */,
-				B2B19182230AA50100D0038A /* VoxPermissionsManager.h */,
-				B2B19183230AA50100D0038A /* VoxPermissionsManager.m */,
-				B2B19185230AA50100D0038A /* VoxUser.h */,
-				B2B19186230AA50100D0038A /* VoxUser.m */,
+				9284FB0022F9BAFB002B9E70 /* Resources */,
+				9284FAFD22F9B921002B9E70 /* AuthTokens */,
+				9284FAFE22F9B952002B9E70 /* UI */,
+				9228F69722DF6BB00070E0DE /* VoxUser.h */,
+				9228F69822DF6BB00070E0DE /* VoxUser.m */,
+				92182AF822E89AA400E5992B /* VoxErrors.h */,
+				92182AF922E89AA400E5992B /* VoxErrors.m */,
+				9284FB2422FACA99002B9E70 /* VoxApplication.h */,
+				9284FB2022FACA88002B9E70 /* VoxApplication.m */,
+				92F7242022FC47C6005742DA /* VoxPermissionsManager.h */,
+				92F7242122FC47C6005742DA /* VoxPermissionsManager.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		B2B19130230AA2E400D0038A /* AudioCallKit */ = {
+		92049F6422DC7166006DB07F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				B2B191B7230AA8D900D0038A /* README.md */,
-				B2B191B4230AA76100D0038A /* AudioCallKit.entitlements */,
-				B2B19145230AA32300D0038A /* UI */,
-				B2B19156230AA34200D0038A /* ACKAppDelegate.h */,
-				B2B19154230AA34200D0038A /* ACKAppDelegate.m */,
-				B2B19150230AA34100D0038A /* ACKAuthService.h */,
-				B2B19155230AA34200D0038A /* ACKAuthService.m */,
-				B2B19153230AA34200D0038A /* ACKCallManager.h */,
-				B2B19151230AA34100D0038A /* ACKCallManager.m */,
-				B2B19157230AA34200D0038A /* ACKPushCallNotifier.h */,
-				B2B19152230AA34100D0038A /* ACKPushCallNotifier.m */,
-				B2B19160230AA44800D0038A /* main.m */,
-				B2B1915C230AA38600D0038A /* Main.storyboard */,
-				B2B191B5230AA78600D0038A /* Info.plist */,
-				B2B1915E230AA3A900D0038A /* ACKAssets.xcassets */,
-			);
-			path = AudioCallKit;
-			sourceTree = "<group>";
-		};
-		B2B19145230AA32300D0038A /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				B2B19146230AA32300D0038A /* Controllers */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		B2B19146230AA32300D0038A /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				B2B19147230AA32300D0038A /* ACKMainViewController.h */,
-				B2B19148230AA32300D0038A /* ACKCallViewController.m */,
-				B2B19149230AA32300D0038A /* ACKLoginViewController.m */,
-				B2B1914A230AA32300D0038A /* ACKCallViewController.h */,
-				B2B1914B230AA32300D0038A /* ACKMainViewController.m */,
-				B2B1914C230AA32300D0038A /* ACKLoginViewController.h */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		B2B19164230AA50000D0038A /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				B2B19165230AA50000D0038A /* LaunchScreen.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		B2B19167230AA50000D0038A /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				B2B1916A230AA50000D0038A /* UIHelper.h */,
-				B2B1917A230AA50000D0038A /* UIHelper.m */,
-				B2B1916B230AA50000D0038A /* VoxBranding.h */,
-				B2B19169230AA50000D0038A /* VoxBranding.m */,
-				B2B1916C230AA50000D0038A /* UIExtensions.h */,
-				B2B19168230AA50000D0038A /* UIExtensions.m */,
-				B2B1916D230AA50000D0038A /* Views */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		B2B1916D230AA50000D0038A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B2B1916E230AA50000D0038A /* VoxKeyPadView.h */,
-				B2B1916F230AA50000D0038A /* VoxButtonWithLabel.m */,
-				B2B19170230AA50000D0038A /* VoxEndpointLabel.m */,
-				B2B19171230AA50000D0038A /* VoxLabelWithTimer.m */,
-				B2B19172230AA50000D0038A /* VoxTextFieldWithButton.h */,
-				B2B19173230AA50000D0038A /* VoxTextField.h */,
-				B2B19174230AA50000D0038A /* VoxButtonWithLabel.h */,
-				B2B19175230AA50000D0038A /* VoxEndpointLabel.h */,
-				B2B19176230AA50000D0038A /* VoxKeyPadView.m */,
-				B2B19177230AA50000D0038A /* VoxTextFieldWithButton.m */,
-				B2B19178230AA50000D0038A /* VoxLabelWithTimer.h */,
-				B2B19179230AA50000D0038A /* VoxTextField.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		B2B1917B230AA50000D0038A /* AuthTokens */ = {
-			isa = PBXGroup;
-			children = (
-				B2B1917C230AA50000D0038A /* VoxTokenManager.h */,
-				B2B1917E230AA50000D0038A /* VoxTokenManager.m */,
-				B2B1917F230AA50000D0038A /* VoxKeys.h */,
-				B2B1917D230AA50000D0038A /* VoxKeys.m */,
-			);
-			path = AuthTokens;
-			sourceTree = "<group>";
-		};
-		B2B19187230AA50100D0038A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B2B19188230AA50100D0038A /* LaunchScreen.storyboard */,
-				B2B1918A230AA50100D0038A /* Shared.xcassets */,
-				B2B1918B230AA50100D0038A /* VoxKeyPadView.xib */,
-				B2B1918C230AA50100D0038A /* Fonts */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		B2B1918C230AA50100D0038A /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B2B1918D230AA50100D0038A /* Roboto-Regular.ttf */,
-				B2B1918E230AA50100D0038A /* Roboto-Bold.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		B2DD9DB722F480B9003923CF /* AudioCall */ = {
-			isa = PBXGroup;
-			children = (
-				B2B191B3230AA74A00D0038A /* AudioCall.entitlements */,
-				B2DD9E4522F48B57003923CF /* README.md */,
-				B2DD9DD322F48108003923CF /* ACAppDelegate.h */,
-				B2DD9DE322F48108003923CF /* ACAppDelegate.m */,
-				B2DD9DD122F48108003923CF /* ACAuthService.h */,
-				B2DD9DD422F48108003923CF /* ACAuthService.m */,
-				B2DD9DD722F48108003923CF /* ACCallManager.h */,
-				B2DD9DD522F48108003923CF /* ACCallManager.m */,
-				B2DD9DCD22F48107003923CF /* ACKeys.h */,
-				B2DD9DD222F48108003923CF /* ACKeys.m */,
-				B2DD9DCC22F48107003923CF /* ACTokenManager.h */,
-				B2DD9DCE22F48107003923CF /* ACTokenManager.m */,
-				B2DD9DE222F48108003923CF /* ACUser.h */,
-				B2DD9DD022F48108003923CF /* ACUser.m */,
-				B2DD9DCF22F48107003923CF /* Info.plist */,
-				B2DD9DD622F48108003923CF /* main.m */,
-				B2DD9DD822F48108003923CF /* Resources */,
-				B2DD9DE422F48108003923CF /* UI */,
-			);
-			path = AudioCall;
-			sourceTree = "<group>";
-		};
-		B2DD9DD822F48108003923CF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				B2DD9DD922F48108003923CF /* Storyboards */,
-				B2DD9DDC22F48108003923CF /* ACAssets.xcassets */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		B2DD9DD922F48108003923CF /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				B2DD9DDA22F48108003923CF /* ACKeyPadView.xib */,
-				B2DD9DDB22F48108003923CF /* ACMain.storyboard */,
+				928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		B2DD9DE422F48108003923CF /* UI */ = {
+		92049F6722DC71FD006DB07F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B2DD9DE522F48108003923CF /* Controllers */,
-				B2DD9DF022F48108003923CF /* Views */,
+				92049F6422DC7166006DB07F /* Storyboards */,
+				92653F1522D88C0900B3CBE5 /* ACAssets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		92653F1922D88E1700B3CBE5 /* AudioCall */ = {
+			isa = PBXGroup;
+			children = (
+				92049F6D22DC72AF006DB07F /* README.md */,
+				92049F8822DCC6B4006DB07F /* Info.plist */,
+				92ADE49A22D8A60300A604E3 /* main.m */,
+				92049F7622DC7389006DB07F /* ACAppDelegate.h */,
+				92049F7722DC7389006DB07F /* ACAppDelegate.m */,
+				92BC83782302FFC300319152 /* ACAuthService.h */,
+				92BC83772302FFC300319152 /* ACAuthService.m */,
+				92A0112E22E74C0B00849612 /* ACCallManager.h */,
+				92A0112F22E74C0B00849612 /* ACCallManager.m */,
+				92A0110B22E7484200849612 /* UI */,
+				92049F6722DC71FD006DB07F /* Resources */,
+			);
+			path = AudioCall;
+			sourceTree = "<group>";
+		};
+		9284FAA522F97D66002B9E70 /* AudioCallKit */ = {
+			isa = PBXGroup;
+			children = (
+				926078C52304636700B9E4C6 /* README.md */,
+				9284FAB422F97D67002B9E70 /* Info.plist */,
+				92F7242522FC73AA005742DA /* AudioCallKit.entitlements */,
+				9284FADC22F995AB002B9E70 /* UI */,
+				9284FAB522F97D67002B9E70 /* main.m */,
+				9284FAA622F97D66002B9E70 /* ACKAppDelegate.h */,
+				9284FAA722F97D66002B9E70 /* ACKAppDelegate.m */,
+				9284FAD622F99468002B9E70 /* ACKAuthService.h */,
+				9284FAD722F99468002B9E70 /* ACKAuthService.m */,
+				9284FB1822F9C208002B9E70 /* ACKPushCallNotifier.h */,
+				9284FB1922F9C208002B9E70 /* ACKPushCallNotifier.m */,
+				92D153D92338F23B002282A6 /* ACKCallWrapper.h */,
+				92D153DA2338F23B002282A6 /* ACKCallWrapper.m */,
+				9284FAD322F99343002B9E70 /* ACKCallManager.h */,
+				9284FAD422F99343002B9E70 /* ACKCallManager.m */,
+				92DB9E632334CEFC007BF73C /* CXExtensions.h */,
+				92DB9E642334CEFC007BF73C /* CXExtensions.m */,
+				92A8179A22FDB8400039E0E6 /* Main.storyboard */,
+				9284FAAF22F97D67002B9E70 /* ACKAssets.xcassets */,
+			);
+			path = AudioCallKit;
+			sourceTree = "<group>";
+		};
+		9284FADC22F995AB002B9E70 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9284FADD22F99804002B9E70 /* Controllers */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		B2DD9DE522F48108003923CF /* Controllers */ = {
+		9284FADD22F99804002B9E70 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2DD9DE622F48108003923CF /* ACLoginViewController.m */,
-				B2DD9DE722F48108003923CF /* ACCallViewController.m */,
-				B2DD9DE822F48108003923CF /* ACMainViewController.h */,
-				B2DD9DE922F48108003923CF /* ACIncomingCallViewController.h */,
-				B2DD9DEA22F48108003923CF /* ACCallFailedViewController.m */,
-				B2DD9DEB22F48108003923CF /* ACLoginViewController.h */,
-				B2DD9DEC22F48108003923CF /* ACIncomingCallViewController.m */,
-				B2DD9DED22F48108003923CF /* ACMainViewController.m */,
-				B2DD9DEE22F48108003923CF /* ACCallViewController.h */,
-				B2DD9DEF22F48108003923CF /* ACCallFailedViewController.h */,
+				9284FADE22F99827002B9E70 /* ACKLoginViewController.h */,
+				9284FADF22F99827002B9E70 /* ACKLoginViewController.m */,
+				9284FAE122F99833002B9E70 /* ACKMainViewController.h */,
+				9284FAE222F99833002B9E70 /* ACKMainViewController.m */,
+				9284FAE422F9983D002B9E70 /* ACKCallViewController.h */,
+				9284FAE522F9983D002B9E70 /* ACKCallViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		B2DD9DF022F48108003923CF /* Views */ = {
+		9284FAFD22F9B921002B9E70 /* AuthTokens */ = {
 			isa = PBXGroup;
 			children = (
-				B2DD9DF122F48108003923CF /* ACCustomTextFieldWithButton.h */,
-				B2DD9DF222F48108003923CF /* ACCustomTextField.m */,
-				B2DD9DF322F48108003923CF /* ACKeyPadView.m */,
-				B2DD9DF422F48108003923CF /* ACButtonWithLabel.h */,
-				B2DD9DF522F48108003923CF /* ACLabelWithTimer.m */,
-				B2DD9DF622F48108003923CF /* ACCustomTextField.h */,
-				B2DD9DF722F48108003923CF /* ACCustomTextFieldWithButton.m */,
-				B2DD9DF822F48108003923CF /* ACKeyPadView.h */,
-				B2DD9DF922F48108003923CF /* ACLabelWithTimer.h */,
-				B2DD9DFA22F48108003923CF /* ACButtonWithLabel.m */,
+				9284FACD22F98F09002B9E70 /* VoxKeys.h */,
+				9284FACE22F98F09002B9E70 /* VoxKeys.m */,
+				9284FAD022F9921E002B9E70 /* VoxTokenManager.h */,
+				9284FAD122F9921E002B9E70 /* VoxTokenManager.m */,
+			);
+			path = AuthTokens;
+			sourceTree = "<group>";
+		};
+		9284FAFE22F9B952002B9E70 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9284FAFF22F9BAF0002B9E70 /* Views */,
+				8EC3731721CBCA4500371E4C /* VoxBranding.h */,
+				8EC3731821CBCA4500371E4C /* VoxBranding.m */,
+				92C8E1FA22EB2097006CCCFF /* UIHelper.h */,
+				92C8E1FB22EB2097006CCCFF /* UIHelper.m */,
+				92C8E1FD22EB2152006CCCFF /* UIExtensions.h */,
+				92C8E1FE22EB2152006CCCFF /* UIExtensions.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9284FAFF22F9BAF0002B9E70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9284FAFA22F99B77002B9E70 /* VoxLabelWithTimer.h */,
+				9284FAFB22F99B77002B9E70 /* VoxLabelWithTimer.m */,
+				9284FAEE22F99A50002B9E70 /* VoxButtonWithLabel.h */,
+				9284FAEF22F99A50002B9E70 /* VoxButtonWithLabel.m */,
+				9284FAF122F99A81002B9E70 /* VoxTextFieldWithButton.h */,
+				9284FAF222F99A81002B9E70 /* VoxTextFieldWithButton.m */,
+				9284FAF422F99AB1002B9E70 /* VoxTextField.h */,
+				9284FAF522F99AB1002B9E70 /* VoxTextField.m */,
+				9284FAF722F99B44002B9E70 /* VoxKeyPadView.h */,
+				9284FAF822F99B44002B9E70 /* VoxKeyPadView.m */,
+				9200A52122FD9D62000495FE /* VoxEndpointLabel.h */,
+				9200A52222FD9D62000495FE /* VoxEndpointLabel.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9284FB0022F9BAFB002B9E70 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				92D551DC22F1D31500873E8C /* Fonts */,
+				8E9C929421A31D9100BE506F /* Shared.xcassets */,
+				928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */,
+				8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		92A0110B22E7484200849612 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				92A0110C22E7484200849612 /* Controllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		92A0110C22E7484200849612 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				92A0111322E7484200849612 /* ACLoginViewController.h */,
+				92A0110F22E7484200849612 /* ACLoginViewController.m */,
+				92A0111522E7484200849612 /* ACMainViewController.h */,
+				92A0111122E7484200849612 /* ACMainViewController.m */,
+				92A0111022E7484200849612 /* ACCallViewController.h */,
+				92A0111622E7484200849612 /* ACCallViewController.m */,
+				92A0110E22E7484200849612 /* ACIncomingCallViewController.h */,
+				92A0111422E7484200849612 /* ACIncomingCallViewController.m */,
+				92A0110D22E7484200849612 /* ACCallFailedViewController.h */,
+				92A0111222E7484200849612 /* ACCallFailedViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		92D551DC22F1D31500873E8C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				92D551DD22F1D31500873E8C /* Roboto-Regular.ttf */,
+				92D551DE22F1D31500873E8C /* Roboto-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -613,13 +574,30 @@
 			productReference = 8E9C926321A3148100BE506F /* Quality Issues.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B2B1912E230AA2E300D0038A /* AudioCallKit */ = {
+		92653F0022D8891C00B3CBE5 /* AudioCall */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2B19142230AA2E500D0038A /* Build configuration list for PBXNativeTarget "AudioCallKit" */;
+			buildConfigurationList = 92653F0F22D8891C00B3CBE5 /* Build configuration list for PBXNativeTarget "AudioCall" */;
 			buildPhases = (
-				B2B1912B230AA2E300D0038A /* Sources */,
-				B2B1912C230AA2E300D0038A /* Frameworks */,
-				B2B1912D230AA2E300D0038A /* Resources */,
+				92653F0222D8891C00B3CBE5 /* Sources */,
+				92653F0722D8891C00B3CBE5 /* Frameworks */,
+				92653F0922D8891C00B3CBE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudioCall;
+			productName = QuickStart;
+			productReference = 92653F1222D8891C00B3CBE5 /* AudioCall.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9284FAA322F97D66002B9E70 /* AudioCallKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9284FAB922F97D67002B9E70 /* Build configuration list for PBXNativeTarget "AudioCallKit" */;
+			buildPhases = (
+				9284FAA022F97D66002B9E70 /* Sources */,
+				9284FAA122F97D66002B9E70 /* Frameworks */,
+				9284FAA222F97D66002B9E70 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -627,24 +605,7 @@
 			);
 			name = AudioCallKit;
 			productName = AudioCallKit;
-			productReference = B2B1912F230AA2E300D0038A /* AudioCallKit.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B2DD9DB522F480B9003923CF /* AudioCall */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2DD9DCB22F480BA003923CF /* Build configuration list for PBXNativeTarget "AudioCall" */;
-			buildPhases = (
-				B2DD9DB222F480B9003923CF /* Sources */,
-				B2DD9DB322F480B9003923CF /* Frameworks */,
-				B2DD9DB422F480B9003923CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AudioCall;
-			productName = AudioCall;
-			productReference = B2DD9DB622F480B9003923CF /* AudioCall.app */;
+			productReference = 9284FAA422F97D66002B9E70 /* AudioCallKit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -667,22 +628,11 @@
 							};
 						};
 					};
-					B2B1912E230AA2E300D0038A = {
-						CreatedOnToolsVersion = 10.3;
-						SystemCapabilities = {
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-							com.apple.Push = {
-								enabled = 1;
-							};
-						};
-					};
-					B2DD9DB522F480B9003923CF = {
+					9284FAA322F97D66002B9E70 = {
 						CreatedOnToolsVersion = 10.3;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -703,8 +653,8 @@
 			targets = (
 				8E9C924721A313BE00BE506F /* Quick Start */,
 				8E9C926221A3148100BE506F /* Quality Issues */,
-				B2DD9DB522F480B9003923CF /* AudioCall */,
-				B2B1912E230AA2E300D0038A /* AudioCallKit */,
+				92653F0022D8891C00B3CBE5 /* AudioCall */,
+				9284FAA322F97D66002B9E70 /* AudioCallKit */,
 			);
 		};
 /* End PBXProject section */
@@ -714,9 +664,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9C929521A31D9100BE506F /* Shared.xcassets in Resources */,
 				8E9C925521A313C000BE506F /* QSAssets.xcassets in Resources */,
+				92D551E322F1D31500873E8C /* Roboto-Bold.ttf in Resources */,
+				92D551DF22F1D31500873E8C /* Roboto-Regular.ttf in Resources */,
+				8E7B2C0821AC11DB0023167F /* LaunchScreen.storyboard in Resources */,
 				8E9C925321A313BE00BE506F /* QSMain.storyboard in Resources */,
-				B2B191B2230AA6D400D0038A /* Shared.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,37 +677,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E9C929621A31D9100BE506F /* Shared.xcassets in Resources */,
 				8E9C926F21A3148200BE506F /* QIAssets.xcassets in Resources */,
+				9284FB1522F9BCD3002B9E70 /* VoxKeyPadView.xib in Resources */,
+				92D551E422F1D31500873E8C /* Roboto-Bold.ttf in Resources */,
+				92D551E022F1D31500873E8C /* Roboto-Regular.ttf in Resources */,
 				8EC372F421CB9BCD00371E4C /* QualityIssues.storyboard in Resources */,
-				B2B191B1230AA6D200D0038A /* Shared.xcassets in Resources */,
+				8E7B2C0B21AC11E70023167F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B1912D230AA2E300D0038A /* Resources */ = {
+		92653F0922D8891C00B3CBE5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2B191A2230AA50100D0038A /* VoxKeyPadView.xib in Resources */,
-				B2B191A4230AA50100D0038A /* Roboto-Bold.ttf in Resources */,
-				B2B1915D230AA38600D0038A /* Main.storyboard in Resources */,
-				B2B1915F230AA3A900D0038A /* ACKAssets.xcassets in Resources */,
-				B2B191A0230AA50100D0038A /* LaunchScreen.storyboard in Resources */,
-				B2B19190230AA50100D0038A /* LaunchScreen.strings in Resources */,
-				B2B191B8230AA8D900D0038A /* README.md in Resources */,
-				B2B191A3230AA50100D0038A /* Roboto-Regular.ttf in Resources */,
-				B2B191A1230AA50100D0038A /* Shared.xcassets in Resources */,
+				9244C00A22DF600B007F0064 /* ACMain.storyboard in Resources */,
+				92D551E122F1D31500873E8C /* Roboto-Regular.ttf in Resources */,
+				92049F8A22DCC79F006DB07F /* LaunchScreen.storyboard in Resources */,
+				92049F6E22DC72AF006DB07F /* README.md in Resources */,
+				92653F0A22D8891C00B3CBE5 /* Shared.xcassets in Resources */,
+				928AE67922DF5BBB009F8DB5 /* VoxKeyPadView.xib in Resources */,
+				92D551E522F1D31500873E8C /* Roboto-Bold.ttf in Resources */,
+				92653F1622D88C0900B3CBE5 /* ACAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2DD9DB422F480B9003923CF /* Resources */ = {
+		9284FAA222F97D66002B9E70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2DD9E0422F48108003923CF /* ACAssets.xcassets in Resources */,
-				B2B191B0230AA6D200D0038A /* Shared.xcassets in Resources */,
-				B2DD9E0222F48108003923CF /* ACKeyPadView.xib in Resources */,
-				B2DD9E4622F48B57003923CF /* README.md in Resources */,
-				B2DD9E0322F48108003923CF /* ACMain.storyboard in Resources */,
+				92A8179B22FDB8400039E0E6 /* Main.storyboard in Resources */,
+				9284FAC122F97DE6002B9E70 /* Roboto-Regular.ttf in Resources */,
+				9284FABB22F97DD0002B9E70 /* LaunchScreen.storyboard in Resources */,
+				9284FB1422F9BCD2002B9E70 /* VoxKeyPadView.xib in Resources */,
+				9284FAB022F97D67002B9E70 /* ACKAssets.xcassets in Resources */,
+				9284FAC022F97DE3002B9E70 /* Roboto-Bold.ttf in Resources */,
+				926078C62304636700B9E4C6 /* README.md in Resources */,
+				9284FABC22F97DD3002B9E70 /* Shared.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,9 +726,7 @@
 			files = (
 				8E9C925021A313BE00BE506F /* QSViewController.m in Sources */,
 				8E9C925B21A313C000BE506F /* main.m in Sources */,
-				B2B191AB230AA61700D0038A /* VoxBranding.m in Sources */,
 				8E9C924D21A313BE00BE506F /* QSAppDelegate.m in Sources */,
-				B2B191A7230AA61100D0038A /* UIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,97 +734,105 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F7242222FC47C6005742DA /* VoxPermissionsManager.m in Sources */,
+				9284FB1E22F9C8B0002B9E70 /* VoxUser.m in Sources */,
+				9284FB2122FACA88002B9E70 /* VoxApplication.m in Sources */,
+				9284FB0522F9BCAE002B9E70 /* VoxErrors.m in Sources */,
+				9284FB0B22F9BCB7002B9E70 /* VoxTextFieldWithButton.m in Sources */,
+				92DF8D2622F46EB600DF2C40 /* VoxBranding.m in Sources */,
+				9284FB0922F9BCB5002B9E70 /* VoxTextField.m in Sources */,
+				9284FB1322F9BCC8002B9E70 /* VoxKeys.m in Sources */,
+				9284FB0222F9BCA6002B9E70 /* UIExtensions.m in Sources */,
+				9284FB0F22F9BCBC002B9E70 /* VoxLabelWithTimer.m in Sources */,
 				8E89C74121AD6F9C0071E45C /* QICallViewController.m in Sources */,
+				9284FB1122F9BCC5002B9E70 /* VoxTokenManager.m in Sources */,
+				9284FB0D22F9BCBA002B9E70 /* VoxButtonWithLabel.m in Sources */,
 				8E89C73721AD6F040071E45C /* QILoginViewController.m in Sources */,
 				8E89C73C21AD6F8A0071E45C /* QIDialerViewController.m in Sources */,
 				8E05439621CAA3E500DF2EE4 /* QIIssueCollectionViewCell.m in Sources */,
+				9200A52322FD9D62000495FE /* VoxEndpointLabel.m in Sources */,
 				8E9C927521A3148200BE506F /* main.m in Sources */,
+				9284FB0722F9BCB2002B9E70 /* VoxKeyPadView.m in Sources */,
+				9284FB0122F9BCA4002B9E70 /* UIHelper.m in Sources */,
 				8E89C74721AD92500071E45C /* QIVoxClientManager.m in Sources */,
 				8E9C926721A3148100BE506F /* QIAppDelegate.m in Sources */,
-				B2B191AF230AA64800D0038A /* UIHelper.m in Sources */,
-				B2B191AA230AA61600D0038A /* VoxBranding.m in Sources */,
-				B2B191A6230AA61000D0038A /* UIExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B1912B230AA2E300D0038A /* Sources */ = {
+		92653F0222D8891C00B3CBE5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2B1919E230AA50100D0038A /* VoxPermissionsManager.m in Sources */,
-				B2B1919C230AA50100D0038A /* VoxErrors.m in Sources */,
-				B2B1919D230AA50100D0038A /* VoxApplication.m in Sources */,
-				B2B19159230AA34200D0038A /* ACKPushCallNotifier.m in Sources */,
-				B2B19158230AA34200D0038A /* ACKCallManager.m in Sources */,
-				B2B19193230AA50100D0038A /* VoxButtonWithLabel.m in Sources */,
-				B2B1914D230AA32300D0038A /* ACKCallViewController.m in Sources */,
-				B2B19192230AA50100D0038A /* VoxBranding.m in Sources */,
-				B2B1919F230AA50100D0038A /* VoxUser.m in Sources */,
-				B2B19197230AA50100D0038A /* VoxTextFieldWithButton.m in Sources */,
-				B2B1915B230AA34200D0038A /* ACKAuthService.m in Sources */,
-				B2B19191230AA50100D0038A /* UIExtensions.m in Sources */,
-				B2B1919B230AA50100D0038A /* VoxTokenManager.m in Sources */,
-				B2B19194230AA50100D0038A /* VoxEndpointLabel.m in Sources */,
-				B2B19195230AA50100D0038A /* VoxLabelWithTimer.m in Sources */,
-				B2B1914E230AA32300D0038A /* ACKLoginViewController.m in Sources */,
-				B2B1919A230AA50100D0038A /* VoxKeys.m in Sources */,
-				B2B19196230AA50100D0038A /* VoxKeyPadView.m in Sources */,
-				B2B1915A230AA34200D0038A /* ACKAppDelegate.m in Sources */,
-				B2B19161230AA44800D0038A /* main.m in Sources */,
-				B2B1914F230AA32300D0038A /* ACKMainViewController.m in Sources */,
-				B2B19198230AA50100D0038A /* VoxTextField.m in Sources */,
-				B2B19199230AA50100D0038A /* UIHelper.m in Sources */,
+				9244C00422DF5DC9007F0064 /* ACAppDelegate.m in Sources */,
+				9228F69922DF6BB00070E0DE /* VoxUser.m in Sources */,
+				92A0112722E7484200849612 /* ACIncomingCallViewController.m in Sources */,
+				9284FB0A22F9BCB7002B9E70 /* VoxTextFieldWithButton.m in Sources */,
+				92182AFA22E89AA400E5992B /* VoxErrors.m in Sources */,
+				9284FB0E22F9BCBC002B9E70 /* VoxLabelWithTimer.m in Sources */,
+				92A0112822E7484200849612 /* ACCallViewController.m in Sources */,
+				92C8E1FC22EB2098006CCCFF /* UIHelper.m in Sources */,
+				92C8E1FF22EB2152006CCCFF /* UIExtensions.m in Sources */,
+				92A0112522E7484200849612 /* ACMainViewController.m in Sources */,
+				92A0112622E7484200849612 /* ACCallFailedViewController.m in Sources */,
+				9284FB0C22F9BCB9002B9E70 /* VoxButtonWithLabel.m in Sources */,
+				92ADE49B22D8A60300A604E3 /* main.m in Sources */,
+				92A0112422E7484200849612 /* ACLoginViewController.m in Sources */,
+				9284FB2222FACA88002B9E70 /* VoxApplication.m in Sources */,
+				92F7242322FC47C6005742DA /* VoxPermissionsManager.m in Sources */,
+				9284FB1022F9BCC5002B9E70 /* VoxTokenManager.m in Sources */,
+				9284FB1222F9BCC7002B9E70 /* VoxKeys.m in Sources */,
+				9200A52422FD9D62000495FE /* VoxEndpointLabel.m in Sources */,
+				92ADE49622D8A0DB00A604E3 /* VoxBranding.m in Sources */,
+				92A0113022E74C0B00849612 /* ACCallManager.m in Sources */,
+				92BC83792302FFC400319152 /* ACAuthService.m in Sources */,
+				9284FB0622F9BCB2002B9E70 /* VoxKeyPadView.m in Sources */,
+				9284FB0822F9BCB5002B9E70 /* VoxTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2DD9DB222F480B9003923CF /* Sources */ = {
+		9284FAA022F97D66002B9E70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2DD9E1F22F481DC003923CF /* ACCustomTextFieldWithButton.h in Sources */,
-				B2DD9E2022F481DC003923CF /* ACButtonWithLabel.h in Sources */,
-				B2DD9E2122F481DC003923CF /* ACCustomTextField.h in Sources */,
-				B2DD9E2222F481DC003923CF /* ACKeyPadView.h in Sources */,
-				B2DD9E2322F481DC003923CF /* ACLabelWithTimer.h in Sources */,
-				B2DD9E1A22F481CF003923CF /* ACMainViewController.h in Sources */,
-				B2DD9E1B22F481CF003923CF /* ACIncomingCallViewController.h in Sources */,
-				B2DD9E1C22F481CF003923CF /* ACLoginViewController.h in Sources */,
-				B2DD9E1D22F481CF003923CF /* ACCallViewController.h in Sources */,
-				B2DD9E1E22F481CF003923CF /* ACCallFailedViewController.h in Sources */,
-				B2DD9E1422F481C5003923CF /* ACAppDelegate.h in Sources */,
-				B2DD9E1522F481C5003923CF /* ACAuthService.h in Sources */,
-				B2DD9E1622F481C5003923CF /* ACCallManager.h in Sources */,
-				B2DD9E1722F481C5003923CF /* ACKeys.h in Sources */,
-				B2DD9E1822F481C5003923CF /* ACTokenManager.h in Sources */,
-				B2DD9E1922F481C5003923CF /* ACUser.h in Sources */,
-				B2DD9E1022F48108003923CF /* ACKeyPadView.m in Sources */,
-				B2B191A8230AA61500D0038A /* VoxBranding.m in Sources */,
-				B2DD9E0B22F48108003923CF /* ACCallViewController.m in Sources */,
-				B2DD9DFD22F48108003923CF /* ACUser.m in Sources */,
-				B2DD9E0D22F48108003923CF /* ACIncomingCallViewController.m in Sources */,
-				B2DD9DFF22F48108003923CF /* ACAuthService.m in Sources */,
-				B2DD9E0922F48108003923CF /* ACAppDelegate.m in Sources */,
-				B2DD9DFB22F48108003923CF /* ACTokenManager.m in Sources */,
-				B2DD9E0022F48108003923CF /* ACCallManager.m in Sources */,
-				B2DD9E1222F48108003923CF /* ACCustomTextFieldWithButton.m in Sources */,
-				B2DD9E0122F48108003923CF /* main.m in Sources */,
-				B2B191AE230AA64700D0038A /* UIHelper.m in Sources */,
-				B2DD9E0A22F48108003923CF /* ACLoginViewController.m in Sources */,
-				B2DD9E0E22F48108003923CF /* ACMainViewController.m in Sources */,
-				B2B191AC230AA62900D0038A /* VoxKeys.m in Sources */,
-				B2DD9E1322F48108003923CF /* ACButtonWithLabel.m in Sources */,
-				B2B191A5230AA60F00D0038A /* UIExtensions.m in Sources */,
-				B2DD9DFE22F48108003923CF /* ACKeys.m in Sources */,
-				B2B191AD230AA62D00D0038A /* VoxTokenManager.m in Sources */,
-				B2DD9E0F22F48108003923CF /* ACCustomTextField.m in Sources */,
-				B2DD9E1122F48108003923CF /* ACLabelWithTimer.m in Sources */,
-				B2DD9E0C22F48108003923CF /* ACCallFailedViewController.m in Sources */,
+				9284FB1722F9C1AF002B9E70 /* VoxUser.m in Sources */,
+				9284FAD222F9921E002B9E70 /* VoxTokenManager.m in Sources */,
+				9284FB1A22F9C208002B9E70 /* ACKPushCallNotifier.m in Sources */,
+				9284FAF922F99B44002B9E70 /* VoxKeyPadView.m in Sources */,
+				9284FABD22F97DD5002B9E70 /* VoxErrors.m in Sources */,
+				9284FAE322F99833002B9E70 /* ACKMainViewController.m in Sources */,
+				9284FAB622F97D67002B9E70 /* main.m in Sources */,
+				9284FAE022F99827002B9E70 /* ACKLoginViewController.m in Sources */,
+				9284FAF622F99AB1002B9E70 /* VoxTextField.m in Sources */,
+				9284FAA822F97D66002B9E70 /* ACKAppDelegate.m in Sources */,
+				9284FAE622F9983D002B9E70 /* ACKCallViewController.m in Sources */,
+				9284FABA22F97DC9002B9E70 /* UIHelper.m in Sources */,
+				9284FAD822F99468002B9E70 /* ACKAuthService.m in Sources */,
+				9284FABF22F97DDF002B9E70 /* VoxBranding.m in Sources */,
+				9284FB2322FACA88002B9E70 /* VoxApplication.m in Sources */,
+				9284FAFC22F99B77002B9E70 /* VoxLabelWithTimer.m in Sources */,
+				92DB9E652334CEFC007BF73C /* CXExtensions.m in Sources */,
+				9200A52522FD9D62000495FE /* VoxEndpointLabel.m in Sources */,
+				92F7242422FC47C6005742DA /* VoxPermissionsManager.m in Sources */,
+				9284FAD522F99343002B9E70 /* ACKCallManager.m in Sources */,
+				9284FACF22F98F09002B9E70 /* VoxKeys.m in Sources */,
+				9284FAF022F99A50002B9E70 /* VoxButtonWithLabel.m in Sources */,
+				9284FAF322F99A81002B9E70 /* VoxTextFieldWithButton.m in Sources */,
+				9284FABE22F97DDA002B9E70 /* UIExtensions.m in Sources */,
+				92D153DB2338F23B002282A6 /* ACKCallWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8E7B2C0621AC11DB0023167F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E7B2C0721AC11DB0023167F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		8E9C925121A313BE00BE506F /* QSMain.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -882,22 +847,6 @@
 				8EC372F321CB9BCD00371E4C /* Base */,
 			);
 			name = QualityIssues.storyboard;
-			sourceTree = "<group>";
-		};
-		B2B19165230AA50000D0038A /* LaunchScreen.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2B19166230AA50000D0038A /* en */,
-			);
-			name = LaunchScreen.strings;
-			sourceTree = "<group>";
-		};
-		B2B19188230AA50100D0038A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2B19189230AA50100D0038A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1139,6 +1088,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1210,6 +1160,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1239,11 +1190,12 @@
 			};
 			name = Release;
 		};
-		B2B19143230AA2E500D0038A /* Debug */ = {
+		92653F1022D8891C00B3CBE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1251,47 +1203,73 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = AudioCallKit/AudioCallKit.entitlements;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = AudioCallKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/AudioCall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCallKit;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		B2B19144230AA2E500D0038A /* Release */ = {
+		92653F1122D8891C00B3CBE5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1299,31 +1277,54 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = AudioCallKit/AudioCallKit.entitlements;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = AudioCallKit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/AudioCall/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCallKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1331,7 +1332,7 @@
 			};
 			name = Release;
 		};
-		B2DD9DC922F480BA003923CF /* Debug */ = {
+		9284FAB722F97D67002B9E70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1347,14 +1348,17 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = AudioCallKit/AudioCallKit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1362,22 +1366,23 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = AudioCall/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = AudioCallKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCallKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		B2DD9DCA22F480BA003923CF /* Release */ = {
+		9284FAB822F97D67002B9E70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1393,25 +1398,29 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = AudioCallKit/AudioCallKit.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = AudioCall/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = AudioCallKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.AudioCallKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1449,20 +1458,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2B19142230AA2E500D0038A /* Build configuration list for PBXNativeTarget "AudioCallKit" */ = {
+		92653F0F22D8891C00B3CBE5 /* Build configuration list for PBXNativeTarget "AudioCall" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2B19143230AA2E500D0038A /* Debug */,
-				B2B19144230AA2E500D0038A /* Release */,
+				92653F1022D8891C00B3CBE5 /* Debug */,
+				92653F1122D8891C00B3CBE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2DD9DCB22F480BA003923CF /* Build configuration list for PBXNativeTarget "AudioCall" */ = {
+		9284FAB922F97D67002B9E70 /* Build configuration list for PBXNativeTarget "AudioCallKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2DD9DC922F480BA003923CF /* Debug */,
-				B2DD9DCA22F480BA003923CF /* Release */,
+				9284FAB722F97D67002B9E70 /* Debug */,
+				9284FAB822F97D67002B9E70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

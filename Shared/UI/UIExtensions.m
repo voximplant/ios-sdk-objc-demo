@@ -76,3 +76,15 @@
 @end
 
 
+@implementation UIViewController (Segues)
+
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender completion:(dispatch_block_t)completion {
+    [self performSegueWithIdentifier:identifier sender:sender];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        completion();
+    });
+}
+
+@end
+
+

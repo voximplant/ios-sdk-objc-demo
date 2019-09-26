@@ -3,11 +3,8 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "VoxApplication.h"
 #import <CallKit/CallKit.h>
 
-@interface ACKMainViewController : UIViewController<AppLifeCycleDelegate, CXCallObserverDelegate>
-
-- (void)reconnect;
+@interface ACKMainViewController : UIViewController<CXCallObserverDelegate>
 
 @end

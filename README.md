@@ -15,4 +15,3 @@ The demo demonstrates basic audio call functionality of the Voximplant iOS SDK.
 ## [Audio CallKit demo](AudioCallKit)
 
 The demo demonstrates [CallKit](https://developer.apple.com/documentation/callkit) integration with basic audio call functionality of the Voximplant iOS SDK . 
-

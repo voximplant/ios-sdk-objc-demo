@@ -10,19 +10,15 @@
 
 @interface NSUserDefaults (lastUser)
 
-@property (strong, nonatomic, readonly) NSString *lastUserIDKey;
-@property (strong, nonatomic, readonly) NSString *lastUserDisplayNameKey;
+@property (strong, nonatomic, readonly) NSString *lastFullUsername;
 
 @end
 
 
 @implementation NSUserDefaults (lastUser)
 
-- (NSString *)lastUserIDKey {
-    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"latestUserID"];
-}
-- (NSString *)lastUserDisplayNameKey {
-    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"latestUserDisplayName"];
+- (NSString *)lastFullUsername {
+    return [[[UIApplication userDefaultsDomain] stringByAppendingString:@"."] stringByAppendingString:@"lastFullUsername"];
 }
 
 @end
@@ -50,18 +46,16 @@
     _pushToken = pushToken;
 }
 
-- (VoxUser *)lastLoggedInUser {
-    NSString *username = [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastUserIDKey];
-    NSString *displayName = [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastUserDisplayNameKey];
-    if (username && displayName) {
-        return [VoxUser userWithUsername:username displayName:displayName];
-    }
-    return nil;
+- (NSString *)loggedInUser {
+    return [NSUserDefaults.standardUserDefaults stringForKey:NSUserDefaults.standardUserDefaults.lastFullUsername];
 }
 
-- (void)setLastLoggedInUser:(VoxUser *)newValue {
-    [NSUserDefaults.standardUserDefaults setValue:newValue.username forKey:NSUserDefaults.standardUserDefaults.lastUserIDKey];
-    [NSUserDefaults.standardUserDefaults setValue:newValue.displayName forKey:NSUserDefaults.standardUserDefaults.lastUserDisplayNameKey];
+- (void)setLoggedInUser:(NSString *)newValue {
+    [NSUserDefaults.standardUserDefaults setValue:newValue forKey:NSUserDefaults.standardUserDefaults.lastFullUsername];
+}
+
+- (VIClientState)state {
+    return self.client.clientState;
 }
 
 #pragma mark - Init
@@ -115,7 +109,8 @@
                                                                                     expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
                                              VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                              [strongSelf.tokenManager setKeys:keys];
-                                             strongSelf.lastLoggedInUser = [VoxUser userWithUsername:user displayName:userDisplayName];
+                                             strongSelf.loggedInUser = user;
+                                             strongSelf.loggedInUserDisplayName = userDisplayName;
                                          }
                                          [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
                                          completion(userDisplayName, nil);
@@ -132,26 +127,30 @@
     return refreshToken;
 }
 
-- (void)loginUsingTokenWithUser:(NSString *)user completion:(VoxResult)completion {
+- (void)loginUsingAccessTokenWithCompletion:(VoxResult)completion {
     
-    if (self.client.clientState == VIClientStateLoggedIn) {
-        completion(self.lastLoggedInUser.displayName, nil);
+    NSString *user = self.loggedInUser;
+    if (!user) {
+        NSError *error = [NSError errorRequiredPassword];
+        completion(nil, error);
+        return;
+    }
+    
+    if (self.state == VIClientStateLoggedIn && self.loggedInUserDisplayName && !self.tokenManager.getKeys.refresh.isExpired) {
+        completion(self.loggedInUserDisplayName, nil);
         return;
     }
     
     __weak ACKAuthService *weakSelf = self;
-    [self disconnect:^(void) {
-        
-        __strong ACKAuthService *strongSelf = weakSelf;
-        [strongSelf connect:^(NSString *userDisplayName, NSError *error) {
+        [self connect:^(NSString *userDisplayName, NSError *error) {
             
             if (error) {
                 completion(nil, error);
                 return;
             }
-            
             __strong ACKAuthService *strongSelf = weakSelf;
-            [strongSelf updateAccessTokenIfNeeded:user completion:^(VoxToken * _Nullable accessToken, NSError * _Nullable error) {
+            [strongSelf updateAccessTokenIfNeeded:user
+                                       completion:^(VoxToken * _Nullable accessToken, NSError * _Nullable error) {
                 if (error) {
                     completion(nil, error);
                     return;
@@ -172,7 +171,8 @@
                                                                                         expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
                                                  VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                                  [strongSelf.tokenManager setKeys:keys];
-                                                 strongSelf.lastLoggedInUser = [VoxUser userWithUsername:user displayName:userDisplayName];
+                                                 strongSelf.loggedInUser = user;
+                                                 strongSelf.loggedInUserDisplayName = userDisplayName;
                                              }
                                              [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
                                              completion(userDisplayName, nil);
@@ -182,7 +182,6 @@
                                          }];
             }];
         }];
-    }];
 }
 
 - (void)updateAccessTokenIfNeeded:(NSString *)user
@@ -229,8 +228,8 @@
 
 #pragma mark - Connect methods
 - (void)connect:(void (^)(NSString *userDisplayName, NSError *error))completion {
-    if (self.client.clientState == VIClientStateDisconnected
-        || self.client.clientState == VIClientStateConnecting) {
+    if (self.state == VIClientStateDisconnected
+        || self.state == VIClientStateConnecting) {
         self.connectCompletion = completion;
         [self.client connect];
     } else {
@@ -239,7 +238,7 @@
 }
 
 - (void)disconnect:(dispatch_block_t)completion {
-    if (self.client.clientState == VIClientStateDisconnected) {
+    if (self.state == VIClientStateDisconnected) {
         completion();
     } else {
         self.disconnectCompletion = completion;

@@ -4,6 +4,7 @@
 
 #import "ACAppDelegate.h"
 #import "ACMainViewController.h"
+#import "UIExtensions.h"
 
 @implementation ACAppDelegate
 
@@ -14,6 +15,7 @@
     self.sharedClient = [[VIClient alloc] initWithDelegateQueue:dispatch_get_main_queue()];
     self.sharedAuthService = [[ACAuthService alloc] initWithClient:self.sharedClient];
     self.sharedCallManager = [[ACCallManager alloc] initWithClient:self.sharedClient authService:self.sharedAuthService];
+    self.sharedCallManager.delegate = self;
     
     [UIApplication.sharedApplication setIdleTimerDisabled:NO];
     
@@ -32,6 +34,14 @@
             && controllerWithReconnect.presentedViewController == nil) {
             [(ACMainViewController *)controllerWithReconnect reconnect];
         }
+    }
+}
+
+- (void)notifyIncomingCall:(VICall *)descriptor {
+    UIViewController *controller = self.window.rootViewController.toppestViewController;
+    if ([controller conformsToProtocol:@protocol(ACCallManagerDelegate)]) {
+        UIViewController <ACCallManagerDelegate> *protocolCastedController = (UIViewController <ACCallManagerDelegate> *)controller;
+        [protocolCastedController notifyIncomingCall:descriptor];
     }
 }
 

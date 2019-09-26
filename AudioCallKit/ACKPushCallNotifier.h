@@ -11,14 +11,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ACKPushCallNotifierDelegate <NSObject>
 
-- (void)handlePushIncomingCall:(NSDictionary *)callDescription
-                    completion:(void(^)(NSString *_Nullable result, NSError *_Nullable error))completion;
+-(void)didReceiveIncomingCall:(NSUUID *)uuid from:(NSString *)fullUsername with:(NSString *)displayName with:(dispatch_block_t)completion;
 
 @end
 
-dispatch_block_t pushNotificationCompletion;
+@interface ACKPushCallNotifier: NSObject<PKPushRegistryDelegate>
 
-@interface ACKPushCallNotifier : NSObject<PKPushRegistryDelegate>
+@property (weak, atomic) id<ACKPushCallNotifierDelegate> delegate;
 
 - (instancetype)initPushNotifierWithClient:(VIClient *)client authService:(ACKAuthService *)authService;
 

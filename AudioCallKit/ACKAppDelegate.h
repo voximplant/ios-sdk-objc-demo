@@ -14,11 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ACKAppDelegate : UIResponder<UIApplicationDelegate, CXCallObserverDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, atomic) ACKAuthService *sharedAuthService;
 @property (strong, atomic) VIClient *sharedClient;
-@property (strong, atomic) ACKCallManager *sharedCallManager;
+@property (strong, atomic) ACKAuthService *sharedAuthService;
 @property (strong, atomic) CXCallController *sharedCallController;
+@property (strong, atomic) ACKCallManager *sharedCallManager;
+@property (strong, nonatomic) UIWindow *window;
 
 @end
 
