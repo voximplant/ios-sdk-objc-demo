@@ -270,6 +270,10 @@
 
 #pragma mark - VIClientCallManagerDelegate
 
+- (void)client:(VIClient *)client pushDidExpire:(NSUUID *)callKitUUID {
+    [self reportCallEndedWithUUID:callKitUUID endReason:CXCallEndedReasonFailed];
+}
+
 - (void)client:(nonnull VIClient *)client didReceiveIncomingCall:(nonnull VICall *)call withIncomingVideo:(BOOL)video headers:(nullable NSDictionary *)headers {
     if (self.managedCall) {
         if ([self.managedCall.uuid isEqual:call.callKitUUID]) {

@@ -42,7 +42,7 @@
 
 - (VILoginSuccess)loginSuccess {
     __weak QIVoxClientManager *weakSelf = self;
-    return ^(NSString * _Nonnull displayName, NSDictionary * _Nonnull authParams) {
+    return ^(NSString * _Nonnull displayName, VIAuthParams * _Nonnull authParams) {
         __strong QIVoxClientManager *strongSelf = weakSelf;
         for (id<QIVoxClientManagerListener> listener in strongSelf.listeners) {
             if ([listener respondsToSelector:@selector(loginDidSucceedWithName:)]) {

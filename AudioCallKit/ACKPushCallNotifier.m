@@ -58,7 +58,7 @@
 
 - (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload
              forType:(PKPushType)type withCompletionHandler:(void (^)(void))completion {
-    NSLog(@"%@ Push reveived %@", type, payload);
+    NSLog(@"%@ Push received %@", type, payload);
     
     [self handlePushNotificationWithPayload:payload.dictionaryPayload pushCompletion:completion];
 }
@@ -75,12 +75,12 @@
 
 #pragma mark - PushCallNotifierDelegate
 
-- (void)handlePushNotificationWithPayload:(NSDictionary *)pushPayload pushCompletion:(nullable dispatch_block_t)pushCimpletion {
+- (void)handlePushNotificationWithPayload:(NSDictionary *)pushPayload pushCompletion:(nullable dispatch_block_t)pushCompletion {
     NSUUID *callUUID = [self.client handlePushNotification:pushPayload];
     NSString *displayName = [[pushPayload valueForKey:@"voximplant"] valueForKey:@"display_name"];
     NSString *username = [[pushPayload valueForKey:@"voximplant"] valueForKey:@"display_name"];
     
-    [self.delegate didReceiveIncomingCall:callUUID from:username with:displayName with:pushCimpletion];
+    [self.delegate didReceiveIncomingCall:callUUID from:username with:displayName with:pushCompletion];
 }
 
 

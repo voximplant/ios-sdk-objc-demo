@@ -15,7 +15,8 @@
 {
     self = [super init];
     if (self) {
-        self.sharedClient = [[VIClient alloc] initWithDelegateQueue:dispatch_get_main_queue()];
+        self.sharedClient = [[VIClient alloc] initWithDelegateQueue:dispatch_get_main_queue()
+                                                           bundleId:NSBundle.mainBundle.bundleIdentifier];
         self.sharedAuthService = [[ACKAuthService alloc] initWithClient:self.sharedClient];
         self.sharedCallController = [[CXCallController alloc] initWithQueue:dispatch_get_main_queue()];
         self.sharedCallManager = [[ACKCallManager alloc] initWithClient:self.sharedClient authService:self.sharedAuthService];

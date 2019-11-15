@@ -93,25 +93,24 @@
             __strong ACKAuthService *strongSelf = weakSelf;
             [strongSelf.client loginWithUser:user
                                     password:password
-                                     success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull authParams) {
-                                         NSNumber *refreshExpire = authParams[@"refreshExpire"];
-                                         NSString *refreshToken = authParams[@"refreshToken"];
-                                         NSNumber *accessExpire = authParams[@"accessExpire"];
-                                         NSString *accessToken = authParams[@"accessToken"];
+                                     success:^(NSString * _Nonnull userDisplayName, VIAuthParams * _Nonnull authParams) {
+                                         NSTimeInterval refreshExpire = authParams.refreshExpire;
+                                         NSString *refreshToken = authParams.refreshToken;
+                                         NSTimeInterval accessExpire = authParams.accessExpire;
+                                         NSString *accessToken = authParams.accessToken;
+
+                                         __strong ACKAuthService *strongSelf = weakSelf;
                                          
-                                         if (refreshExpire && refreshToken && accessExpire && accessToken) {
-                                             __strong ACKAuthService *strongSelf = weakSelf;
-                                             
-                                             VoxToken *validAccessToken = [VoxToken createToken:accessToken
-                                                                                   expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                             
-                                             VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
-                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                             VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
-                                             [strongSelf.tokenManager setKeys:keys];
-                                             strongSelf.loggedInUser = user;
-                                             strongSelf.loggedInUserDisplayName = userDisplayName;
-                                         }
+                                         VoxToken *validAccessToken = [VoxToken createToken:accessToken
+                                                                               expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
+                                         
+                                         VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
+                                                                                expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
+                                         VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                         [strongSelf.tokenManager setKeys:keys];
+                                         strongSelf.loggedInUser = user;
+                                         strongSelf.loggedInUserDisplayName = userDisplayName;
+                                         
                                          [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
                                          completion(userDisplayName, nil);
                                      }
@@ -158,22 +157,21 @@
                 __strong ACKAuthService *strongSelf = weakSelf;
                 [strongSelf.client loginWithUser:user
                                            token:accessToken.token
-                                         success:^(NSString * _Nonnull userDisplayName, NSDictionary * _Nonnull authParams) {
-                                             NSNumber *refreshExpire = authParams[@"refreshExpire"];
-                                             NSString *refreshToken = authParams[@"refreshToken"];
-                                             NSNumber *accessExpire = authParams[@"accessExpire"];
-                                             NSString *accessToken = authParams[@"accessToken"];
+                                         success:^(NSString * _Nonnull userDisplayName, VIAuthParams * _Nonnull authParams) {
+                                             NSTimeInterval refreshExpire = authParams.refreshExpire;
+                                             NSString *refreshToken = authParams.refreshToken;
+                                             NSTimeInterval accessExpire = authParams.accessExpire;
+                                             NSString *accessToken = authParams.accessToken;
+
+                                             VoxToken *validAccessToken = [VoxToken createToken:accessToken
+                                                                                   expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
+                                             VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
+                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
+                                             VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                                             [strongSelf.tokenManager setKeys:keys];
+                                             strongSelf.loggedInUser = user;
+                                             strongSelf.loggedInUserDisplayName = userDisplayName;
                                              
-                                             if (refreshExpire && refreshToken && accessExpire && accessToken) {
-                                                 VoxToken *validAccessToken = [VoxToken createToken:accessToken
-                                                                                       expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
-                                                 VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
-                                                                                        expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
-                                                 VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
-                                                 [strongSelf.tokenManager setKeys:keys];
-                                                 strongSelf.loggedInUser = user;
-                                                 strongSelf.loggedInUserDisplayName = userDisplayName;
-                                             }
                                              [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
                                              completion(userDisplayName, nil);
                                              
@@ -194,23 +192,23 @@
         if (tokens.access.isExpired) {
             [self.client refreshTokenWithUser:user
                                         token:tokens.refresh.token
-                                       result:^(NSDictionary * _Nullable authParams, NSError * _Nullable error) {
-                                           NSNumber *refreshExpire = authParams[@"refreshExpire"];
-                                           NSString *refreshToken = authParams[@"refreshToken"];
-                                           NSNumber *accessExpire = authParams[@"accessExpire"];
-                                           NSString *accessToken = authParams[@"accessToken"];
-                                           
+                                       result:^(VIAuthParams * _Nullable authParams, NSError * _Nullable error) {
                                            if (error) {
                                                completion(nil, error);
                                                return;
                                            }
                                            
-                                           if (refreshExpire && refreshToken && accessExpire && accessToken) {
+                                           if (authParams) {
+                                               NSTimeInterval refreshExpire = authParams.refreshExpire;
+                                               NSString *refreshToken = authParams.refreshToken;
+                                               NSTimeInterval accessExpire = authParams.accessExpire;
+                                               NSString *accessToken = authParams.accessToken;
+
                                                __strong ACKAuthService *strongSelf = weakSelf;
                                                VoxToken *validAccessToken = [VoxToken createToken:accessToken
-                                                                                     expireDate:[NSDate dateWithTimeIntervalSinceNow:[accessExpire doubleValue]]];
+                                                                                     expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
                                                VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
-                                                                                      expireDate:[NSDate dateWithTimeIntervalSinceNow:[refreshExpire doubleValue]]];
+                                                                                      expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
                                                VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
                                                
                                                [strongSelf.tokenManager setKeys:keys];
