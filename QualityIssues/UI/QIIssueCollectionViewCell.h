@@ -4,7 +4,7 @@
 
 #import <UIKit/UIKit.h>
 
-@import VoxImplant;
+@import VoxImplantSDK;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -3,7 +3,7 @@
 */
 
 #import <Foundation/Foundation.h>
-@import VoxImplant;
+@import VoxImplantSDK;
 
 NS_ASSUME_NONNULL_BEGIN
 

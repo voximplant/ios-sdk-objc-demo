@@ -7,7 +7,7 @@
 #import "QIIssueCollectionViewCell.h"
 #import "VoxBranding.h"
 
-@import VoxImplant;
+@import VoxImplantSDK;
 
 @interface QICallViewController () <VICallDelegate, VIEndpointDelegate, VIQualityIssueDelegate>
 

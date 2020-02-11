@@ -6,7 +6,7 @@
 #import "QILoginViewController.h"
 #import "QIDialerViewController.h"
 
-@import VoxImplant;
+@import VoxImplantSDK;
 
 @interface QILoginViewController () <QIVoxClientManagerListener>
 

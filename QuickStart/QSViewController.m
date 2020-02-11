@@ -8,7 +8,7 @@
 static NSString *const kUsername = @"user@app.acc.voximplant.com";
 static NSString *const kPassword = @"p@ssw0rd";
 
-@import VoxImplant;
+@import VoxImplantSDK;
 
 @interface QSViewController () <VIClientSessionDelegate, VIClientCallManagerDelegate, VICallDelegate>
 
