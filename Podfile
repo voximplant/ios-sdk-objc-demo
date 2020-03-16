@@ -3,11 +3,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 def common_pods
-  pod 'CocoaLumberjack', '~> 3.4.0'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'CocoaLumberjack', '~> 3.4.0'
 end
 
-sdk_version = '2.26.1'
+sdk_version = '2.28.0'
 
 target 'Quick Start' do
   pod 'VoxImplantSDK', sdk_version
@@ -26,6 +26,7 @@ end
 target 'AudioCallKit' do
   common_pods
   pod 'VoxImplantSDK', sdk_version
+  pod 'VoxImplantSDK/CocoaLumberjackLogger', sdk_version
 end
 
 post_install do |installer|
