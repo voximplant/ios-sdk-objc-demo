@@ -3,7 +3,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 
 @interface ACIncomingCallViewController : UIViewController<VICallDelegate>
 

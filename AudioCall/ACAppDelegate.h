@@ -5,7 +5,7 @@
 #import <UIKit/UIKit.h>
 #import "ACAuthService.h"
 #import "ACCallManager.h"
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 
 #define AppDelegateMacros ((ACAppDelegate *)[UIApplication sharedApplication].delegate)
 

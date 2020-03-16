@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 #import <PushKit/PushKit.h>
 #import "ACKAuthService.h"
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 
 NS_ASSUME_NONNULL_BEGIN
 

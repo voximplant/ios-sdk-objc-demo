@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import "VoxUser.h"
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 
 
 NS_ASSUME_NONNULL_BEGIN

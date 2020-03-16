@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ACKAuthService.h"
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 #import <CallKit/CallKit.h>
 #import <PushKit/PushKit.h>
 #import "ACKCallWrapper.h"

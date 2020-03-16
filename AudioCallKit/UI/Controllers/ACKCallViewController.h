@@ -4,7 +4,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VoxKeyPadView.h"
-#import <VoxImplant/VoxImplant.h>
+@import VoxImplantSDK;
 #import "VoxApplication.h"
 #import <CallKit/CallKit.h>
 
