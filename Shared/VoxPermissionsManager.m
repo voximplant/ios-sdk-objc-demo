@@ -20,14 +20,10 @@
                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Settings"
                                                                  style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction * _Nonnull action) {
-                                                                   if (@available(iOS 10.0, *)) {
-                                                                       [[UIApplication sharedApplication] openURL:([NSURL URLWithString:UIApplicationOpenSettingsURLString])
-                                                                                                          options:@{}
-                                                                                                completionHandler:nil];
-                                                                   } else {
-                                                                       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-                                                                   }
-                                                               }];
+                    [UIApplication.sharedApplication openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
+                                                     options:[NSDictionary new]
+                                           completionHandler:nil];
+                }];
                 [UIHelper showError:@"Audio permission required" action:action controller:nil];
             }
         }];
