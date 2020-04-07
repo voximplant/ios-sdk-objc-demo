@@ -237,6 +237,11 @@
     [alertSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [alertSheet dismissViewControllerAnimated:YES completion:nil];
     }]];
+    
+    if (alertSheet.popoverPresentationController) {
+        alertSheet.popoverPresentationController.sourceView = self.speakerButton;
+    }
+    
     [self presentViewController:alertSheet animated:YES completion:nil]; // show alertsheet with audio devices
 }
 
