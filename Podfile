@@ -7,7 +7,7 @@ def common_pods
   pod 'CocoaLumberjack', '~> 3.4.0'
 end
 
-sdk_version = '2.30.0'
+sdk_version = '2.31.0'
 
 target 'Quick Start' do
   pod 'VoxImplantSDK', sdk_version

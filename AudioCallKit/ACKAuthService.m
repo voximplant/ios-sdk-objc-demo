@@ -41,7 +41,11 @@
 
 - (void)setPushToken:(NSData *)pushToken {
     if (!pushToken) {
-        [self.client unregisterPushNotificationsToken:self.pushToken imToken:nil];
+        [self.client unregisterVoIPPushNotificationsToken:self.pushToken completion:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"unregister VoIP token failed with error %@", error.localizedDescription);
+            }
+        }];
     }
     _pushToken = pushToken;
 }
@@ -110,8 +114,12 @@
                                          [strongSelf.tokenManager setKeys:keys];
                                          strongSelf.loggedInUser = user;
                                          strongSelf.loggedInUserDisplayName = userDisplayName;
-                                         
-                                         [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
+                                         [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
+                                                                                    completion:^(NSError * _Nullable error) {
+                                             if (error) {
+                                                 NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
+                                             }
+                                         }];
                                          completion(userDisplayName, nil);
                                      }
                                      failure:^(NSError * _Nonnull error) {
@@ -171,8 +179,12 @@
                                              [strongSelf.tokenManager setKeys:keys];
                                              strongSelf.loggedInUser = user;
                                              strongSelf.loggedInUserDisplayName = userDisplayName;
-                                             
-                                             [strongSelf.client registerPushNotificationsToken:strongSelf.pushToken imToken:nil];
+                                             [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
+                                                                                        completion:^(NSError * _Nullable error) {
+                                                 if (error) {
+                                                     NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
+                                                 }
+                                             }];
                                              completion(userDisplayName, nil);
                                              
                                          } failure:^(NSError * _Nonnull error) {
@@ -245,9 +257,15 @@
 }
 
 - (void)logout:(dispatch_block_t)completion {
-    [self.client unregisterPushNotificationsToken:self.pushToken imToken:nil];
-    [self.tokenManager setKeys:nil];
-    [self disconnect:completion];
+    __weak ACKAuthService *weakSelf = self;
+    [self.client unregisterVoIPPushNotificationsToken:self.pushToken completion:^(NSError * _Nullable error) {
+        __strong ACKAuthService *strongSelf = weakSelf;
+        if (error) {
+            NSLog(@"unregister VoIP token failed with error %@", error.localizedDescription);
+        }
+        [strongSelf.tokenManager setKeys:nil];
+        [strongSelf disconnect:completion];
+    }];
 }
 
 #pragma mark - VIClient delegate methods
