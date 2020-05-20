@@ -1,8 +1,8 @@
 # Voximplant Quick Start Demo
 
-Objective-C variant of source code for [Voximplant quickstart](https://voximplant.com/docs/references/articles/quickstart/voximplant-basics)
+Objective-C variant of source code for the [Voximplant Getting started](https://voximplant.com/docs/introduction/integration/adding_sdks) page.
 
-To run demo run perform the following steps:
+To run this demo, perform the following steps:
 
 1. Execute `pod install` in checked out project
 2. Open generated .xcworkspace
