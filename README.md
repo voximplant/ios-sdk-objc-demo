@@ -2,7 +2,7 @@
 
 ## [Quick Start](QuickStart)
 
-Complete source code for [Voximplant quickstart](https://voximplant.com/docs/references/articles/quickstart/voximplant-basics)
+Complete source code for [Voximplant basics](https://voximplant.com/docs/references/articles/quickstart/voximplant-basics)
 
 ## [Quality Issues](QualityIssues)
 
