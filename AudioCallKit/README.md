@@ -27,14 +27,14 @@ The application is able to:
 
 ## Getting started
 
-To get started, you'll need to [register](https://voximplant.com) a free Voximplant developer account.
+To get started, you'll need to [register](https://manage.voximplant.com/auth/sign_up) a free Voximplant developer account.
 
 You'll need the following:
 - Voximplant application
 - two Voximplant users
 - VoxEngine scenario
 - routing setup
-- VoIP cervices certificate for push notifications. Follow [this tutorial](https://voximplant.com/docs/references/iossdk/push-notifications-for-ios) to upload the certificate to the Voximplant Control Panel
+- VoIP cervices certificate for push notifications. Follow [this tutorial](https://voximplant.com/docs/introduction/integration/adding_sdks/push_notifications/ios_sdk) to upload the certificate to the Voximplant Control Panel
 
 ### Automatic
 We've implemented a special template to enable you to quickly use the demo – just 
@@ -43,7 +43,7 @@ install [SDK tutorial](https://manage.voximplant.com/marketplace/sdk_tutorial) f
 
 ### Manual
 
-You can set up it manually using our [quickstart guide](https://voximplant.com/docs/references/articles/quickstart) and tutorials
+You can set up it manually using our [Getting started](https://voximplant.com/docs/introduction) page and tutorials
 
 #### VoxEngine scenario example:
   ```
@@ -79,7 +79,7 @@ Log in using:
 * Voximplant user name in the format `user@app.account`
 * password
 
-After each successful login the demo app registers the VoIP push token via [VIClient.registerPushNotificationsToken(voipToken:imToken:)](https://voximplant.com/docs/references/iossdk/viclient#registerpushnotificationstokenimtoken)
+After each successful login the demo app registers the VoIP push token via [VIClient.registerPushNotificationsToken(voipToken:imToken:)](https://voximplant.com/docs/references/iossdk/client/viclient#registerpushnotificationstokenimtoken)
 
 See the following classes for code details:
 * [ACKAuthService.m](ACKAuthService.m)
@@ -109,7 +109,7 @@ The action consists of a UUID to uniquely identify the call and a `CXHandle` obj
 CallManager implements `CXProviderDelegate` methods and processes `CXStartCallAction` by creating VICall instance.
 
 ![incomingCall](Screenshots/incomingCall.png)
-To receive an incoming call from the Voximplant Cloud, CallManager implements [VIClientCallManagerDelegate](https://voximplant.com/docs/references/iossdk/viclientcallmanagerdelegate) and reports it to the CallKit using the `reportNewIncomingCall(with:update:completion:)` method
+To receive an incoming call from the Voximplant Cloud, CallManager implements [VIClientCallManagerDelegate](https://voximplant.com/docs/references/iossdk/client/viclientcallmanagerdelegate) and reports it to the CallKit using the `reportNewIncomingCall(with:update:completion:)` method
 
 
 
@@ -128,9 +128,9 @@ See the following classes for code details:
   
 
 ## Useful links
-1. [Quickstart](https://voximplant.com/docs/references/articles/quickstart)
+1. [Getting Started](https://voximplant.com/docs/introduction)
 2. [Voximplant iOS SDK reference](https://voximplant.com/docs/references/iossdk)
-3. [Using Voximplant iOS SDK](https://voximplant.com/docs/references/iossdk/using-ios-sdk)
-4. [Push Notifications](https://voximplant.com/docs/references/iossdk/push-notifications-for-ios)
-5. [HowTo's](https://voximplant.com/blog/howto) 
+3. [Installing Voximplant iOS SDK](https://voximplant.com/docs/introduction/integration/adding_sdks/installing/ios_sdk)
+4. [Push Notifications](https://voximplant.com/docs/introduction/integration/adding_sdks/push_notifications/ios_sdk)
+5. [HowTo's](https://voximplant.com/docs/howtos) 
 6. [WWDC 2016 - Enhancing VoIP Apps with CallKit](https://developer.apple.com/videos/play/wwdc2016/230/)
