@@ -13,6 +13,7 @@
 @property (strong, nonatomic, nonnull) ACKAuthService *authService;
 @property (strong, nonatomic, nonnull) ACKPushCallNotifier *pushCallNotifier;
 @property (strong, nonatomic, nonnull) CXProvider *callProvider;
+@property (nonatomic) BOOL audioIsActive;
 
 @end
 
@@ -58,9 +59,6 @@
         } else {
             [call.call hangupWithHeaders:nil];
         }
-        
-        [VIAudioManager.sharedAudioManager callKitStopAudio];
-        [VIAudioManager.sharedAudioManager callKitReleaseAudioSession];
     }
     // SDK will invoke VICallDelegate methods (didDisconnectWithHeaders or didFailWithError)
 }
@@ -84,6 +82,11 @@
         [self.managedCall completePushProcessing];
         
         self.managedCall = nil;
+        
+        // callKitReleaseAudio should be called after deactivating CallKit session by iOS subsystem after the call ended.
+        if (!self.audioIsActive) {
+            [VIAudioManager.sharedAudioManager callKitReleaseAudioSession];
+        }
     }
 }
 
@@ -177,10 +180,17 @@
 
 - (void)provider:(CXProvider *)provider didActivateAudioSession:(AVAudioSession *)audioSession {
     [[VIAudioManager sharedAudioManager] callKitStartAudio];
+    self.audioIsActive = YES;
 }
 
 - (void)provider:(CXProvider *)provider didDeactivateAudioSession:(AVAudioSession *)audioSession {
     [[VIAudioManager sharedAudioManager] callKitStopAudio];
+    self.audioIsActive = NO;
+    
+    // callKitReleaseAudio should be called after deactivating CallKit session by iOS subsystem after the call ended.
+    if (!self.managedCall) {
+        [VIAudioManager.sharedAudioManager callKitReleaseAudioSession];
+    }
 }
 
 // method caused by the CXProvider.invalidate()

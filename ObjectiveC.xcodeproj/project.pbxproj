@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -195,7 +195,7 @@
 		9284FB2022FACA88002B9E70 /* VoxApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxApplication.m; sourceTree = "<group>"; };
 		9284FB2422FACA99002B9E70 /* VoxApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxApplication.h; sourceTree = "<group>"; };
 		928AE67622DF5BBB009F8DB5 /* VoxKeyPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VoxKeyPadView.xib; path = Shared/Resources/VoxKeyPadView.xib; sourceTree = SOURCE_ROOT; };
-		928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ACMain.storyboard; path = AudioCall/Resources/Storyboards/ACMain.storyboard; sourceTree = SOURCE_ROOT; };
+		928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ACMain.storyboard; path = AudioCall/Resources/ACMain.storyboard; sourceTree = SOURCE_ROOT; };
 		92A0110D22E7484200849612 /* ACCallFailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCallFailedViewController.h; sourceTree = "<group>"; };
 		92A0110E22E7484200849612 /* ACIncomingCallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACIncomingCallViewController.h; sourceTree = "<group>"; };
 		92A0110F22E7484200849612 /* ACLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoginViewController.m; sourceTree = "<group>"; };
@@ -366,18 +366,10 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		92049F6422DC7166006DB07F /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		92049F6722DC71FD006DB07F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				92049F6422DC7166006DB07F /* Storyboards */,
+				928AE67722DF5BBB009F8DB5 /* ACMain.storyboard */,
 				92653F1522D88C0900B3CBE5 /* ACAssets.xcassets */,
 			);
 			path = Resources;
@@ -430,14 +422,6 @@
 		9284FADC22F995AB002B9E70 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				9284FADD22F99804002B9E70 /* Controllers */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		9284FADD22F99804002B9E70 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
 				9284FADE22F99827002B9E70 /* ACKLoginViewController.h */,
 				9284FADF22F99827002B9E70 /* ACKLoginViewController.m */,
 				9284FAE122F99833002B9E70 /* ACKMainViewController.h */,
@@ -445,7 +429,7 @@
 				9284FAE422F9983D002B9E70 /* ACKCallViewController.h */,
 				9284FAE522F9983D002B9E70 /* ACKCallViewController.m */,
 			);
-			path = Controllers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		9284FAFD22F9B921002B9E70 /* AuthTokens */ = {
@@ -506,14 +490,6 @@
 		92A0110B22E7484200849612 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				92A0110C22E7484200849612 /* Controllers */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		92A0110C22E7484200849612 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
 				92A0111322E7484200849612 /* ACLoginViewController.h */,
 				92A0110F22E7484200849612 /* ACLoginViewController.m */,
 				92A0111522E7484200849612 /* ACMainViewController.h */,
@@ -525,7 +501,7 @@
 				92A0110D22E7484200849612 /* ACCallFailedViewController.h */,
 				92A0111222E7484200849612 /* ACCallFailedViewController.m */,
 			);
-			path = Controllers;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		92D551DC22F1D31500873E8C /* Fonts */ = {
@@ -952,6 +928,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1023,6 +1000,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1088,7 +1066,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1160,7 +1138,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1227,7 +1205,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1301,7 +1279,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1352,7 +1330,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;
@@ -1402,7 +1380,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = W9BHJBL635;
 				ENABLE_BITCODE = NO;

@@ -4,10 +4,10 @@ inhibit_all_warnings!
 
 def common_pods
   pod 'MBProgressHUD', '~> 1.1.0'
-  pod 'CocoaLumberjack', '~> 3.4.0'
+  pod 'CocoaLumberjack', '~> 3.5.0'
 end
 
-sdk_version = '2.31.0'
+sdk_version = '2.34.0'
 
 target 'Quick Start' do
   pod 'VoxImplantSDK', sdk_version
