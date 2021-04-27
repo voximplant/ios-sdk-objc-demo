@@ -7,7 +7,7 @@ def common_pods
   pod 'CocoaLumberjack', '~> 3.5.0'
 end
 
-sdk_version = '2.34.0'
+sdk_version = '2.38.0'
 
 target 'Quality Issues' do
   common_pods
