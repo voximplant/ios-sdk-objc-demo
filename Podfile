@@ -9,10 +9,6 @@ end
 
 sdk_version = '2.34.0'
 
-target 'Quick Start' do
-  pod 'VoxImplantSDK', sdk_version
-end
-
 target 'Quality Issues' do
   common_pods
   pod 'VoxImplantSDK', sdk_version
