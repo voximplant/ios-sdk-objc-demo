@@ -97,34 +97,35 @@
             __strong ACKAuthService *strongSelf = weakSelf;
             [strongSelf.client loginWithUser:user
                                     password:password
-                                     success:^(NSString * _Nonnull userDisplayName, VIAuthParams * _Nonnull authParams) {
-                                         NSTimeInterval refreshExpire = authParams.refreshExpire;
-                                         NSString *refreshToken = authParams.refreshToken;
-                                         NSTimeInterval accessExpire = authParams.accessExpire;
-                                         NSString *accessToken = authParams.accessToken;
+                                     success:^(NSString *_Nonnull userDisplayName, VIAuthParams *_Nullable authParams) {
+                __strong ACKAuthService *strongSelf = weakSelf;
+                if (authParams) {
+                    NSTimeInterval refreshExpire = authParams.refreshExpire;
+                    NSString *refreshToken = authParams.refreshToken;
+                    NSTimeInterval accessExpire = authParams.accessExpire;
+                    NSString *accessToken = authParams.accessToken;
 
-                                         __strong ACKAuthService *strongSelf = weakSelf;
-                                         
-                                         VoxToken *validAccessToken = [VoxToken createToken:accessToken
-                                                                               expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
-                                         
-                                         VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
-                                                                                expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
-                                         VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
-                                         [strongSelf.tokenManager setKeys:keys];
-                                         strongSelf.loggedInUser = user;
-                                         strongSelf.loggedInUserDisplayName = userDisplayName;
-                                         [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
-                                                                                    completion:^(NSError * _Nullable error) {
-                                             if (error) {
-                                                 NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
-                                             }
-                                         }];
-                                         completion(userDisplayName, nil);
-                                     }
+                    VoxToken *validAccessToken = [VoxToken createToken:accessToken
+                                                            expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
+
+                    VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
+                                                             expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
+                    VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                    [strongSelf.tokenManager setKeys:keys];
+                }
+                strongSelf.loggedInUser = user;
+                strongSelf.loggedInUserDisplayName = userDisplayName;
+                [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
+                                                           completion:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
+                    }
+                }];
+                completion(userDisplayName, nil);
+            }
                                      failure:^(NSError * _Nonnull error) {
-                                         completion(nil, error);
-                                     }];
+                completion(nil, error);
+            }];
         }];
     }];
 }
@@ -165,30 +166,33 @@
                 __strong ACKAuthService *strongSelf = weakSelf;
                 [strongSelf.client loginWithUser:user
                                            token:accessToken.token
-                                         success:^(NSString * _Nonnull userDisplayName, VIAuthParams * _Nonnull authParams) {
-                                             NSTimeInterval refreshExpire = authParams.refreshExpire;
-                                             NSString *refreshToken = authParams.refreshToken;
-                                             NSTimeInterval accessExpire = authParams.accessExpire;
-                                             NSString *accessToken = authParams.accessToken;
+                                         success:^(NSString *_Nonnull userDisplayName, VIAuthParams *_Nullable authParams) {
+                    __strong ACKAuthService *strongSelf = weakSelf;
+                    if (authParams) {
+                        NSTimeInterval refreshExpire = authParams.refreshExpire;
+                        NSString *refreshToken = authParams.refreshToken;
+                        NSTimeInterval accessExpire = authParams.accessExpire;
+                        NSString *accessToken = authParams.accessToken;
 
-                                             VoxToken *validAccessToken = [VoxToken createToken:accessToken
-                                                                                   expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
-                                             VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
-                                                                                    expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
-                                             VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
-                                             [strongSelf.tokenManager setKeys:keys];
-                                             strongSelf.loggedInUser = user;
-                                             strongSelf.loggedInUserDisplayName = userDisplayName;
-                                             [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
-                                                                                        completion:^(NSError * _Nullable error) {
-                                                 if (error) {
-                                                     NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
-                                                 }
-                                             }];
-                                             completion(userDisplayName, nil);
-                                             
-                                         } failure:^(NSError * _Nonnull error) {
-                                             completion(nil, error);
+                        VoxToken *validAccessToken = [VoxToken createToken:accessToken
+                                                                expireDate:[NSDate dateWithTimeIntervalSinceNow:accessExpire]];
+                        VoxToken *validRefreshToken = [VoxToken createToken:refreshToken
+                                                                 expireDate:[NSDate dateWithTimeIntervalSinceNow:refreshExpire]];
+                        VoxKeys *keys = [VoxKeys keyholderWithAccess:validAccessToken refresh:validRefreshToken];
+                        [strongSelf.tokenManager setKeys:keys];
+                    }
+                    strongSelf.loggedInUser = user;
+                    strongSelf.loggedInUserDisplayName = userDisplayName;
+                    [strongSelf.client registerVoIPPushNotificationsToken:strongSelf.pushToken
+                                                               completion:^(NSError * _Nullable error) {
+                        if (error) {
+                            NSLog(@"register VoIP token failed with error %@", error.localizedDescription);
+                        }
+                    }];
+                    completion(userDisplayName, nil);
+
+                } failure:^(NSError * _Nonnull error) {
+                    completion(nil, error);
                                          }];
             }];
         }];
