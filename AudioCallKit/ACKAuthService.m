@@ -166,7 +166,7 @@
                 __strong ACKAuthService *strongSelf = weakSelf;
                 [strongSelf.client loginWithUser:user
                                            token:accessToken.token
-                                         success:^(NSString *_Nullable userDisplayName, VIAuthParams *_Nullable authParams) {
+                                         success:^(NSString *_Nonnull userDisplayName, VIAuthParams *_Nullable authParams) {
                     __strong ACKAuthService *strongSelf = weakSelf;
                     if (authParams) {
                         NSTimeInterval refreshExpire = authParams.refreshExpire;
