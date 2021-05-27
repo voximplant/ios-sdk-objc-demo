@@ -4,7 +4,7 @@
 
 Example of how to handle Quality Issues alerts of Voximplant iOS SDK
 
-## [Audio call demo](AudioCall)
+## [Audio Call demo](AudioCall)
 
 The demo demonstrates basic audio call functionality of the Voximplant iOS SDK.
 

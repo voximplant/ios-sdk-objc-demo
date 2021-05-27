@@ -64,9 +64,7 @@ You can set up it manually using our [Getting started](https://voximplant.com/do
 
 1. Clone this repo 
 
-1. Run `$ pod install` in the repo folder
-
-1. Open the `ObjectiveC.xcworkspace` workspace
+1. Open the `ObjectiveC.xcodeproj` workspace
 
 1. Target AudioCallKit and build the project using Xcode
 
