@@ -2,8 +2,7 @@
 *  Copyright (c) 2011-2019, Zingaya, Inc. All rights reserved.
 */
 
-#import <Foundation/Foundation.h>
-#import <VoxImplantSDK.h>
+#import <VoxImplantSDK/VoxImplantSDK.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

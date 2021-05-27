@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -101,6 +101,15 @@
 		92F7242222FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
 		92F7242322FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
 		92F7242422FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
+		BBD6C02D265FD75D0092B694 /* VoximplantSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C02C265FD75D0092B694 /* VoximplantSDK */; };
+		BBD6C030265FD7B50092B694 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C02F265FD7B50092B694 /* CocoaLumberjack */; };
+		BBD6C036265FD8390092B694 /* VoximplantSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C035265FD8390092B694 /* VoximplantSDK */; };
+		BBD6C038265FD8390092B694 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C037265FD8390092B694 /* CocoaLumberjack */; };
+		BBD6C03A265FD8390092B694 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C039265FD8390092B694 /* MBProgressHUD */; };
+		BBD6C03C265FD84D0092B694 /* VoximplantSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C03B265FD84D0092B694 /* VoximplantSDK */; };
+		BBD6C03E265FD84D0092B694 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C03D265FD84D0092B694 /* CocoaLumberjack */; };
+		BBD6C040265FD84D0092B694 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C03F265FD84D0092B694 /* MBProgressHUD */; };
+		BBD6C042265FD8D20092B694 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C041265FD8D20092B694 /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,6 +222,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD6C042265FD8D20092B694 /* MBProgressHUD in Frameworks */,
+				BBD6C030265FD7B50092B694 /* CocoaLumberjack in Frameworks */,
+				BBD6C02D265FD75D0092B694 /* VoximplantSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +232,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD6C03A265FD8390092B694 /* MBProgressHUD in Frameworks */,
+				BBD6C038265FD8390092B694 /* CocoaLumberjack in Frameworks */,
+				BBD6C036265FD8390092B694 /* VoximplantSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,19 +242,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD6C040265FD84D0092B694 /* MBProgressHUD in Frameworks */,
+				BBD6C03E265FD84D0092B694 /* CocoaLumberjack in Frameworks */,
+				BBD6C03C265FD84D0092B694 /* VoximplantSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E1E45E735261D60E6711BB0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		8E89C74321AD78520071E45C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +285,7 @@
 				92653F1922D88E1700B3CBE5 /* AudioCall */,
 				9284FAA522F97D66002B9E70 /* AudioCallKit */,
 				8E9C924921A313BE00BE506F /* Products */,
-				6E1E45E735261D60E6711BB0 /* Pods */,
+				BBD6C034265FD8390092B694 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -469,6 +480,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		BBD6C034265FD8390092B694 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -485,6 +503,11 @@
 			dependencies = (
 			);
 			name = "Quality Issues";
+			packageProductDependencies = (
+				BBD6C02C265FD75D0092B694 /* VoximplantSDK */,
+				BBD6C02F265FD7B50092B694 /* CocoaLumberjack */,
+				BBD6C041265FD8D20092B694 /* MBProgressHUD */,
+			);
 			productName = QualityIssues;
 			productReference = 8E9C926321A3148100BE506F /* Quality Issues.app */;
 			productType = "com.apple.product-type.application";
@@ -502,6 +525,11 @@
 			dependencies = (
 			);
 			name = AudioCall;
+			packageProductDependencies = (
+				BBD6C035265FD8390092B694 /* VoximplantSDK */,
+				BBD6C037265FD8390092B694 /* CocoaLumberjack */,
+				BBD6C039265FD8390092B694 /* MBProgressHUD */,
+			);
 			productName = QuickStart;
 			productReference = 92653F1222D8891C00B3CBE5 /* AudioCall.app */;
 			productType = "com.apple.product-type.application";
@@ -519,6 +547,11 @@
 			dependencies = (
 			);
 			name = AudioCallKit;
+			packageProductDependencies = (
+				BBD6C03B265FD84D0092B694 /* VoximplantSDK */,
+				BBD6C03D265FD84D0092B694 /* CocoaLumberjack */,
+				BBD6C03F265FD84D0092B694 /* MBProgressHUD */,
+			);
 			productName = AudioCallKit;
 			productReference = 9284FAA422F97D66002B9E70 /* AudioCallKit.app */;
 			productType = "com.apple.product-type.application";
@@ -529,7 +562,7 @@
 		8E9C923E21A311D200BE506F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Voximplant;
 				TargetAttributes = {
 					8E9C926221A3148100BE506F = {
@@ -559,6 +592,11 @@
 				Base,
 			);
 			mainGroup = 8E9C923D21A311D200BE506F;
+			packageReferences = (
+				BBD6C02B265FD75D0092B694 /* XCRemoteSwiftPackageReference "ios-sdk-releases" */,
+				BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				BBD6C031265FD7E10092B694 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			productRefGroup = 8E9C924921A313BE00BE506F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -747,6 +785,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -780,6 +819,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1214,6 +1254,81 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BBD6C02B265FD75D0092B694 /* XCRemoteSwiftPackageReference "ios-sdk-releases" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/voximplant/ios-sdk-releases.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.39.0;
+			};
+		};
+		BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.7.2;
+			};
+		};
+		BBD6C031265FD7E10092B694 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BBD6C02C265FD75D0092B694 /* VoximplantSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02B265FD75D0092B694 /* XCRemoteSwiftPackageReference "ios-sdk-releases" */;
+			productName = VoximplantSDK;
+		};
+		BBD6C02F265FD7B50092B694 /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		BBD6C035265FD8390092B694 /* VoximplantSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02B265FD75D0092B694 /* XCRemoteSwiftPackageReference "ios-sdk-releases" */;
+			productName = VoximplantSDK;
+		};
+		BBD6C037265FD8390092B694 /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		BBD6C039265FD8390092B694 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C031265FD7E10092B694 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		BBD6C03B265FD84D0092B694 /* VoximplantSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02B265FD75D0092B694 /* XCRemoteSwiftPackageReference "ios-sdk-releases" */;
+			productName = VoximplantSDK;
+		};
+		BBD6C03D265FD84D0092B694 /* CocoaLumberjack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;
+			productName = CocoaLumberjack;
+		};
+		BBD6C03F265FD84D0092B694 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C031265FD7E10092B694 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		BBD6C041265FD8D20092B694 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BBD6C031265FD7E10092B694 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E9C923E21A311D200BE506F /* Project object */;
 }

@@ -3,7 +3,7 @@
  */
 
 #import "UIHelper.h"
-#import <MBProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "UIExtensions.h"
 
 @implementation UIHelper
