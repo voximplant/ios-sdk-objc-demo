@@ -94,6 +94,20 @@ static NSString *reuseIdentifier = @"QIIssueCollectionViewCell";
     [self appendText:[NSString stringWithFormat:@"PacketLoss: %.3f", packetLoss] withLevel:level];
 }
 
+- (void)                   call:(VICall *)call
+didDetectNoAudioReceiveOnStream:(VIRemoteAudioStream *)audioStream
+                   fromEndpoint:(VIEndpoint *)endpoint
+                     issueLevel:(VIQualityIssueLevel)level {
+    [self appendText:[NSString stringWithFormat:@"NoAudioReceive from: %@", endpoint.user] withLevel:level];
+}
+
+- (void)                   call:(VICall *)call
+didDetectNoVideoReceiveOnStream:(VIRemoteVideoStream *)videoStream
+                   fromEndpoint:(VIEndpoint *)endpoint
+                     issueLevel:(VIQualityIssueLevel)level {
+    [self appendText:[NSString stringWithFormat:@"NoVideoReceive from: %@", endpoint.user] withLevel:level];
+}
+
 - (void)holdTouched:(UIButton *)sender {
     __weak QICallViewController *weakSelf = self;
 

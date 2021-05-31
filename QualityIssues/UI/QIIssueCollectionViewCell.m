@@ -24,6 +24,8 @@
                     VIQualityIssueTypeLocalVideoDegradation: @"Local video",
                     VIQualityIssueTypeNoAudioSignal: @"No audio",
                     VIQualityIssueTypeHighMediaLatency: @"High latency",
+                    VIQualityIssueTypeNoAudioReceive: @"No audio receive",
+                    VIQualityIssueTypeNoVideoReceive: @"No video receive",
                     };
 }
 
