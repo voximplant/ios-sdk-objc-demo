@@ -10,8 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutlet UITextField *contactField;
 @property (strong, nonatomic) IBOutlet UIButton *callButton;
+@property (strong, nonatomic) IBOutlet UIButton *conferenceCallButton;
 
 - (IBAction)callTouched:(UIButton *)sender;
+- (IBAction)callConferenceTouched:(UIButton *)sender;
 
 @end
 

@@ -22,10 +22,23 @@
     VIVideoFlags *videoFlags = [VIVideoFlags defaultVideoFlags];
     
     VICall *call = [[QIAppDelegate instance].voxManager createCall:self.contactField.text
-                                     withVideoFlags:videoFlags];
+                                     withVideoFlags:videoFlags
+                                                        conference:NO];
     [self showCallViewController:^(QICallViewController *vc) {
         vc.currentCall = call;
         [call start];
+    }];
+}
+
+- (void)callConferenceTouched:(UIButton *)sender {
+    VIVideoFlags *videoFlags = [VIVideoFlags defaultVideoFlags];
+
+    VICall *callConference = [[QIAppDelegate instance].voxManager createCall:self.contactField.text
+                                                              withVideoFlags:videoFlags
+                                                                  conference:YES];
+    [self showCallViewController:^(QICallViewController *vc) {
+        vc.currentCall = callConference;
+        [callConference start];
     }];
 }
 

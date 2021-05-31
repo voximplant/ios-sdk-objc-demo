@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Klp-rg-b17">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Klp-rg-b17">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,29 +42,29 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csR-Sx-IO7">
                                 <rect key="frame" x="16" y="16" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LOGIN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-Fx-Qeo" customClass="VoxTextField">
-                                <rect key="frame" x="16" y="45" width="211" height="44"/>
+                                <rect key="frame" x="16" y="45" width="212" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="t6F-zq-Nlc"/>
                                 </constraints>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=".voximplant.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVo-I9-EM7">
-                                <rect key="frame" x="235" y="55.5" width="124" height="21"/>
+                                <rect key="frame" x="236" y="56" width="123" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CpK-C6-BNP">
                                 <rect key="frame" x="16" y="105" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="PASSWORD" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Fz-lu-G5n" customClass="VoxTextField">
@@ -73,7 +73,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="JPb-M5-tcz"/>
                                 </constraints>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -95,13 +95,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WebRTC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ym-RY-2Yg">
                                 <rect key="frame" x="154" y="586" width="67" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VoximplantSDK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAq-ci-jZ5">
                                 <rect key="frame" x="128.5" y="557" width="118" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -157,7 +157,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrz-IQ-f2w">
                                 <rect key="frame" x="16" y="16" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CONTACT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1V-7d-bmk" customClass="VoxTextField">
@@ -166,7 +166,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="V4W-A7-kPr"/>
                                 </constraints>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </textField>
@@ -182,13 +182,27 @@
                                     <action selector="callTouched:" destination="QdU-Cm-tyR" eventType="touchUpInside" id="Lna-L3-6o6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3om-qQ-ZRy" customClass="VIButton">
+                                <rect key="frame" x="16" y="173" width="343" height="44"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.97999999999999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Conference Call"/>
+                                <connections>
+                                    <action selector="callConferenceTouched:" destination="QdU-Cm-tyR" eventType="touchUpInside" id="HPx-g1-dBY"/>
+                                    <action selector="callTouched:" destination="QdU-Cm-tyR" eventType="touchUpInside" id="vtC-oQ-wsh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3om-qQ-ZRy" firstAttribute="width" secondItem="F2c-rl-Vlu" secondAttribute="width" id="2hI-N0-OwK"/>
+                            <constraint firstItem="3om-qQ-ZRy" firstAttribute="top" secondItem="F2c-rl-Vlu" secondAttribute="bottom" constant="20" id="58w-KV-G71"/>
                             <constraint firstAttribute="trailingMargin" secondItem="V1V-7d-bmk" secondAttribute="trailing" id="DAu-yX-c7x"/>
+                            <constraint firstItem="3om-qQ-ZRy" firstAttribute="height" secondItem="F2c-rl-Vlu" secondAttribute="height" id="FJe-uA-bqv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xrz-IQ-f2w" secondAttribute="trailing" id="IjU-7x-1aQ"/>
                             <constraint firstItem="V1V-7d-bmk" firstAttribute="leading" secondItem="Ioj-0v-DGs" secondAttribute="leadingMargin" id="NWM-gu-jWp"/>
                             <constraint firstItem="F2c-rl-Vlu" firstAttribute="top" secondItem="V1V-7d-bmk" secondAttribute="bottom" constant="20" id="SWf-XV-KoF"/>
+                            <constraint firstItem="3om-qQ-ZRy" firstAttribute="centerX" secondItem="Ioj-0v-DGs" secondAttribute="centerX" id="Spp-gk-3eH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="F2c-rl-Vlu" secondAttribute="trailing" id="ZGy-xy-iqj"/>
                             <constraint firstItem="xrz-IQ-f2w" firstAttribute="leading" secondItem="Ioj-0v-DGs" secondAttribute="leadingMargin" id="ZHP-KW-l1t"/>
                             <constraint firstItem="xrz-IQ-f2w" firstAttribute="top" secondItem="6qr-IT-sgh" secondAttribute="bottom" constant="16" id="dzW-TO-3jY"/>
@@ -198,6 +212,7 @@
                     </view>
                     <connections>
                         <outlet property="callButton" destination="F2c-rl-Vlu" id="ShL-D2-QdS"/>
+                        <outlet property="conferenceCallButton" destination="3om-qQ-ZRy" id="w4u-hO-gai"/>
                         <outlet property="contactField" destination="V1V-7d-bmk" id="4VH-3w-GSR"/>
                         <segue destination="qPa-HU-qde" kind="presentation" identifier="ShowCall" modalPresentationStyle="fullScreen" id="WUQ-LC-3uj"/>
                     </connections>
@@ -279,18 +294,18 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QIIssueCollectionViewCell" id="dcJ-Gt-RdJ" customClass="QIIssueCollectionViewCell">
-                                        <rect key="frame" x="71.5" y="0.0" width="200" height="25"/>
+                                        <rect key="frame" x="72" y="0.0" width="200" height="25"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="300" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-t6-vl8">
-                                                    <rect key="frame" x="156" y="-1" width="36" height="26"/>
+                                                    <rect key="frame" x="156" y="0.0" width="36" height="25"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -301,7 +316,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
-                                                                <font key="NSFont" size="14" name=".SFNSText"/>
+                                                                <font key="NSFont" metaFont="menu" size="14"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -370,4 +385,9 @@
             <point key="canvasLocation" x="788" y="-0.44977511244377816"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

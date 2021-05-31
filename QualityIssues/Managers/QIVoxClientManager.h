@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic, readonly) VICall *currentCall;
 
-- (VICall *)createCall:(NSString *)user withVideoFlags:(VIVideoFlags *)videoFlags;
+- (VICall *)createCall:(NSString *)user withVideoFlags:(VIVideoFlags *)videoFlags conference:(BOOL)isConference;
 
 @end
 

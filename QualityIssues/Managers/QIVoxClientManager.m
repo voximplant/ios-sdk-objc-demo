@@ -127,15 +127,19 @@
     }
 }
 
-- (VICall *)createCall:(NSString *)user withVideoFlags:(VIVideoFlags *)videoFlags {
+- (VICall *)createCall:(NSString *)user withVideoFlags:(VIVideoFlags *)videoFlags conference:(BOOL)isConference {
     if (_currentCall) {
         return nil;
     }
-
+    
     VICallSettings *callSettings = [VICallSettings new];
     callSettings.videoFlags = videoFlags;
-
-    _currentCall = [_client call:user settings:callSettings];
+    
+    if (isConference) {
+        _currentCall = [_client callConference:user settings:callSettings];
+    } else {
+        _currentCall = [_client call:user settings:callSettings];
+    }
 
     return _currentCall;
 }
