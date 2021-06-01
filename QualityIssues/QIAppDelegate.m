@@ -18,6 +18,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[NSUserDefaults standardUserDefaults] setValue:@(NO) forKey:@"_UIConstraintBasedLayoutLogUnsatisfiable"];
     [VIClient setLogLevel:VILogLevelInfo];
     VIClient *client = [[VIClient alloc] initWithDelegateQueue:dispatch_get_main_queue()];
     _voxManager = [[QIVoxClientManager alloc] initWithClient:client];
