@@ -5,13 +5,13 @@
 #import <UIKit/UIKit.h>
 
 @class VICall;
+@class ConferenceView;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QICallViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (strong, nonatomic) IBOutlet UIView *remoteView;
-@property (strong, nonatomic) IBOutlet UIView *localView;
+@property (weak, nonatomic) IBOutlet ConferenceView *participantsVideoView;
 @property (strong, nonatomic) IBOutlet UIButton *holdButton;
 @property (strong, nonatomic) IBOutlet UIButton *hangUpButton;
 @property (strong, nonatomic) IBOutlet UITextView *issuesView;
@@ -21,7 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)holdTouched:(UIButton *)sender;
 - (IBAction)hangUpTouched:(UIButton *)sender;
 
-@property (strong, nonatomic) VICall *currentCall;
+@property(strong, nonatomic) VICall *currentCall;
+@property(assign, nonatomic) BOOL isConferenceCall;
 
 @end
 

@@ -6,6 +6,7 @@
 #import "QICallViewController.h"
 #import "QIIssueCollectionViewCell.h"
 #import "VoxBranding.h"
+#import "Quality_Issues-Swift.h"
 
 @import VoxImplantSDK;
 
@@ -19,11 +20,17 @@
 
 @implementation QICallViewController
 
+const NSString *myID = @"me";
 static NSString *reuseIdentifier = @"QIIssueCollectionViewCell";
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    __weak QICallViewController *wSelf = self;
+    [_participantsVideoView addParticipantWithId:(NSString *)myID name:nil];
+    _participantsVideoView.enlargeParticipantHandler = ^(BOOL enlarged) {
+        __strong QICallViewController *sSelf = wSelf;
+        [sSelf.issuesView setHidden:enlarged];
+    };
 }
 
 - (void)setCurrentCall:(VICall *)currentCall {
@@ -106,6 +113,18 @@ didDetectNoVideoReceiveOnStream:(VIRemoteVideoStream *)videoStream
                    fromEndpoint:(VIEndpoint *)endpoint
                      issueLevel:(VIQualityIssueLevel)level {
     [self appendText:[NSString stringWithFormat:@"NoVideoReceive from: %@", endpoint.user] withLevel:level];
+    if (level == VIQualityIssueLevelNone) {
+        [_participantsVideoView requestRenderingWithParticipantId:endpoint.endpointId
+            render:^(UIView *view) {
+            if (view) {
+                VIVideoRendererView *renderView = [[VIVideoRendererView alloc] initWithContainerView:view];
+                [videoStream addRenderer:renderView];
+            }
+        }];
+    } else if (level == VIQualityIssueLevelCritical) {
+        [_participantsVideoView stopRenderingWithParticipantId:endpoint.endpointId];
+        [videoStream removeAllRenderers];
+    }
 }
 
 - (void)holdTouched:(UIButton *)sender {
@@ -141,25 +160,64 @@ didDetectNoVideoReceiveOnStream:(VIRemoteVideoStream *)videoStream
 }
 
 - (void)call:(VICall *)call didAddLocalVideoStream:(VIVideoStream *)videoStream {
-    VIVideoRendererView *rendererView = [[VIVideoRendererView alloc] initWithContainerView:_localView];
-    [videoStream addRenderer:rendererView];
+    [_participantsVideoView requestRenderingWithParticipantId:(NSString *)myID
+        render:^(UIView *view) {
+        if (view) {
+            VIVideoRendererView *renderView = [[VIVideoRendererView alloc] initWithContainerView:view];
+            [videoStream addRenderer:renderView];
+        }
+    }];
 }
 
 - (void)call:(VICall *)call didRemoveLocalVideoStream:(VIVideoStream *)videoStream {
+    [_participantsVideoView stopRenderingWithParticipantId:(NSString *)myID];
     [videoStream removeAllRenderers];
 }
 
 - (void)call:(VICall *)call didAddEndpoint:(VIEndpoint *)endpoint {
     endpoint.delegate = self;
+    if (_isConferenceCall && [endpoint.endpointId isEqualToString:call.callId]) {
+        return;
+    }
+    [_participantsVideoView addParticipantWithId:endpoint.endpointId
+                                            name:endpoint.userDisplayName ?: endpoint.user];
 }
 
 - (void)endpoint:(VIEndpoint *)endpoint didAddRemoteVideoStream:(VIVideoStream *)videoStream {
-    VIVideoRendererView *rendererView = [[VIVideoRendererView alloc] initWithContainerView:_remoteView];
-    [videoStream addRenderer:rendererView];
+    if (_isConferenceCall && [endpoint.endpointId isEqualToString:endpoint.call.callId]) {
+        return;
+    }
+    [_participantsVideoView requestRenderingWithParticipantId:endpoint.endpointId
+        render:^(UIView *view) {
+        if (view) {
+            VIVideoRendererView *renderView = [[VIVideoRendererView alloc] initWithContainerView:view];
+            [videoStream addRenderer:renderView];
+        }
+    }];
 }
 
 - (void)endpoint:(VIEndpoint *)endpoint didRemoveRemoteVideoStream:(VIVideoStream *)videoStream {
+    if (_isConferenceCall && [endpoint.endpointId isEqualToString:endpoint.call.callId]) {
+        return;
+    }
+    [_participantsVideoView stopRenderingWithParticipantId:endpoint.endpointId];
     [videoStream removeAllRenderers];
+}
+
+- (void)endpointDidRemove:(VIEndpoint *)endpoint {
+    endpoint.delegate = nil;
+    if (_isConferenceCall && [endpoint.endpointId isEqualToString:endpoint.call.callId]) {
+        return;
+    }
+    [_participantsVideoView removeParticipantWithId:endpoint.endpointId];
+}
+
+- (void)endpointInfoDidUpdate:(VIEndpoint *)endpoint {
+    if (_isConferenceCall && [endpoint.endpointId isEqualToString:endpoint.call.callId]) {
+        return;
+    }
+    [_participantsVideoView updateParticipantNameWithId:endpoint.endpointId
+                                                   name:endpoint.userDisplayName ?: endpoint.user];
 }
 
 - (void)call:(VICall *)call didDisconnectWithHeaders:(NSDictionary *)headers answeredElsewhere:(NSNumber *)answeredElsewhere {

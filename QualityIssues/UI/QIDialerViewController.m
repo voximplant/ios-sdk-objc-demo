@@ -25,6 +25,7 @@
                                      withVideoFlags:videoFlags
                                                         conference:NO];
     [self showCallViewController:^(QICallViewController *vc) {
+        vc.isConferenceCall = NO;
         vc.currentCall = call;
         [call start];
     }];
@@ -37,6 +38,7 @@
                                                               withVideoFlags:videoFlags
                                                                   conference:YES];
     [self showCallViewController:^(QICallViewController *vc) {
+        vc.isConferenceCall = YES;
         vc.currentCall = callConference;
         [callConference start];
     }];
