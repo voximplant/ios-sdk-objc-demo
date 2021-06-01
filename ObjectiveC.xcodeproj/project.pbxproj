@@ -101,6 +101,9 @@
 		92F7242222FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
 		92F7242322FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
 		92F7242422FC47C6005742DA /* VoxPermissionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F7242122FC47C6005742DA /* VoxPermissionsManager.m */; };
+		BB20406D2665161E00D79558 /* ConferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20406C2665161E00D79558 /* ConferenceView.swift */; };
+		BB2040702665166800D79558 /* ConferenceParticipantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB20406E2665166700D79558 /* ConferenceParticipantView.xib */; };
+		BB2040712665166800D79558 /* ConferenceParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB20406F2665166700D79558 /* ConferenceParticipantView.swift */; };
 		BBD6C02D265FD75D0092B694 /* VoximplantSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C02C265FD75D0092B694 /* VoximplantSDK */; };
 		BBD6C030265FD7B50092B694 /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C02F265FD7B50092B694 /* CocoaLumberjack */; };
 		BBD6C036265FD8390092B694 /* VoximplantSDK in Frameworks */ = {isa = PBXBuildFile; productRef = BBD6C035265FD8390092B694 /* VoximplantSDK */; };
@@ -215,6 +218,10 @@
 		92F7242022FC47C6005742DA /* VoxPermissionsManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoxPermissionsManager.h; sourceTree = "<group>"; };
 		92F7242122FC47C6005742DA /* VoxPermissionsManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoxPermissionsManager.m; sourceTree = "<group>"; };
 		92F7242522FC73AA005742DA /* AudioCallKit.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AudioCallKit.entitlements; sourceTree = "<group>"; };
+		BB20406B2665161D00D79558 /* Quality Issues-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quality Issues-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB20406C2665161E00D79558 /* ConferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceView.swift; sourceTree = "<group>"; };
+		BB20406E2665166700D79558 /* ConferenceParticipantView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConferenceParticipantView.xib; sourceTree = "<group>"; };
+		BB20406F2665166700D79558 /* ConferenceParticipantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferenceParticipantView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +269,9 @@
 				8E89C73F21AD6F9C0071E45C /* QICallViewController.m */,
 				8E05439321CAA3E400DF2EE4 /* QIIssueCollectionViewCell.h */,
 				8E05439421CAA3E400DF2EE4 /* QIIssueCollectionViewCell.m */,
+				BB20406C2665161E00D79558 /* ConferenceView.swift */,
+				BB20406F2665166700D79558 /* ConferenceParticipantView.swift */,
+				BB20406E2665166700D79558 /* ConferenceParticipantView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -310,6 +320,7 @@
 				8E9C926E21A3148200BE506F /* QIAssets.xcassets */,
 				8EC372F221CB9BCD00371E4C /* QualityIssues.storyboard */,
 				8E7B2C1221AC13110023167F /* README.md */,
+				BB20406B2665161D00D79558 /* Quality Issues-Bridging-Header.h */,
 				8E89C74321AD78520071E45C /* UI */,
 			);
 			path = QualityIssues;
@@ -567,6 +578,7 @@
 				TargetAttributes = {
 					8E9C926221A3148100BE506F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1250;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -613,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2040702665166800D79558 /* ConferenceParticipantView.xib in Resources */,
 				8E9C929621A31D9100BE506F /* Shared.xcassets in Resources */,
 				8E9C926F21A3148200BE506F /* QIAssets.xcassets in Resources */,
 				9284FB1522F9BCD3002B9E70 /* VoxKeyPadView.xib in Resources */,
@@ -660,6 +673,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB20406D2665161E00D79558 /* ConferenceView.swift in Sources */,
 				92F7242222FC47C6005742DA /* VoxPermissionsManager.m in Sources */,
 				9284FB1E22F9C8B0002B9E70 /* VoxUser.m in Sources */,
 				9284FB2122FACA88002B9E70 /* VoxApplication.m in Sources */,
@@ -671,6 +685,7 @@
 				9284FB0222F9BCA6002B9E70 /* UIExtensions.m in Sources */,
 				9284FB0F22F9BCBC002B9E70 /* VoxLabelWithTimer.m in Sources */,
 				8E89C74121AD6F9C0071E45C /* QICallViewController.m in Sources */,
+				BB2040712665166800D79558 /* ConferenceParticipantView.swift in Sources */,
 				9284FB1122F9BCC5002B9E70 /* VoxTokenManager.m in Sources */,
 				9284FB0D22F9BCBA002B9E70 /* VoxButtonWithLabel.m in Sources */,
 				8E89C73721AD6F040071E45C /* QILoginViewController.m in Sources */,
@@ -905,6 +920,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.QualityIssues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "QualityIssues/Quality Issues-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -971,6 +990,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.voximplant.demos.objc.QualityIssues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "QualityIssues/Quality Issues-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
