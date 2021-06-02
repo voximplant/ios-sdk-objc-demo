@@ -2,17 +2,11 @@
 
 This demo demonstrates quality issue notification functionality of the Voximplant iOS SDK. The application supports video and conference calls between this iOS app and other apps that use any Voximplant SDK.
 
-> This demo application doesn't handle push notifications, so it doesn't receive incoming calls if the application is in the background or killed.
-
-#### Features
+#### Key Features
 The application is able to:
 - log in to the Voximplant Cloud
-- make a video call
-- make a conference call (up to 4 video streams supported)
-- receive and display quality issue notifications
-- put a call on hold / take it off hold
-- enable/disable sending video
-- switch camera
+- make a video call or a conference call (up to 4 video streams supported)
+- listen to quality issues
 
 ## Getting started
 
@@ -71,7 +65,7 @@ See the following classes for code details:
 ### Make call
 ![call](Screenshots/call.png)
 
-Enter a Voximplant user name to the input field and press "Call" button to make a call.
+Enter a Voximplant user name to the input field and press "Call" button to make a call or "Conference" button to make a conference call.
 
 See the following classes for code details:
 - [QIVoxClientManager.m](Managers/QIVoxClientManager.m)
@@ -86,7 +80,7 @@ Quality Issues with current status are listed at the bottom and also logged to t
 See the following classes for code details:
 - [QICallViewController.m](UI/QICallViewController.m)
   
-### Manage call
+### Call controls
 
 ![inCall](Screenshots/inCall.png)
 
