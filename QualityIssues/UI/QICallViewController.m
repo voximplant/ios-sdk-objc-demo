@@ -105,8 +105,8 @@ static NSString *reuseIdentifier = @"QIIssueCollectionViewCell";
 didDetectNoAudioReceiveOnStream:(VIRemoteAudioStream *)audioStream
                    fromEndpoint:(VIEndpoint *)endpoint
                      issueLevel:(VIQualityIssueLevel)level {
-  [self appendText:[NSString stringWithFormat:@"NoAudioReceive from: %@", endpoint.userDisplayName ?: endpoint.user]
-         withLevel:level];
+    [self appendText:[NSString stringWithFormat:@"NoAudioReceive from: %@", endpoint.userDisplayName ?: endpoint.user]
+           withLevel:level];
 }
 
 - (void)                   call:(VICall *)call
@@ -117,7 +117,7 @@ didDetectNoVideoReceiveOnStream:(VIRemoteVideoStream *)videoStream
            withLevel:level];
     if (level == VIQualityIssueLevelNone) {
         [_participantsVideoView requestRenderingWithParticipantId:endpoint.endpointId
-            render:^(UIView *view) {
+                                                           render:^(UIView *view) {
             if (view) {
                 VIVideoRendererView *renderView = [[VIVideoRendererView alloc] initWithContainerView:view];
                 [videoStream addRenderer:renderView];
