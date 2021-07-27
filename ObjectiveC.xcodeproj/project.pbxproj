@@ -1283,7 +1283,7 @@
 			repositoryURL = "https://github.com/voximplant/ios-sdk-releases.git";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 2.41.0;
+				minimumVersion = 2.42.0;
 			};
 		};
 		BBD6C02E265FD7B50092B694 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
