@@ -1,5 +1,9 @@
 # Voximplant Objective-C Demos
 
+### ⚠️ Deprecation ⚠️
+This demo is deprecated and won't be supported any longer. 
+For newest swift demo, please check: [ios-sdk-swift-demo](https://github.com/voximplant/ios-sdk-swift-demo)
+
 ## [Quality Issues](QualityIssues)
 
 Example of how to handle Quality Issues alerts of Voximplant iOS SDK
